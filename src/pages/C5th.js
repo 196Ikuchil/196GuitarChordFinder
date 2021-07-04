@@ -10,7 +10,8 @@ import {
   AppNewsUpdate,
   AppWeeklySales,
   AppOrderTimeline,
-  AppTrafficBySite
+  AppTrafficBySite,
+  TestPanel
 } from '../components/_dashboard/app';
 
 // ----------------------------------------------------------------------
@@ -37,7 +38,7 @@ export default function C5th() {
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
-            <div>test</div>
+            <TestPanel />
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>

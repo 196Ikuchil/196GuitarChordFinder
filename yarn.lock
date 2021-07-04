@@ -1853,6 +1853,11 @@
     ejs "^2.6.1"
     magic-string "^0.25.0"
 
+"@svgdotjs/svg.js@^3.0.12":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@svgdotjs/svg.js/-/svg.js-3.1.1.tgz#3cf6a59e6d8708cd76d38b26e7d682dacb2f3670"
+  integrity sha512-73FggAUBS+zuHhJOMZiAsuE5qpwA4pmWUbLuvof2g3YnWEc3QhXA3tjqZlJJukBobSA23a/avf1Vb1U1QbER1Q==
+
 "@svgr/babel-plugin-add-jsx-attribute@^5.4.0":
   version "5.4.0"
   resolved "https://registry.npmjs.org/@svgr/babel-plugin-add-jsx-attribute/-/babel-plugin-add-jsx-attribute-5.4.0.tgz"
@@ -11586,6 +11591,13 @@ vendors@^1.0.0:
   version "1.0.4"
   resolved "https://registry.npmjs.org/vendors/-/vendors-1.0.4.tgz"
   integrity sha512-/juG65kTL4Cy2su4P8HjtkTxk6VmJDiOPBufWniqQ6wknac6jNiXS9vU+hO3wgusiyqWlzTbVHi0dyJqRONg3w==
+
+vexchords@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/vexchords/-/vexchords-1.2.0.tgz#844041935cc90d7ed3e90e8a91ad9c4bd62b5e5a"
+  integrity sha512-ObhyFjGiN4pj+oFBGmCa9/geY6H6xqbEipTp1k8de7UXjvv30CriHjD8FR3Lf3jo1vSVUCePSJd7024qmJyNlA==
+  dependencies:
+    "@svgdotjs/svg.js" "^3.0.12"
 
 vm-browserify@^1.0.1:
   version "1.1.2"
