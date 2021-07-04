@@ -11,7 +11,8 @@ import {
   AppWeeklySales,
   AppOrderTimeline,
   AppTrafficBySite,
-  TestPanel
+  TestPanel,
+  TestPianoScorePanel
 } from '../components/_dashboard/app';
 
 // ----------------------------------------------------------------------
@@ -42,7 +43,7 @@ export default function DashboardApp() {
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
-            <div>chartがありました</div>
+            <TestPianoScorePanel />
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
