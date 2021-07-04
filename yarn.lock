@@ -11604,6 +11604,11 @@ vexchords@^1.2.0:
   dependencies:
     "@svgdotjs/svg.js" "^3.0.12"
 
+vexflow@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/vexflow/-/vexflow-3.0.9.tgz#85bc89ae5224670d3837d0b34c521b9e69abc89c"
+  integrity sha512-JzDUC3SZvyRxvALv0UrlgCJSH7WzNSShNjXK0rTWqDJscCcytrTWLT3LYtsDvby8qbszdaD708xOe9D79FLTFA==
+
 vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.npmjs.org/vm-browserify/-/vm-browserify-1.1.2.tgz"

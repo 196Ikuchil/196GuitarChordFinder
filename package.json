@@ -64,6 +64,7 @@
     "simplebar-react": "^2.3.4",
     "style-loader": "^3.0.0",
     "vexchords": "^1.2.0",
+    "vexflow": "^3.0.9",
     "web-vitals": "^2.0.1",
     "yup": "^0.32.9"
   },
