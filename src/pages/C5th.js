@@ -10,18 +10,14 @@ import {
   AppNewsUpdate,
   AppWeeklySales,
   AppOrderTimeline,
-  AppCurrentVisits,
-  AppWebsiteVisits,
-  AppTrafficBySite,
-  AppCurrentSubject,
-  AppConversionRates
+  AppTrafficBySite
 } from '../components/_dashboard/app';
 
 // ----------------------------------------------------------------------
 
 export default function C5th() {
   return (
-    <Page title="Dashboard | Minimal-UI">
+    <Page title="Dashboard | C5th">
       <Container maxWidth="xl">
         <Box sx={{ pb: 5 }}>
           <Typography variant="h4">Hi, Welcome back</Typography>
@@ -41,19 +37,19 @@ export default function C5th() {
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
-            <AppWebsiteVisits />
+            <div>test</div>
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
-            <AppCurrentVisits />
+            <div>test</div>
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
-            <AppConversionRates />
+            <div>test</div>
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
-            <AppCurrentSubject />
+            <div>test</div>
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>

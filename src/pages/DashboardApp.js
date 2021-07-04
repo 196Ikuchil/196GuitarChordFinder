@@ -10,11 +10,8 @@ import {
   AppNewsUpdate,
   AppWeeklySales,
   AppOrderTimeline,
-  AppCurrentVisits,
-  AppWebsiteVisits,
   AppTrafficBySite,
-  AppCurrentSubject,
-  AppConversionRates
+  TestPanel
 } from '../components/_dashboard/app';
 
 // ----------------------------------------------------------------------
@@ -41,19 +38,19 @@ export default function DashboardApp() {
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
-            <AppWebsiteVisits />
+            <TestPanel />
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
-            <AppCurrentVisits />
+            <div>chartがありました</div>
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
-            <AppConversionRates />
+            <TestPanel />
           </Grid>
 
           <Grid item xs={12} md={6} lg={4}>
-            <AppCurrentSubject />
+            <TestPanel />
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
