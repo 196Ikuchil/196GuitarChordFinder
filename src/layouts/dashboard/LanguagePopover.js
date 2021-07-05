@@ -2,6 +2,9 @@ import { useRef, useState } from 'react';
 // material
 import { alpha } from '@material-ui/core/styles';
 import { Box, MenuItem, ListItemIcon, ListItemText, IconButton } from '@material-ui/core';
+// icon
+import { Icon, InlineIcon } from '@iconify/react';
+import flagForFlagJapan from '@iconify-icons/noto-v1/flag-for-flag-japan';
 // components
 import MenuPopover from '../../components/MenuPopover';
 
@@ -14,14 +17,9 @@ const LANGS = [
     icon: '/static/icons/ic_flag_en.svg'
   },
   {
-    value: 'de',
-    label: 'German',
-    icon: '/static/icons/ic_flag_de.svg'
-  },
-  {
-    value: 'fr',
-    label: 'French',
-    icon: '/static/icons/ic_flag_fr.svg'
+    value: 'ja',
+    label: 'Japanese',
+    icon: '/static/icons/ic_flag_ja.svg'
   }
 ];
 

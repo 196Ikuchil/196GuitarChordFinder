@@ -72,6 +72,7 @@
     "@babel/core": "^7.14.6",
     "@babel/eslint-parser": "^7.14.7",
     "@iconify-icons/mdi": "^1.1.15",
+    "@iconify-icons/noto-v1": "^1.1.0",
     "@iconify/react": "^1.1.4",
     "eslint": "^7.29.0",
     "eslint-config-airbnb": "^18.2.1",
