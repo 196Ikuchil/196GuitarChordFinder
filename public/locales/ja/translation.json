@@ -1,0 +1,10 @@
+{
+  "sidebar": {
+    "dashboard":{
+      "title": "dashboard_ja"
+    },
+    "diatonic":{
+      "title":"ダイアトニック"
+    }
+  }
+}
