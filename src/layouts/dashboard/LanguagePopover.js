@@ -6,20 +6,21 @@ import { Box, MenuItem, ListItemIcon, ListItemText, IconButton } from '@material
 import { Icon, InlineIcon } from '@iconify/react';
 import flagForFlagJapan from '@iconify-icons/noto-v1/flag-for-flag-japan';
 // components
+import { useTranslation } from 'react-i18next';
 import MenuPopover from '../../components/MenuPopover';
 
 // ----------------------------------------------------------------------
 
 const LANGS = [
   {
-    value: 'en',
-    label: 'English',
-    icon: '/static/icons/ic_flag_en.svg'
-  },
-  {
     value: 'ja',
     label: 'Japanese',
     icon: '/static/icons/ic_flag_ja.svg'
+  },
+  {
+    value: 'en',
+    label: 'English',
+    icon: '/static/icons/ic_flag_en.svg'
   }
 ];
 
@@ -28,6 +29,12 @@ const LANGS = [
 export default function LanguagePopover() {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng) => {
+    console.log('changesss');
+    i18n.changeLanguage(lng);
+  };
 
   const handleOpen = () => {
     setOpen(true);
@@ -51,6 +58,7 @@ export default function LanguagePopover() {
           })
         }}
       >
+        {/* FIXME: icon only japanese */}
         <img src={LANGS[0].icon} alt={LANGS[0].label} />
       </IconButton>
 
@@ -60,7 +68,10 @@ export default function LanguagePopover() {
             <MenuItem
               key={option.value}
               selected={option.value === LANGS[0].value}
-              onClick={handleClose}
+              onClick={() => {
+                handleClose();
+                changeLanguage(option.value);
+              }}
               sx={{ py: 1, px: 2.5 }}
             >
               <ListItemIcon>
