@@ -4,21 +4,33 @@ import 'simplebar/src/simplebar.css';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
 //
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import reportWebVitals from './reportWebVitals';
 
+// store
+import { TodoStore } from './modules';
+
 import './i18n';
 
 // ----------------------------------------------------------------------
 
+const store = createStore(
+  TodoStore,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
 ReactDOM.render(
   <HelmetProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </HelmetProvider>,
   document.getElementById('root')
 );

@@ -8,3 +8,4 @@ export { default as AppTrafficBySite } from './AppTrafficBySite';
 export { default as AppWeeklySales } from './AppWeeklySales';
 export { default as TestPanel } from './TestPanel';
 export { default as TestPianoScorePanel } from './TestPianoScorePanel';
+export { default as AddBasePanelButton } from './AddBasePanelButton';
