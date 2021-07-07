@@ -29,12 +29,6 @@ const LANGS = [
 export default function LanguagePopover() {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
-  const { t, i18n } = useTranslation();
-
-  const changeLanguage = (lng) => {
-    console.log('changesss');
-    i18n.changeLanguage(lng);
-  };
 
   const handleOpen = () => {
     setOpen(true);
@@ -58,7 +52,6 @@ export default function LanguagePopover() {
           })
         }}
       >
-        {/* FIXME: icon only japanese */}
         <img src={LANGS[0].icon} alt={LANGS[0].label} />
       </IconButton>
 
@@ -68,10 +61,7 @@ export default function LanguagePopover() {
             <MenuItem
               key={option.value}
               selected={option.value === LANGS[0].value}
-              onClick={() => {
-                handleClose();
-                changeLanguage(option.value);
-              }}
+              onClick={handleClose}
               sx={{ py: 1, px: 2.5 }}
             >
               <ListItemIcon>
