@@ -17,6 +17,8 @@ import { TodoStore } from './modules';
 
 import './i18n';
 
+import 'font-awesome/css/font-awesome.min.css';
+
 // ----------------------------------------------------------------------
 
 const store = createStore(

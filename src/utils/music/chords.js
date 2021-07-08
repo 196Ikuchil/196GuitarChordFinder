@@ -34,7 +34,7 @@ function b5(base) {
   return base;
 }
 
-export const CHORDNAME = ['', 'm', 'M7', '7', 'm7', '(♭5)', 'm(♭5)', 'm7(♭5)'];
+export const CHORDNAME = ['', 'm', 'M7', '7', 'm7', '(-5)', 'm(-5)', 'm7(-5)'];
 
 export const CHORDNOTES = (number) => {
   switch (number) {

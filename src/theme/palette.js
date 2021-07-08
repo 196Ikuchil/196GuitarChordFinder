@@ -27,7 +27,14 @@ const GREY = {
   500_56: alpha('#919EAB', 0.56),
   500_80: alpha('#919EAB', 0.8)
 };
-
+const WHITE = {
+  lighter: '#ffffff',
+  light: '#ffffff',
+  main: '#ffffff',
+  dark: '#ffffff',
+  darker: '#ffffff',
+  contrastText: '#fff'
+};
 const SECONDARY = {
   lighter: '#C8FACD',
   light: '#5BE584',
@@ -93,6 +100,7 @@ const palette = {
   success: { ...SUCCESS },
   warning: { ...WARNING },
   error: { ...ERROR },
+  allwhite: { ...WHITE },
   grey: GREY,
   gradients: GRADIENTS,
   divider: GREY[500_24],
