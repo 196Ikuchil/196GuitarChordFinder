@@ -21,22 +21,23 @@ const StyledTable = styled(Table)({
   'tableLayout': 'fixed'
 });
 
-const StyledTableCell = styled(TableCell)(({ theme, role }) => {
+const roleCellColor = (role, attr, theme) => {
+  switch (role) {
+    case DROLES[0][0]: // tonic
+    case DROLES[1][0]: // tonic m
+      return theme.palette.primary[attr];
+    case DROLES[0][1]: // dominant
+    case DROLES[1][1]: // dominant m
+      return theme.palette.error[attr];
+    case DROLES[0][2]: // subdominant
+    case DROLES[1][2]: // subdominant m
+      return theme.palette.success[attr];
+    default:
+      return theme.palette.allwhite[attr];
+  }
+};
 
-  const roleCellColor = (role, attr,theme) => {
-    switch (role) {
-      case 'tonic':
-        return theme.palette.primary[attr];
-      case 'dominant':
-        return theme.palette.error[attr];
-      case 'subdominant':
-        return theme.palette.success[attr];
-      default:
-        return theme.palette.allwhite[attr];
-    }
-  };
-
-  return {
+const StyledTableCell = styled(TableCell)(({ theme, role }) => ({
     lineHeight: '0.5em',
     fontSize: '100%',
     minWidth: '100',
@@ -47,12 +48,21 @@ const StyledTableCell = styled(TableCell)(({ theme, role }) => {
     justifyContent: 'center',
     width: theme.spacing(8),
     height: theme.spacing(8),
-    backgroundImage: `linear-gradient(135deg, ${alpha(roleCellColor(role, 'main',theme), 0.3)} 0%, ${alpha(
-      roleCellColor(role, 'main',theme),
+    backgroundImage: `linear-gradient(135deg, ${alpha(roleCellColor(role, 'main', theme), 0.3)} 0%, ${alpha(
+      roleCellColor(role, 'main', theme),
       0.6
     )} 100%)`
-  }
-});
+  }));
+
+const RoleDescribeBox = styled(Box)(({theme, role}) => ({
+  fontSize: '100%',
+  overflow: 'hidden',
+  borderRadius: '10%',
+  backgroundImage: `linear-gradient(135deg, ${alpha(roleCellColor(role, 'main', theme), 0.3)} 0%, ${alpha(
+    roleCellColor(role, 'main', theme),
+    0.6
+  )} 100%)`
+}));
 
 
 function rolePair(chord, role) {
@@ -60,7 +70,16 @@ function rolePair(chord, role) {
 }
 // TODO: use redux stored value
 const isminor = 0;
-const chordnames = GetDiatonicChordNames(0, 0);
+const diatonicNum = 0;
+const chordnames = GetDiatonicChordNames(diatonicNum, 0);
+
+
+const DROLES = [
+  ['tonic','dominant','subdominant'], // major
+  ['tonicm','dominantm','subdominantm'], // minor
+  ['','',''], // harm
+  ['',''] // melo
+];
 
 // isminor =0 major , >=0 minor
 export default function DiatonicPanel() {
@@ -70,18 +89,18 @@ export default function DiatonicPanel() {
       // major
       return [
         [
-          rolePair(chordnames[3], 'subdominant'),
-          rolePair(chordnames[0], 'tonic'),
-          rolePair(chordnames[4], 'dominant')
+          rolePair(chordnames[3], DROLES[isminor][2]),
+          rolePair(chordnames[0], DROLES[isminor][0]),
+          rolePair(chordnames[4], DROLES[isminor][1])
         ],
         [
-          rolePair(chordnames[1], 'subdominant'),
-          rolePair(chordnames[5], 'tonic'),
-          rolePair(chordnames[2], 'tonic')
+          rolePair(chordnames[1], DROLES[isminor][2]),
+          rolePair(chordnames[5], DROLES[isminor][0]),
+          rolePair(chordnames[2], DROLES[isminor][0])
         ],
         [
           rolePair('', ''),
-          rolePair(chordnames[6], 'dominant'),
+          rolePair(chordnames[6], DROLES[isminor][1]),
           rolePair('', '')
         ]
       ];
@@ -89,28 +108,32 @@ export default function DiatonicPanel() {
     // others = minor
     return [
       [
-        rolePair(chordnames[5], 'subdominantm'),
-        rolePair(chordnames[2], 'tonicm'),
-        rolePair(chordnames[6], 'dominantm')
+        rolePair(chordnames[5], DROLES[isminor][2]),
+        rolePair(chordnames[2], DROLES[isminor][0]),
+        rolePair(chordnames[6], DROLES[isminor][1])
       ],
       [
-        rolePair(chordnames[3], 'subdominantm'),
-        rolePair(chordnames[0], 'tonicm'),
-        rolePair(chordnames[4], 'dominantm')
+        rolePair(chordnames[3], DROLES[isminor][2]),
+        rolePair(chordnames[0], DROLES[isminor][0]),
+        rolePair(chordnames[4], DROLES[isminor][1])
       ],
       [
         rolePair('', ''),
-        rolePair(chordnames[1], 'subdominantm'),
+        rolePair(chordnames[1],  DROLES[isminor][2]),
         rolePair('', '')
       ]
     ];
+  }
+
+  function roleDiscriber(){
+
   }
 
   return (
     <Card>
       <CardHeader title="Diatonic Table" />
       <Grid container>
-        <Grid xs={12} sm={8} md={8} >
+        <Grid item xs={12} sm={8} md={8} >
           <Box sx={{ p: 3, pb: 1 }}>
             <TableContainer component={Paper}>
               <StyledTable aria-label="diatonic table">
@@ -129,14 +152,15 @@ export default function DiatonicPanel() {
             </TableContainer>
           </Box>
         </Grid>
-        <Grid item xs={2}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <Box>test</Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Box>test</Box>
-            </Grid>
+        <Grid item xs={12} sm={4}>
+          <Grid containe xs={12}r>
+            <Box sx={{ p: 3 }}>
+              {DROLES[diatonicNum].map((d) => (
+                <Grid item xs={12} key={d}>
+                  <RoleDescribeBox align="center" role={d} sx={{margin:"1%"}}>{d}</RoleDescribeBox>
+                </Grid>
+              ))}
+            </Box>
           </Grid>
         </Grid>
       </Grid>
