@@ -10,6 +10,9 @@ https://github.com/0xfe/vexchords
 ## sample
 https://codesandbox.io/s/ih6oq?file=/src/App.js:146-2447
 
+## redux sample
+https://github.com/reduxjs/redux/tree/d794c56f78eccb56ba3c67971c26df8ee34dacc1/examples/todos/src
+
 # jspiano
 https://codepen.io/gabrielcarol/pen/rGeEbY
 - codepenのソースコードはパブリックならMITライセンスになる
