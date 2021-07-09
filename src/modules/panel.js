@@ -2,63 +2,49 @@ import { combineReducers } from 'redux';
 
 // ACTION
 
-let nextTodoId = 0;
-export const addTodo = (text) => ({
-  type: 'ADD_TODO',
+export const addPanel = (isminor, key, panels) => ({
+  type: 'ADD_PANEL',
   // eslint-disable-next-line no-plusplus
-  id: nextTodoId++,
-  text
+  id: getTailIndex(panels) + 1,
+  m: isminor,
+  key
 });
 
-export const toggleTodo = (id) => ({
-  type: 'TOGGLE_TODO',
+export const removePanel = (id) => ({
+  type: 'REMOVE_PANEL',
   id
 });
 
 // action creator
 
-export const todos = (state = [], action) => {
+export const panels = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_TODO':
+    case 'ADD_PANEL':
       return [
         ...state,
         {
           id: action.id,
-          text: action.text,
-          completed: false
+          m: action.m,
+          key: action.key
         }
       ];
-    case 'TOGGLE_TODO':
-      return state.map((todo) =>
-        todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
-      );
+    case 'REMOVE_PANEL':
+      return state.filter((panel) => panel.id !== action.id);
     default:
       return state;
   }
 };
 
 // stateに追加
-export default combineReducers({ todos });
+export default combineReducers({ panels });
+
+export const getTailIndex = (panels) => (panels.length !== 0 ? panels.slice(-1)[0].id : 0);
 
 // component
-// https://github.com/reduxjs/redux/blob/master/examples/todos/src/containers/VisibleTodoList.js
-const getVisibleTodos = (todos) => todos;
-
-// switch (filter) {
-//   case VisibilityFilters.SHOW_ALL:
-//     return todos;
-//   case VisibilityFilters.SHOW_COMPLETED:
-//     return todos.filter((t) => t.completed);
-//   case VisibilityFilters.SHOW_ACTIVE:
-//     return todos.filter((t) => !t.completed);
-//   default:
-//     throw new Error(`Unknown filter: ${filter}`);
-// }
-
 export const mapStateToProps = (state) => ({
-  todos: getVisibleTodos(state.todos)
+  panels: state.panels
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  toggleTodo: (id) => dispatch(toggleTodo(id))
+  removePanel: (id) => dispatch(removePanel(id))
 });

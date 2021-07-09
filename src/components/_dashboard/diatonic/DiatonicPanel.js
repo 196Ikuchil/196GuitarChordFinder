@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 // material
-import { Card, CardHeader, Box, Grid } from '@material-ui/core';
+import { Card, CardHeader, Box, Grid, Button } from '@material-ui/core';
 import { alpha, styled } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -64,6 +64,10 @@ const RoleDescribeBox = styled(Box)(({theme, role}) => ({
   )} 100%)`
 }));
 
+const BorderBox = styled(Box)(({theme})=>({
+  border: `solid 3px ${theme.palette.primary.light}`,
+  borderRadius: "10px"
+}))
 
 function rolePair(chord, role) {
   return { chord, role };
@@ -82,7 +86,7 @@ const DROLES = [
 ];
 
 // isminor =0 major , >=0 minor
-export default function DiatonicPanel() {
+export default function DiatonicPanel({ onClick }) {
   function reordering() {
     // like [4,1,5,2,6,3,7]
     if (isminor === 0) {
@@ -132,9 +136,10 @@ export default function DiatonicPanel() {
   return (
     <Card>
       <CardHeader title="Diatonic Table" />
+      <Button onClick={onClick} >remove</Button>
       <Grid container>
         <Grid item xs={12} sm={8} md={8} >
-          <Box sx={{ p: 3, pb: 1 }}>
+          <BorderBox sx={{ pb: 1, m: { xs: 0, sm: "1em 0"} }}>
             <TableContainer component={Paper}>
               <StyledTable aria-label="diatonic table">
                 <TableBody>
@@ -150,17 +155,19 @@ export default function DiatonicPanel() {
                 </TableBody>
               </StyledTable>
             </TableContainer>
-          </Box>
+          </BorderBox>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Grid containe xs={12}r>
-            <Box sx={{ p: 3 }}>
-              {DROLES[diatonicNum].map((d) => (
-                <Grid item xs={12} key={d}>
-                  <RoleDescribeBox align="center" role={d} sx={{margin:"1%"}}>{d}</RoleDescribeBox>
-                </Grid>
-              ))}
-            </Box>
+          <Grid container>
+            <Grid item xs={12}>
+              <Box sx={{ p: 1, pt: {xs: 0, sm: "1em"} }}>
+                {DROLES[diatonicNum].map((d) => (
+                  <Grid item xs={12} key={d}>
+                    <RoleDescribeBox align="center" role={d} sx={{margin:"1%"}}>{d}</RoleDescribeBox>
+                  </Grid>
+                ))}
+              </Box>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

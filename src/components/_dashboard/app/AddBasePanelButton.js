@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addTodo } from '../../../modules/panel';
+import { addPanel, mapStateToProps } from '../../../modules/panel';
 
-const AddBasePanelButton = ({ dispatch }) => {
+const AddBasePanelButton = ({ panels, dispatch }) => {
   let input;
 
   return (
@@ -13,7 +13,7 @@ const AddBasePanelButton = ({ dispatch }) => {
           if (!input.value.trim()) {
             return;
           }
-          dispatch(addTodo(input.value));
+          dispatch(addPanel(0, 0, panels));
           input.value = '';
         }}
       >
@@ -24,4 +24,4 @@ const AddBasePanelButton = ({ dispatch }) => {
   );
 };
 
-export default connect()(AddBasePanelButton);
+export default connect(mapStateToProps)(AddBasePanelButton);
