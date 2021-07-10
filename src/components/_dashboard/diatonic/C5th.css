@@ -1,0 +1,144 @@
+:root {
+  --main-width: 300px;
+  --main-height: 300px;
+  --main-rad: 150px;
+}
+
+/* // スマホ用 */
+.c5thcontainer {
+  position:static;
+  height: 330px;;
+  display: flex;
+  justify-content: center;
+}
+@media screen and (min-width: 600px) {
+  .c5thcontainer {
+    margin-top: 10%;
+    position:static;
+    height:380px;
+    display: flex;
+    justify-content: center;
+    transform: scale(1.2);
+  }
+}
+
+.circle-text1 {
+	position:absolute;
+	width: var(--main-width); /* 直径 */
+	height: var(--main-height);
+	font-size: 25px;
+	text-align: center;
+	margin: 0;
+}
+
+.circle-text2 {
+	position:absolute;
+	width: var(--main-width);
+	height: var(--main-height);
+	font-size: 24px;
+	text-align: center;
+	margin: 0;
+  transform: scale(0.75);
+}
+
+.circle-text3 {
+	position:absolute;
+	width: var(--main-width);
+	height: var(--main-height);
+	font-size: 19px;
+	text-align: center;
+	margin: 0;
+  transform: scale(0.55);
+}
+
+.circle-text span {
+	position: absolute;
+	top: 0;
+	left: calc(50% - 15px); /* 中心点、、文字サイズ分ずらす */
+	display: inline-block;
+	width: 30px;
+	height: var(--main-rad);
+	transform-origin: center bottom;
+}
+
+
+.circle-text span:nth-child(1) {
+	transform: rotate(0deg);
+}
+
+.circle-text span:nth-child(2) {
+	transform: rotate(30deg);
+}
+
+.circle-text span:nth-child(3) {
+	transform: rotate(60deg);
+}
+
+.circle-text span:nth-child(4) {
+	transform: rotate(90deg);
+}
+
+.circle-text span:nth-child(5) {
+	transform: rotate(120deg);
+}
+
+.circle-text span:nth-child(6) {
+	transform: rotate(150deg);
+}
+
+.circle-text span:nth-child(7) {
+	transform: rotate(180deg);
+}
+
+.circle-text span:nth-child(8) {
+	transform: rotate(210deg);
+}
+
+.circle-text span:nth-child(9) {
+	transform: rotate(240deg);
+}
+
+.circle-text span:nth-child(10) {
+	transform: rotate(270deg);
+}
+
+.circle-text span:nth-child(11) {
+	transform: rotate(300deg);
+}
+
+.circle-text span:nth-child(12) {
+	transform: rotate(330deg);
+}
+
+.circle1{
+  position:absolute;
+	width: var(--main-width);
+	height: var(--main-height);
+  border-radius: 50%;
+  background: #D6E4FF;
+  text-align: center;
+	margin: 0;
+  transform: scale(0.97)
+}
+
+.circle2{
+  position:absolute;
+	width: var(--main-width);
+	height: var(--main-height);
+  border-radius: 50%;
+  background: #FFF7CD;
+  text-align: center;
+	margin: 0;
+  transform: scale(0.77)
+}
+
+.circle3{
+  position:absolute;
+	width: var(--main-width);
+	height: var(--main-height);
+  border-radius: 50%;
+  background: #C8FACD;
+  text-align: center;
+	margin: 0;
+  transform: scale(0.57)
+}

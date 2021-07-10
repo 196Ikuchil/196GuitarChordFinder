@@ -17,14 +17,21 @@ export const addDiatonicPanel = (dChord, key, panels) => ({
   key
 });
 
+export const addC5thPanel = (panels) => ({
+  type: 'ADD_C5th_PANEL',
+  // eslint-disable-next-line no-plusplus
+  id: getTailIndex(panels) + 1,
+  panelType: PanelTypes.c5th
+});
+
 export const changeDiatonic = (id, dChord) => ({
   type: 'CHANGE_DIATONIC',
   id,
   dChord
 });
 
-export const changeKey = (id, key) => ({
-  type: 'CHANGE_KEY',
+export const changeDiatonicKey = (id, key) => ({
+  type: 'CHANGE_DIATONIC_KEY',
   id,
   key
 });
@@ -48,13 +55,21 @@ export const panels = (state = [], action) => {
           key: action.key
         }
       ];
+    case 'ADD_C5th_PANEL':
+      return [
+        ...state,
+        {
+          id: action.id,
+          panelType: action.panelType
+        }
+      ];
     case 'CHANGE_DIATONIC':
       return [
         ...state.slice(0, action.id),
         { ...state[action.id], dChord: action.dChord },
         ...state.slice(action.id + 1)
       ];
-    case 'CHANGE_KEY':
+    case 'CHANGE_DIATONIC_KEY':
       return [
         ...state.slice(0, action.id),
         { ...state[action.id], key: action.key },
@@ -79,6 +94,6 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   changeDiatonic: (id, dChord) => dispatch(changeDiatonic(id, dChord)),
-  changeKey: (id, key) => dispatch(changeKey(id, key)),
+  changeDiatonicKey: (id, key) => dispatch(changeDiatonicKey(id, key)),
   removePanel: (id) => dispatch(removePanel(id))
 });
