@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addPanel, mapStateToProps } from '../../../modules/panel';
+import { addPanel, mapStateToProps } from '../../../modules/diatonicPanel';
 
 const AddBasePanelButton = ({ panels, dispatch }) => {
   let input;

@@ -8,6 +8,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import PropTypes from 'prop-types';
 import KeySelector from './KeySelector';
 
 import { GetDiatonicChordNames } from '../../../utils/music';
@@ -72,11 +73,6 @@ const BorderBox = styled(Box)(({theme})=>({
 function rolePair(chord, role) {
   return { chord, role };
 }
-// TODO: use redux stored value
-const isminor = 0;
-const diatonicNum = 0;
-const chordnames = GetDiatonicChordNames(diatonicNum, 0);
-
 
 const DROLES = [
   ['tonic','dominant','subdominant'], // major
@@ -85,26 +81,28 @@ const DROLES = [
   ['',''] // melo
 ];
 
-// isminor =0 major , >=0 minor
-export default function DiatonicPanel({ onClick }) {
+// panel.dChord =0 major , >=0 minor
+export default function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey }) {
+  const chordnames = GetDiatonicChordNames(panel.dChord, panel.key);
+
   function reordering() {
     // like [4,1,5,2,6,3,7]
-    if (isminor === 0) {
+    if (panel.dChord === 0) {
       // major
       return [
         [
-          rolePair(chordnames[3], DROLES[isminor][2]),
-          rolePair(chordnames[0], DROLES[isminor][0]),
-          rolePair(chordnames[4], DROLES[isminor][1])
+          rolePair(chordnames[3], DROLES[panel.dChord][2]),
+          rolePair(chordnames[0], DROLES[panel.dChord][0]),
+          rolePair(chordnames[4], DROLES[panel.dChord][1])
         ],
         [
-          rolePair(chordnames[1], DROLES[isminor][2]),
-          rolePair(chordnames[5], DROLES[isminor][0]),
-          rolePair(chordnames[2], DROLES[isminor][0])
+          rolePair(chordnames[1], DROLES[panel.dChord][2]),
+          rolePair(chordnames[5], DROLES[panel.dChord][0]),
+          rolePair(chordnames[2], DROLES[panel.dChord][0])
         ],
         [
           rolePair('', ''),
-          rolePair(chordnames[6], DROLES[isminor][1]),
+          rolePair(chordnames[6], DROLES[panel.dChord][1]),
           rolePair('', '')
         ]
       ];
@@ -112,18 +110,18 @@ export default function DiatonicPanel({ onClick }) {
     // others = minor
     return [
       [
-        rolePair(chordnames[5], DROLES[isminor][2]),
-        rolePair(chordnames[2], DROLES[isminor][0]),
-        rolePair(chordnames[6], DROLES[isminor][1])
+        rolePair(chordnames[5], DROLES[panel.dChord][2]),
+        rolePair(chordnames[2], DROLES[panel.dChord][0]),
+        rolePair(chordnames[6], DROLES[panel.dChord][1])
       ],
       [
-        rolePair(chordnames[3], DROLES[isminor][2]),
-        rolePair(chordnames[0], DROLES[isminor][0]),
-        rolePair(chordnames[4], DROLES[isminor][1])
+        rolePair(chordnames[3], DROLES[panel.dChord][2]),
+        rolePair(chordnames[0], DROLES[panel.dChord][0]),
+        rolePair(chordnames[4], DROLES[panel.dChord][1])
       ],
       [
         rolePair('', ''),
-        rolePair(chordnames[1],  DROLES[isminor][2]),
+        rolePair(chordnames[1],  DROLES[panel.dChord][2]),
         rolePair('', '')
       ]
     ];
@@ -132,8 +130,8 @@ export default function DiatonicPanel({ onClick }) {
   return (
     <Card>
       <CardHeader title="Diatonic Table" />
-      <KeySelector />
-      <Button onClick={onClick} >remove</Button>
+      <KeySelector panel={panel} changeDiatonic={onChangeDiatonic} changeKey={onChangeKey}/>
+      <Button onClick={onRemoveClick} >remove</Button>
       <Grid container>
         <Grid item xs={12} sm={8} md={8} >
           <BorderBox sx={{ pb: 1, m: { xs: 0, sm: "1em 0"} }}>
@@ -158,7 +156,7 @@ export default function DiatonicPanel({ onClick }) {
           <Grid container>
             <Grid item xs={12}>
               <Box sx={{ p: 1, pt: {xs: 0, sm: "1em"} }}>
-                {DROLES[diatonicNum].map((d) => (
+                {DROLES[panel.dChord].map((d) => (
                   <Grid item xs={12} key={d}>
                     <RoleDescribeBox align="center" role={d} sx={{margin:"1%"}}>{d}</RoleDescribeBox>
                   </Grid>
@@ -171,3 +169,14 @@ export default function DiatonicPanel({ onClick }) {
     </Card>
   );
 }
+
+DiatonicPanel.propTypes = {
+  panel: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    dChord: PropTypes.number.isRequired,
+    key: PropTypes.number.isRequired
+  }).isRequired,
+  onRemoveClick: PropTypes.func.isRequired,
+  onChangeDiatonic: PropTypes.func.isRequired,
+  onChangeKey: PropTypes.func.isRequired
+};

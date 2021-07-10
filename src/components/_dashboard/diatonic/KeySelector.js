@@ -5,6 +5,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import PropTypes from 'prop-types';
 
 import { DIATONICS, GetDiatonicName, NOTESLENGTH, NOTENAME } from '../../../utils/music/notes';
 
@@ -13,14 +14,12 @@ const StyleFormControl = styled(FormControl)(({ theme }) => ({
   minWidth: '90%'
 }));
 
-export default function KeySelector() {
-  const [num, setNum, num2] = React.useState('');
-
-  const handleChange = (event) => {
-    setNum(event.target.value);
+export default function KeySelector({ panel, changeDiatonic, changeKey }) {
+  const handleChangeDiatonic = (event) => {
+    changeDiatonic(event.target.value);
   };
-  const handleChanga2 = (event) => {
-    setNum(event.target.value);
+  const handleChangaKey = (event) => {
+    changeKey(event.target.value);
   };
 
   const dComp = [];
@@ -46,7 +45,12 @@ export default function KeySelector() {
       <Grid item xs={6} sm={4}>
         <StyleFormControl variant="outlined">
           <InputLabel id="diatonic">Diatonic</InputLabel>
-          <Select labelId="ditatonic-selector" onChange={handleChange} value={num} label="diatonic">
+          <Select
+            labelId="ditatonic-selector"
+            onChange={handleChangeDiatonic}
+            value={panel.dChord}
+            label="diatonic"
+          >
             {dComp}
           </Select>
         </StyleFormControl>
@@ -54,7 +58,7 @@ export default function KeySelector() {
       <Grid item xs={6} sm={4}>
         <StyleFormControl variant="outlined">
           <InputLabel id="key">key</InputLabel>
-          <Select labelId="key-selector" onChange={handleChanga2} value={num2} label="key">
+          <Select labelId="key-selector" onChange={handleChangaKey} value={panel.key} label="key">
             {kComp}
           </Select>
         </StyleFormControl>
@@ -62,3 +66,13 @@ export default function KeySelector() {
     </Grid>
   );
 }
+
+KeySelector.propTypes = {
+  panel: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    dChord: PropTypes.number.isRequired,
+    key: PropTypes.number.isRequired
+  }).isRequired,
+  changeDiatonic: PropTypes.func.isRequired,
+  changeKey: PropTypes.func.isRequired
+};
