@@ -128,10 +128,8 @@ export default function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, 
   }
 
   return (
-    <Card>
-      <CardHeader title="Diatonic Table" />
+    <div>
       <KeySelector panel={panel} changeDiatonic={onChangeDiatonic} changeKey={onChangeKey}/>
-      <Button onClick={onRemoveClick} >remove</Button>
       <Grid container>
         <Grid item xs={12} sm={8} md={8} >
           <BorderBox sx={{ pb: 1, m: { xs: 0, sm: "1em 0"} }}>
@@ -166,7 +164,7 @@ export default function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, 
           </Grid>
         </Grid>
       </Grid>
-    </Card>
+    </div>
   );
 }
 
