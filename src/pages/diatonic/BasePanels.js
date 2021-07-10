@@ -32,7 +32,10 @@ function BasePanels({ panels, removePanel, changeDiatonic, changeKey }) {
     <Grid container spacing={8}>
       {panels.map((panel) => (
         <Grid key={panel.id} item xs={12}>
+          <Card>
+            <Button onClick={() => removePanel(panel.id)}>remove</Button>
           {switchRenderPanel(panel)}
+          </Card>
         </Grid>
       ))}
     </Grid>
