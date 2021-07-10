@@ -1,7 +1,7 @@
-const sharp = true;
+const sharp = false;
 export const NOTESLENGTH = 12;
 export const NOTENAME = (number) => {
-  number %= 13;
+  number %= 12;
   switch (number) {
     case 0:
       return 'C';
@@ -28,6 +28,7 @@ export const NOTENAME = (number) => {
     case 11:
       return 'B';
     default:
+      console.log(`${number}error`);
       return 'err';
   }
 };
@@ -38,7 +39,7 @@ const Diatonic7thMajor = [
   [2, 4],
   [4, 4],
   [5, 2],
-  [7, 2],
+  [7, 3],
   [9, 4],
   [11, 7]
 ];
@@ -51,7 +52,7 @@ const Diatonic7thNaturalMinor = [
   [5, 4],
   [7, 4],
   [8, 2],
-  [10, 2]
+  [10, 3]
 ];
 
 export const DIATONICS = {
