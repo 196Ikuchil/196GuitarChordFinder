@@ -48,6 +48,8 @@
     "@testing-library/jest-dom": "^5.14.1",
     "abcjs": "^5.12.0",
     "change-case": "^4.1.2",
+    "d3-scale": "^4.0.0",
+    "d3-shape": "^3.0.1",
     "date-fns": "^2.22.1",
     "faker": "^5.5.3",
     "font-awesome": "^4.7.0",
