@@ -43,7 +43,7 @@ const StyledTableCell = styled(TableCell)(({ theme, role }) => ({
     minWidth: '100',
     padding: '0',
     overflow: 'hidden',
-    borderRadius: '10%',
+    borderRadius: '1vh',
     alignItems: 'center',
     justifyContent: 'center',
     width: theme.spacing(8),
@@ -57,7 +57,7 @@ const StyledTableCell = styled(TableCell)(({ theme, role }) => ({
 const RoleDescribeBox = styled(Box)(({theme, role}) => ({
   fontSize: '100%',
   overflow: 'hidden',
-  borderRadius: '10%',
+  borderRadius: '1vh',
   backgroundImage: `linear-gradient(135deg, ${alpha(roleCellColor(role, 'main', theme), 0.3)} 0%, ${alpha(
     roleCellColor(role, 'main', theme),
     0.6
