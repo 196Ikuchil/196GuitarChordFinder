@@ -2,7 +2,7 @@
 import { Box, Container, Typography } from '@material-ui/core';
 // components
 import Page from '../../components/Page';
-import { AddBasePanelButton } from '../../components/_dashboard/app';
+import { AddBasePanelButton } from '../../components/_dashboard/diatonic';
 import BasePanels from './BasePanels';
 
 // ----------------------------------------------------------------------

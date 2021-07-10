@@ -1,1 +1,1 @@
-export { default as PanelStore } from './diatonicPanel';
+export { default as PanelStore, PanelTypes } from './diatonicPanel';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addPanel, mapStateToProps } from '../../../modules/diatonicPanel';
+import { addDiatonicPanel, mapStateToProps, PanelTypes } from '../../../modules/diatonicPanel';
 
 const AddBasePanelButton = ({ panels, dispatch }) => {
   let input;
@@ -13,7 +13,7 @@ const AddBasePanelButton = ({ panels, dispatch }) => {
           if (!input.value.trim()) {
             return;
           }
-          dispatch(addPanel(0, 0, panels));
+          dispatch(addDiatonicPanel(0, 0, panels));
           input.value = '';
         }}
       >

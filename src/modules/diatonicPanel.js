@@ -1,11 +1,18 @@
 import { combineReducers } from 'redux';
 
+export const PanelTypes = {
+  diatonic: 0,
+  c5th: 1,
+  chord: 2
+};
+
 // ACTION
 
-export const addPanel = (dChord, key, panels) => ({
-  type: 'ADD_PANEL',
+export const addDiatonicPanel = (dChord, key, panels) => ({
+  type: 'ADD_DIATONIC_PANEL',
   // eslint-disable-next-line no-plusplus
   id: getTailIndex(panels) + 1,
+  panelType: PanelTypes.diatonic,
   dChord,
   key
 });
@@ -31,11 +38,12 @@ export const removePanel = (id) => ({
 
 export const panels = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_PANEL':
+    case 'ADD_DIATONIC_PANEL':
       return [
         ...state,
         {
           id: action.id,
+          panelType: action.panelType,
           dChord: action.dChord,
           key: action.key
         }
