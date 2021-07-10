@@ -13,14 +13,16 @@ import * as serviceWorker from './serviceWorker';
 import reportWebVitals from './reportWebVitals';
 
 // store
-import { TodoStore } from './modules';
+import { PanelStore } from './modules';
 
 import './i18n';
+
+import 'font-awesome/css/font-awesome.min.css';
 
 // ----------------------------------------------------------------------
 
 const store = createStore(
-  TodoStore,
+  PanelStore,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

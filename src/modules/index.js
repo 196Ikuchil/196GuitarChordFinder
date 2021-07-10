@@ -1,1 +1,1 @@
-export { default as TodoStore } from './panel';
+export { default as PanelStore } from './diatonicPanel';

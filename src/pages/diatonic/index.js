@@ -7,9 +7,9 @@ import BasePanels from './BasePanels';
 
 // ----------------------------------------------------------------------
 
-export default function C5th() {
+export default function Diatonic() {
   return (
-    <Page title="Dashboard | C5th">
+    <Page title="Dashboard | Diatonic">
       <Container maxWidth="xl">
         <Box sx={{ pb: 5 }}>
           <Typography variant="h4">Hi, Welcome back</Typography>

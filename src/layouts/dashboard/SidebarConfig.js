@@ -19,7 +19,7 @@ const sidebarConfig = [
   },
   {
     title: t('sidebar.diatonic.title'),
-    path: '/dashboard/c5th',
+    path: '/dashboard/diatonic',
     icon: getIcon(musicBoxMultipleOutline)
   },
   {

@@ -9,7 +9,7 @@ import Blog from './pages/Blog';
 import User from './pages/User';
 import NotFound from './pages/Page404';
 
-import C5th from './pages/C5th';
+import Diatonic from './pages/diatonic';
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -20,7 +20,7 @@ export default function Router() {
       children: [
         { path: '/', element: <Navigate to="/dashboard/app" replace /> },
         { path: 'app', element: <DashboardApp /> },
-        { path: 'c5th', element: <C5th /> },
+        { path: 'diatonic', element: <Diatonic /> },
         { path: 'user', element: <User /> },
         { path: 'products', element: <Products /> },
         { path: 'blog', element: <Blog /> }
