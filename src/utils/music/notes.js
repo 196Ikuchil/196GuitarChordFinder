@@ -1,4 +1,5 @@
 const sharp = true;
+export const NOTESLENGTH = 12;
 export const NOTENAME = (number) => {
   number %= 13;
   switch (number) {
@@ -53,15 +54,39 @@ const Diatonic7thNaturalMinor = [
   [10, 2]
 ];
 
-export function GetDiatonicChords(num, key) {
+export const DIATONICS = {
+  major: 0,
+  minor: 1,
+  harmonic: 2,
+  melodic: 3
+};
+
+export function GetDiatonicName(num) {
+  switch (num) {
+    case DIATONICS.major:
+      return 'major';
+    case DIATONICS.minor:
+      return 'minor';
+    case DIATONICS.harmonic:
+      return 'harmonic_m';
+    case DIATONICS.melodic:
+      return 'melodic_m';
+    default:
+      return 'error';
+  }
+}
+
+export function GetDiatonicNotes(num, key) {
   let d;
   switch (num) {
-    case 0:
+    case DIATONICS.major:
       d = Diatonic7thMajor;
       break;
-    case 1:
+    case DIATONICS.minor:
       d = Diatonic7thNaturalMinor;
       break;
+    case DIATONICS.harmonic:
+    case DIATONICS.melodic:
     default:
       d = [];
   }
