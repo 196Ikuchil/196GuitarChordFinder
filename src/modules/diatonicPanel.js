@@ -8,8 +8,7 @@ export const PanelTypes = {
 
 export const ChordPanelTypes = {
   guitar: 0,
-  piano: 1,
-  score: 2
+  score: 1
 };
 
 // increment chord panel type 0 -> 1->2->0

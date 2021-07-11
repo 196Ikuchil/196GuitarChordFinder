@@ -1,7 +1,6 @@
 // material
 import { Card, CardHeader, Box } from '@material-ui/core';
 import { ChordBox } from '../../vexchords';
-import { PianoBox } from '../../pianokeyboard';
 import { GetDiatonicChordNames } from '../../../utils/music';
 
 // ----------------------------------------------------------------------
@@ -14,7 +13,6 @@ export default function TestPanel() {
         <ChordBox />
         {GetDiatonicChordNames(0, 0)}
         {GetDiatonicChordNames(1, 1)}
-        <PianoBox />
       </Box>
     </Card>
   );

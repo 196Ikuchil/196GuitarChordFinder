@@ -16,9 +16,6 @@ function ChordPanel({ panel, changeChordPanelKey, changeChordPanelChord, changeC
     if (panel.chordPanelType === ChordPanelTypes.guitar) {
       return <GuitarChordBox panel={panel} />;
     }
-    if (panel.chordPanelType === ChordPanelTypes.piano) {
-      return <div>render piano</div>;
-    }
     if (panel.chordPanelType === ChordPanelTypes.score) {
       return <div>render score</div>;
     }
