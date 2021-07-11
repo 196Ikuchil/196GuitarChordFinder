@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Grid, Box, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { GuitarChordBox } from '../../music/guitarchord';
+import { PianoScoreBox } from '../../music/pianoscore';
 import {
   mapStateToProps,
   mapDispatchToProps,
@@ -17,7 +18,7 @@ function ChordPanel({ panel, changeChordPanelKey, changeChordPanelChord, changeC
       return <GuitarChordBox panel={panel} />;
     }
     if (panel.chordPanelType === ChordPanelTypes.score) {
-      return <div>render score</div>;
+      return <PianoScoreBox />;
     }
     return <div>something wrong</div>;
   }
