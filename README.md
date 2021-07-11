@@ -14,8 +14,12 @@ https://codesandbox.io/s/ih6oq?file=/src/App.js:146-2447
 https://github.com/reduxjs/redux/tree/d794c56f78eccb56ba3c67971c26df8ee34dacc1/examples/todos/src
 
 # jspiano
-https://codepen.io/gabrielcarol/pen/rGeEbY
+<s>https://codepen.io/gabrielcarol/pen/rGeEbY
 - codepenのソースコードはパブリックならMITライセンスになる
+</s>
+
+# react-piano
+https://github.com/kevinsqi/react-piano
 
 # icons
 https://iconify.design/icon-sets/
