@@ -33,6 +33,16 @@ function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) 
         </Grid>
       );
     }
+    if (panel.panelType === PanelTypes.chord) {
+      return (
+        <Grid key={panel.id} item xs={6}>
+          <Card>
+            <Button onClick={() => removePanel(panel.id)}>remove</Button>
+            <div>chord test card</div>
+          </Card>
+        </Grid>
+      );
+    }
     return <div>empty</div>;
   }
 

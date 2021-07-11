@@ -4,7 +4,8 @@ import {
   addDiatonicPanel,
   mapStateToProps,
   addC5thPanel,
-  PanelTypes
+  PanelTypes,
+  addChordPanel
 } from '../../../modules/diatonicPanel';
 
 const AddBasePanelButton = ({ panels, dispatch }) => {
@@ -19,7 +20,8 @@ const AddBasePanelButton = ({ panels, dispatch }) => {
             return;
           }
           // dispatch(addDiatonicPanel(0, 0, panels));
-          dispatch(addC5thPanel(panels));
+          // dispatch(addC5thPanel(panels));
+          dispatch(addChordPanel(0, 0, panels));
           input.value = '';
         }}
       >
