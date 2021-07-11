@@ -18,7 +18,7 @@ function ChordPanel({ panel, changeChordPanelKey, changeChordPanelChord, changeC
       return <GuitarChordBox panel={panel} />;
     }
     if (panel.chordPanelType === ChordPanelTypes.score) {
-      return <PianoScoreBox />;
+      return <PianoScoreBox panel={panel} />;
     }
     return <div>something wrong</div>;
   }
@@ -32,7 +32,7 @@ function ChordPanel({ panel, changeChordPanelKey, changeChordPanelChord, changeC
       />
       <Grid container>
         <Grid item xs={12}>
-          <Box sx={{ p: 2, pb: 0, pt: 0 }}>
+          <Box sx={{ p: 3, pb: 0, pt: 0 }}>
             <Button onClick={() => changeChordPanelType(panel.id)}>{renderChord()}</Button>
           </Box>
         </Grid>

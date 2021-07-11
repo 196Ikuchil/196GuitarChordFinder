@@ -4,6 +4,25 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import abcjsObj from 'abcjs';
 
+// eslint-disable-next-line prettier/prettier
+const ScoreNotes = ['C', '^C', 'D', '^D', 'E', 'F', '^F', 'G', '^G', 'A', '^A', 'B',
+  // eslint-disable-next-line prettier/prettier
+                    'c', '^c', 'd', '^d', 'e', 'f', '^f', 'g', '^g', 'a', '^a', 'b'];
+
+// ex,) return "CEG'C"
+export function getScoreNotes(notes) {
+  console.log(notes);
+  return notes
+    .map((n, i) => {
+      if (n === 1) {
+        console.log("'".repeat(n / ScoreNotes.length));
+        return "'".repeat(i / ScoreNotes.length) + ScoreNotes[i % ScoreNotes.length];
+      }
+      return '';
+    })
+    .join('');
+}
+
 class Abcjs extends PureComponent {
   uniqueNumber = Date.now() + Math.random();
 

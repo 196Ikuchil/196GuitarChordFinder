@@ -1,1 +1,1 @@
-export { default as PianoScore } from './react-abcjs';
+export { default as PianoScore, getScoreNotes } from './react-abcjs';
