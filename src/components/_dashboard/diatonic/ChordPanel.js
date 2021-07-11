@@ -1,10 +1,30 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { connect } from 'react-redux';
-import { Grid } from '@material-ui/core';
+import { Grid, Box } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { mapStateToProps, mapDispatchToProps } from '../../../modules/diatonicPanel';
+import { GuitarChordBox } from '../../music/guitarchord';
+import {
+  mapStateToProps,
+  mapDispatchToProps,
+  ChordPanelTypes
+} from '../../../modules/diatonicPanel';
 import { ChordPanelSelector } from './ChordPanelSelector';
 
-function ChordPanel({ panel, changeChordPanelType, changeChordPanelKey, changeChordPanelChord }) {
+function ChordPanel({ panel, changeChordPanelKey, changeChordPanelChord }) {
+  function renderChord() {
+    if (panel.chordPanelType === ChordPanelTypes.guitar) {
+      return <GuitarChordBox panel={panel} />;
+    }
+    if (panel.chordPanelType === ChordPanelTypes.piano) {
+      return <div>render piano</div>;
+    }
+    if (panel.chordPanelType === ChordPanelTypes.score) {
+      return <div>render score</div>;
+    }
+    return <div>something wrong</div>;
+  }
+
   return (
     <div>
       <ChordPanelSelector
@@ -13,8 +33,8 @@ function ChordPanel({ panel, changeChordPanelType, changeChordPanelKey, changeCh
         changeChord={(id, chord) => changeChordPanelChord(id, chord)}
       />
       <Grid container>
-        <Grid item xs={12} sm={8} md={8}>
-          <div>testssssM/</div>
+        <Grid item xs={12}>
+          <Box sx={{ p: 2, pb: 0, pt: 0 }}>{renderChord()}</Box>
         </Grid>
       </Grid>
     </div>
@@ -28,7 +48,6 @@ ChordPanel.propTypes = {
     key: PropTypes.number.isRequired,
     chord: PropTypes.number.isRequired
   }).isRequired,
-  changeChordPanelType: PropTypes.func.isRequired,
   changeChordPanelKey: PropTypes.func.isRequired,
   changeChordPanelChord: PropTypes.func.isRequired
 };
