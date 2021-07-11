@@ -1,4 +1,4 @@
-import './c5th.css';
+import './C5th.css';
 import { Grid } from '@material-ui/core';
 
 // eslint-disable-next-line prettier/prettier
