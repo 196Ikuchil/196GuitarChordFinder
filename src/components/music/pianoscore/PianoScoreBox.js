@@ -15,7 +15,7 @@ export default function PianoScoreBox({ panel }) {
   return (
     <Grid container>
       <Grid item xs={12}>
-        <Box sx={{ p: 0, pb: 1 }}>
+        <Box sx={{ p: 0, pb: 1, pl: 0 }}>
           <PianoScore
             abcNotation={`X:1\n[${convertChordNumToPianoScore(panel.key, panel.chord)}]`}
             parserParams={{}}

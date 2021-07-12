@@ -6,17 +6,34 @@ const StyledDiv = styled('div')({
   transform: 'rotate(-90deg)'
 });
 
+function CHORD(chord, position, barres) {
+  return { chord, position, barres };
+}
+function BARRES(fromString, toString, fret) {
+  return [{ fromString, toString, fret }];
+}
+
 export default function ChordBox({ chord }) {
   // input : array [1st to 6th string], -1 = mute
   function convertToVexChordStyle() {
-    return {
-      ...chord,
-      // eslint-disable-next-line no-nested-ternary
-      chord: chord.chord
-        .filter((x) => x !== -2)
-        .map((x, i) => (x === -1 ? [i + 1, 'x'] : [i + 1, x])),
-      barres: chord.barres[0].fret === 0 ? {} : chord.barres
-    };
+    console.log(chord);
+    console.log('aaa');
+    const result = [];
+    const fromto = [];
+    let fret = 0;
+    const position = chord.chord.slice(-1)[0];
+    chord.chord.forEach((e, i) => {
+      if (i === 6) {
+        return;
+      }
+      if (e < 0) {
+        fromto.push(i + 1);
+        fret = -1 * e;
+      } else {
+        result.push([i + 1, e]);
+      }
+    });
+    return CHORD(result, position, BARRES(fromto[1], fromto[0], fret));
   }
   const C = {
     chord: [
@@ -73,20 +90,13 @@ export default function ChordBox({ chord }) {
 ChordBox.propTypes = {
   chord: PropTypes.shape({
     chord: PropTypes.arrayOf(
-      PropTypes.number.isRequired,
-      PropTypes.number.isRequired,
-      PropTypes.number.isRequired,
-      PropTypes.number.isRequired,
-      PropTypes.number.isRequired,
-      PropTypes.number.isRequired
-    ).isRequired,
-    position: PropTypes.number.isRequired,
-    barres: PropTypes.arrayOf(
-      PropTypes.shape({
-        fromString: PropTypes.number.isRequired,
-        toString: PropTypes.number.isRequired,
-        fret: PropTypes.number.isRequired
-      })
-    )
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, // 1st string
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, // 6th string
+      PropTypes.number.isRequired // position
+    ).isRequired
   })
 };

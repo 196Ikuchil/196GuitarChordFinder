@@ -15,7 +15,11 @@ import { ChordPanelSelector } from './ChordPanelSelector';
 function ChordPanel({ panel, changeChordPanelKey, changeChordPanelChord, changeChordPanelType }) {
   function renderChord() {
     if (panel.chordPanelType === ChordPanelTypes.guitar) {
-      return <GuitarChordBox panel={panel} />;
+      return (
+        <Grid>
+          <GuitarChordBox panel={panel} />
+        </Grid>
+      );
     }
     if (panel.chordPanelType === ChordPanelTypes.score) {
       return <PianoScoreBox panel={panel} />;
@@ -32,8 +36,10 @@ function ChordPanel({ panel, changeChordPanelKey, changeChordPanelChord, changeC
       />
       <Grid container>
         <Grid item xs={12}>
-          <Box sx={{ p: 3, pb: 0, pt: 0 }}>
-            <Button onClick={() => changeChordPanelType(panel.id)}>{renderChord()}</Button>
+          <Box sx={{ p: 1, pb: 0, pt: 0 }}>
+            <Button sx={{ pl: 3 }} onClick={() => changeChordPanelType(panel.id)}>
+              {renderChord()}
+            </Button>
           </Box>
         </Grid>
       </Grid>

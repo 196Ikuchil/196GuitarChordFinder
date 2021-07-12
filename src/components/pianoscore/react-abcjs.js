@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import abcjsObj from 'abcjs';
 
 // eslint-disable-next-line prettier/prettier
-const ScoreNotes = ['C', '^C', 'D', '^D', 'E', 'F', '^F', 'G', '^G', 'A', '^A', 'B',
+const ScoreNotes = ['C', '_D', 'D', '_E', 'E', 'F', '_G', 'G', '_A', 'A', '_B', 'B',
   // eslint-disable-next-line prettier/prettier
-                    'c', '^c', 'd', '^d', 'e', 'f', '^f', 'g', '^g', 'a', '^a', 'b'];
+                    'c', '_d', 'd', '_e', 'e', 'f', '_g', 'g', '_a', 'a', '_b', 'b'];
 
 // ex,) return "CEG'C"
 export function getScoreNotes(notes) {

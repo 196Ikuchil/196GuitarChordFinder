@@ -44,7 +44,7 @@ export function ChordPanelSelector({ panel, changeKey, changeChord }) {
 
   return (
     <Grid container>
-      <Grid item xs={5} sm={3}>
+      <Grid item xs={5} sm={5}>
         <StyleFormControl size="small">
           <InputLabel id="key">key</InputLabel>
           <Select labelId="key-selector" onChange={handleChangaKey} value={panel.key} label="key">

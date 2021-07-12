@@ -35,7 +35,7 @@ function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) 
     }
     if (panel.panelType === PanelTypes.chord) {
       return (
-        <Grid key={panel.id} item xs={6} sm={4} md={3}>
+        <Grid key={panel.id} item xs={6} sm={3} md={2}>
           <Card>
             <Button onClick={() => removePanel(panel.id)}>remove</Button>
             <ChordPanel panel={panel} />

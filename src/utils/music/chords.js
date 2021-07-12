@@ -30,7 +30,7 @@ function b5(base) {
   return base.map((x, i) => (i === 6 ? 1 : i === 7 ? 0 : x));
 }
 
-export const CHORDNAME = ['', 'm', 'M7', '7', 'm7', '(-5)', 'm(-5)', 'm7(-5)'];
+export const CHORDNAME = ['M', 'm', 'M7', '7', 'm7', '(-5)', 'm(-5)', 'm7(-5)'];
 
 export const CHORDNOTES = (chord) => {
   switch (chord) {
