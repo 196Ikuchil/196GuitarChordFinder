@@ -13,7 +13,7 @@ function getMainChord(key, chord) {
 }
 
 export default function GuitarChordBox({ panel }) {
-  return <ChordBox chord={getMainChord(panel.key, panel.chord)} />;
+  return <ChordBox chord={{ ...getMainChord(panel.key, panel.chord) }} />;
 }
 
 GuitarChordBox.propTypes = {

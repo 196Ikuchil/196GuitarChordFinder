@@ -16,8 +16,6 @@ function BARRES(fromString, toString, fret) {
 export default function ChordBox({ chord }) {
   // input : array [1st to 6th string], -1 = mute
   function convertToVexChordStyle() {
-    console.log(chord);
-    console.log('aaa');
     const result = [];
     const fromto = [];
     let fret = 0;
@@ -35,6 +33,21 @@ export default function ChordBox({ chord }) {
     });
     return CHORD(result, position, BARRES(fromto[1], fromto[0], fret));
   }
+
+  function test() {
+    if (chord.chord[0] === 0) {
+      return C;
+    }
+    return Fm;
+  }
+
+  function test2() {
+    if (chord.chord[0] === 0) {
+      return <div>test1</div>;
+    }
+    return <div>test2</div>;
+  }
+
   const C = {
     chord: [
       [2, 1, '1'],
@@ -82,6 +95,7 @@ export default function ChordBox({ chord }) {
     <center>
       <StyledDiv className="App">
         <Chord chordBoxParams={config} {...convertToVexChordStyle()} />
+        {/* {`${convertToVexChordStyle().chord}`} */}
       </StyledDiv>
     </center>
   );

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { ChordBox } from 'vexchords';
+import PropTypes from 'prop-types';
 
 // Reference how to write chords: https://jsfiddle.net/leocaseiro/2x805c93/3/
 

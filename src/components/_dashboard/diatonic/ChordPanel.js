@@ -15,11 +15,7 @@ import { ChordPanelSelector } from './ChordPanelSelector';
 function ChordPanel({ panel, changeChordPanelKey, changeChordPanelChord, changeChordPanelType }) {
   function renderChord() {
     if (panel.chordPanelType === ChordPanelTypes.guitar) {
-      return (
-        <Grid>
-          <GuitarChordBox panel={panel} />
-        </Grid>
-      );
+      return <GuitarChordBox panel={panel} />;
     }
     if (panel.chordPanelType === ChordPanelTypes.score) {
       return <PianoScoreBox panel={panel} />;
