@@ -11,7 +11,6 @@ const ScoreNotes = ['C', '_D', 'D', '_E', 'E', 'F', '_G', 'G', '_A', 'A', '_B', 
 
 // ex,) return "CEG'C"
 export function getScoreNotes(notes) {
-  console.log(notes);
   return notes
     .map((n, i) => {
       if (n === 1) {

@@ -7,7 +7,6 @@ import { GetChordNotes } from '../../../utils/music';
 // ----------------------------------------------------------------------
 
 function convertChordNumToPianoScore(key, chord) {
-  console.log(getScoreNotes(GetChordNotes(key, chord)));
   return getScoreNotes(GetChordNotes(key, chord));
 }
 

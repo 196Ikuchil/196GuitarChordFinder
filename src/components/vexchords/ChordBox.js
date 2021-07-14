@@ -95,7 +95,6 @@ export default function ChordBox({ chord }) {
     <center>
       <StyledDiv className="App">
         <Chord chordBoxParams={config} {...convertToVexChordStyle()} />
-        {/* {`${convertToVexChordStyle().chord}`} */}
       </StyledDiv>
     </center>
   );

@@ -11,7 +11,35 @@ const chord = {
 function getMainChord(key, chord) {
   return { chord: ChordData[key][chord][0].slice() };
 }
+const C = {
+  chord: [
+    [2, 1, '1'],
+    [3, 2, '2'],
+    [5, 3, '3'],
+    [6, 'x']
+  ]
+};
 
+const Fm = {
+  // array of [string, fret, label (optional)]
+  chord: [
+    [1, 1],
+    [2, 1],
+    [3, 1],
+    [4, 3],
+    [5, 3],
+    [6, 'x']
+  ],
+
+  // optional: position marker
+  // position: 5, // start render at fret 5
+
+  // optional: barres for barre chords
+  barres: [{ fromString: 6, toString: 1, fret: 1 }]
+
+  // optional: tuning keys
+  // tuning: ["E", "A", "D", "G", "B", "E"]
+};
 export default function GuitarChordBox({ panel }) {
   return <ChordBox chord={{ ...getMainChord(panel.key, panel.chord) }} />;
 }
