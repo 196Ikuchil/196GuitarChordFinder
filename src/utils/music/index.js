@@ -8,11 +8,8 @@ export function GetChordName(root, chord) {
 
 // ex GetChordScale
 export function GetChordNotes(root, chord) {
-  const c = CHORDNOTES(chord);
-  for (let i = 0; i < root; i += 1) {
-    c.push(0);
-  }
-  return c;
+  // push some 0 to heaad(for key change)
+  return [...Array(root)].map(() => 0).concat(CHORDNOTES(chord));
 }
 
 // ex ["C", "Dm", "Em" ...]

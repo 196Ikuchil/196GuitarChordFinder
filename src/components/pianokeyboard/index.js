@@ -1,1 +1,1 @@
-export { default as PianoBox } from './PianoBox';
+export { default as PianoKeyboard } from './PianoKeyboardBox';

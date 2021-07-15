@@ -1,6 +1,53 @@
+import PropTypes from 'prop-types';
+import { styled } from '@material-ui/core/styles';
 import { Chord } from './react-vexchords';
 
-export default function ChordBox() {
+const StyledDiv = styled('div')({
+  transform: 'rotate(-90deg)'
+});
+
+function CHORD(chord, position, barres) {
+  return { chord, position, barres };
+}
+function BARRES(fromString, toString, fret) {
+  return [{ fromString, toString, fret }];
+}
+
+export default function ChordBox({ chord }) {
+  // input : array [1st to 6th string], -1 = mute
+  function convertToVexChordStyle() {
+    const result = [];
+    const fromto = [];
+    let fret = 0;
+    const position = chord.chord.slice(-1)[0];
+    chord.chord.forEach((e, i) => {
+      if (i === 6) {
+        return;
+      }
+      if (e < 0) {
+        fromto.push(i + 1);
+        fret = -1 * e;
+      } else {
+        result.push([i + 1, e]);
+      }
+    });
+    return CHORD(result, position, BARRES(fromto[1], fromto[0], fret));
+  }
+
+  function test() {
+    if (chord.chord[0] === 0) {
+      return C;
+    }
+    return Fm;
+  }
+
+  function test2() {
+    if (chord.chord[0] === 0) {
+      return <div>test1</div>;
+    }
+    return <div>test2</div>;
+  }
+
   const C = {
     chord: [
       [2, 1, '1'],
@@ -13,11 +60,12 @@ export default function ChordBox() {
   const Fm = {
     // array of [string, fret, label (optional)]
     chord: [
-      [4, 3, '4'],
-      [5, 3, '3'],
-      [1, 1, '']
-      // [4, 3, "4"],
-      // [5, 3, "3"]
+      [1, 1],
+      [2, 1],
+      [3, 1],
+      [4, 3],
+      [5, 3],
+      [6, 'x']
     ],
 
     // optional: position marker
@@ -41,10 +89,27 @@ export default function ChordBox() {
     // optional: tuning keys
     // tuning: ["E", "A", "D", "G", "B", "E"]
   };
+  const config = { showTuning: false };
 
   return (
-    <div className="App">
-      <Chord {...C} />
-    </div>
+    <center>
+      <StyledDiv className="App">
+        <Chord chordBoxParams={config} {...convertToVexChordStyle()} />
+      </StyledDiv>
+    </center>
   );
 }
+
+ChordBox.propTypes = {
+  chord: PropTypes.shape({
+    chord: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, // 1st string
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, // 6th string
+      PropTypes.number.isRequired // position
+    ).isRequired
+  })
+};
