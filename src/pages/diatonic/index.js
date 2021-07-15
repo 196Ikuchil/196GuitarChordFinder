@@ -12,7 +12,7 @@ export default function Diatonic() {
     <Page title="Dashboard | Diatonic">
       <Container maxWidth="xl">
         <Box sx={{ pb: 2 }}>
-          <Typography variant="h4">スクラップボード</Typography>
+          <Typography variant="h4">スクラップブック</Typography>
         </Box>
         <Box sx={{ pb: 2 }}>
           <AddBasePanelButton />

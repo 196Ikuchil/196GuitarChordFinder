@@ -10,9 +10,7 @@ import {
   AppNewsUpdate,
   AppWeeklySales,
   AppOrderTimeline,
-  AppTrafficBySite,
-  TestPanel,
-  TestPianoScorePanel
+  AppTrafficBySite
 } from '../components/_dashboard/app';
 
 // ----------------------------------------------------------------------
@@ -36,22 +34,6 @@ export default function DashboardApp() {
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <AppBugReports />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={8}>
-            <TestPanel />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
-            <TestPianoScorePanel />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={8}>
-            <TestPanel />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={4}>
-            <TestPanel />
           </Grid>
 
           <Grid item xs={12} md={6} lg={8}>
