@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 // material
-import { Grid, Card, Button } from '@material-ui/core';
+import { Grid, Card, IconButton } from '@material-ui/core';
+import ClearIcon from '@material-ui/icons/Clear';
 import { mapStateToProps, mapDispatchToProps, PanelTypes } from '../../modules/diatonicPanel';
 import { DiatonicPanel, C5thPanel, ChordPanel } from '../../components/_dashboard/diatonic';
 
@@ -12,7 +13,9 @@ function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) 
       return (
         <Grid key={panel.id} item xs={12}>
           <Card>
-            <Button onClick={() => removePanel(panel.id)}>remove</Button>
+            <IconButton onClick={() => removePanel(panel.id)}>
+              <ClearIcon />
+            </IconButton>
             <DiatonicPanel
               panel={panel}
               onRemoveClick={() => removePanel(panel.id)}
@@ -27,7 +30,9 @@ function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) 
       return (
         <Grid key={panel.id} item xs={12} sm={8}>
           <Card>
-            <Button onClick={() => removePanel(panel.id)}>remove</Button>
+            <IconButton onClick={() => removePanel(panel.id)}>
+              <ClearIcon />
+            </IconButton>
             <C5thPanel />
           </Card>
         </Grid>
@@ -37,7 +42,9 @@ function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) 
       return (
         <Grid key={panel.id} item xs={6} sm={3} md={2}>
           <Card>
-            <Button onClick={() => removePanel(panel.id)}>remove</Button>
+            <IconButton onClick={() => removePanel(panel.id)}>
+              <ClearIcon />
+            </IconButton>
             <ChordPanel panel={panel} />
           </Card>
         </Grid>

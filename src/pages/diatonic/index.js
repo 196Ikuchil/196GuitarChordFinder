@@ -11,10 +11,10 @@ export default function Diatonic() {
   return (
     <Page title="Dashboard | Diatonic">
       <Container maxWidth="xl">
-        <Box sx={{ pb: 5 }}>
-          <Typography variant="h4">Hi, Welcome back</Typography>
+        <Box sx={{ pb: 2 }}>
+          <Typography variant="h4">スクラップボード</Typography>
         </Box>
-        <Box sx={{ pb: 12 }}>
+        <Box sx={{ pb: 2 }}>
           <AddBasePanelButton />
         </Box>
         <BasePanels />

@@ -1,33 +1,63 @@
 import React from 'react';
+import { Menu, MenuItem } from '@material-ui/core';
 import { connect } from 'react-redux';
+import IconButton from '@material-ui/core/IconButton';
+import AddIcon from '@material-ui/icons/Add';
+import { styled } from '@material-ui/core/styles';
 import {
   addDiatonicPanel,
   mapStateToProps,
   addC5thPanel,
-  PanelTypes,
   addChordPanel
 } from '../../../modules/diatonicPanel';
 
+const StyledIconButton = styled(IconButton)(() => ({
+  padding: 0
+}));
+
 const AddBasePanelButton = ({ panels, dispatch }) => {
-  let input;
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const onClickDiatonic = () => {
+    dispatch(addDiatonicPanel(0, 0, panels));
+    handleClose();
+  };
+
+  const onClickC5th = () => {
+    dispatch(addC5thPanel(panels));
+    handleClose();
+  };
+
+  const onClickChord = () => {
+    dispatch(addChordPanel(0, 0, panels));
+    handleClose();
+  };
 
   return (
     <div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          if (!input.value.trim()) {
-            return;
-          }
-          // dispatch(addDiatonicPanel(0, 0, panels));
-          // dispatch(addC5thPanel(panels));
-          dispatch(addChordPanel(0, 0, panels));
-          input.value = '';
-        }}
+      <StyledIconButton aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+        <AddIcon />
+        New..
+      </StyledIconButton>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
       >
-        <input ref={(node) => (input = node)} />
-        <button type="submit">testbutton</button>
-      </form>
+        <MenuItem onClick={onClickDiatonic}>ダイアトニック</MenuItem>
+        <MenuItem onClick={onClickC5th}>五度圏表</MenuItem>
+        <MenuItem onClick={onClickChord}>簡易コードパネル</MenuItem>
+      </Menu>
     </div>
   );
 };
