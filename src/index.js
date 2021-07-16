@@ -4,7 +4,7 @@ import 'simplebar/src/simplebar.css';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
 //
@@ -13,16 +13,17 @@ import * as serviceWorker from './serviceWorker';
 import reportWebVitals from './reportWebVitals';
 
 // store
-import { PanelStore } from './modules';
+import { panels, isSharp } from './modules';
 
 import './i18n';
 
 import 'font-awesome/css/font-awesome.min.css';
 
 // ----------------------------------------------------------------------
+const rootReducer = combineReducers({ panels, isSharp });
 
 const store = createStore(
-  PanelStore,
+  rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

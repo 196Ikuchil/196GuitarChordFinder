@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 // material
-import { Card, CardHeader, Box, Grid, Button } from '@material-ui/core';
+import { Box, Grid, Button } from '@material-ui/core';
 import { alpha, styled } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -26,12 +26,18 @@ const roleCellColor = (role, attr, theme) => {
   switch (role) {
     case DROLES[0][0]: // tonic
     case DROLES[1][0]: // tonic m
+    case DROLES[2][0]: // harmonic
+    case DROLES[3][0]: // melo
       return theme.palette.primary[attr];
     case DROLES[0][1]: // dominant
     case DROLES[1][1]: // dominant m
+    case DROLES[2][1]: // harmonic
+    case DROLES[3][1]: // melo
       return theme.palette.error[attr];
     case DROLES[0][2]: // subdominant
     case DROLES[1][2]: // subdominant m
+    case DROLES[2][2]: // harmonic
+    case DROLES[3][2]: // melo
       return theme.palette.success[attr];
     default:
       return theme.palette.allwhite[attr];
@@ -77,54 +83,96 @@ function rolePair(chord, role) {
 const DROLES = [
   ['tonic','dominant','subdominant'], // major
   ['tonicm','dominantm','subdominantm'], // minor
-  ['','',''], // harm
-  ['',''] // melo
+  ['tonicm','dominant','subdominantm'], // harm
+  ['tonicm','dominant', 'subdominant'] // melo
 ];
 
 // panel.dChord =0 major , >=0 minor
 export default function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey }) {
-  const chordnames = GetDiatonicChordNames(panel.dChord, panel.key);
+  const chordnames = GetDiatonicChordNames(panel.dChord, panel.key, true);
 
   function reordering() {
     // like [4,1,5,2,6,3,7]
-    if (panel.dChord === 0) {
-      // major
-      return [
-        [
-          rolePair(chordnames[3], DROLES[panel.dChord][2]),
-          rolePair(chordnames[0], DROLES[panel.dChord][0]),
-          rolePair(chordnames[4], DROLES[panel.dChord][1])
-        ],
-        [
-          rolePair(chordnames[1], DROLES[panel.dChord][2]),
-          rolePair(chordnames[5], DROLES[panel.dChord][0]),
-          rolePair(chordnames[2], DROLES[panel.dChord][0])
-        ],
-        [
-          rolePair('', ''),
-          rolePair(chordnames[6], DROLES[panel.dChord][1]),
-          rolePair('', '')
-        ]
-      ];
+    switch (panel.dChord) {
+      case 0:
+        // major
+        return ([
+          [
+            rolePair(chordnames[3], DROLES[panel.dChord][2]),
+            rolePair(chordnames[0], DROLES[panel.dChord][0]),
+            rolePair(chordnames[4], DROLES[panel.dChord][1])
+          ],
+          [
+            rolePair(chordnames[1], DROLES[panel.dChord][2]),
+            rolePair(chordnames[5], DROLES[panel.dChord][0]),
+            rolePair(chordnames[2], DROLES[panel.dChord][0])
+          ],
+          [
+            rolePair('', ''),
+            rolePair(chordnames[6], DROLES[panel.dChord][1]),
+            rolePair('', '')
+          ]
+        ]);
+      case 1:
+        // minor
+        return ([
+          [
+            rolePair(chordnames[5], DROLES[panel.dChord][2]),
+            rolePair(chordnames[2], DROLES[panel.dChord][0]),
+            rolePair(chordnames[6], DROLES[panel.dChord][1])
+          ],
+          [
+            rolePair(chordnames[3], DROLES[panel.dChord][2]),
+            rolePair(chordnames[0], DROLES[panel.dChord][0]),
+            rolePair(chordnames[4], DROLES[panel.dChord][1])
+          ],
+          [
+            rolePair('', ''),
+            rolePair(chordnames[1],  DROLES[panel.dChord][2]),
+            rolePair('', '')
+          ]
+        ]);
+      case 2:
+        // harm
+        return ([
+          [
+            rolePair(chordnames[5], DROLES[panel.dChord][2]),
+            rolePair(chordnames[2], DROLES[panel.dChord][0]),
+            rolePair(chordnames[6], DROLES[panel.dChord][1])
+          ],
+          [
+            rolePair(chordnames[3], DROLES[panel.dChord][2]),
+            rolePair(chordnames[0], DROLES[panel.dChord][0]),
+            rolePair(chordnames[4], DROLES[panel.dChord][1])
+          ],
+          [
+            rolePair('', ''),
+            rolePair(chordnames[1],  DROLES[panel.dChord][2]),
+            rolePair('', '')
+          ]
+        ]);
+        case 3:
+          // melo
+          return ([
+            [
+              rolePair(chordnames[5], DROLES[panel.dChord][2]),
+              rolePair(chordnames[2], DROLES[panel.dChord][0]),
+              rolePair(chordnames[6], DROLES[panel.dChord][1])
+            ],
+            [
+              rolePair(chordnames[3], DROLES[panel.dChord][2]),
+              rolePair(chordnames[0], DROLES[panel.dChord][0]),
+              rolePair(chordnames[4], DROLES[panel.dChord][1])
+            ],
+            [
+              rolePair('', ''),
+              rolePair(chordnames[1],  DROLES[panel.dChord][2]),
+              rolePair('', '')
+            ]
+          ]);
+      default:
+        return [];
     }
-    // others = minor
-    return [
-      [
-        rolePair(chordnames[5], DROLES[panel.dChord][2]),
-        rolePair(chordnames[2], DROLES[panel.dChord][0]),
-        rolePair(chordnames[6], DROLES[panel.dChord][1])
-      ],
-      [
-        rolePair(chordnames[3], DROLES[panel.dChord][2]),
-        rolePair(chordnames[0], DROLES[panel.dChord][0]),
-        rolePair(chordnames[4], DROLES[panel.dChord][1])
-      ],
-      [
-        rolePair('', ''),
-        rolePair(chordnames[1],  DROLES[panel.dChord][2]),
-        rolePair('', '')
-      ]
-    ];
   }
 
   return (
@@ -172,7 +220,8 @@ DiatonicPanel.propTypes = {
   panel: PropTypes.shape({
     id: PropTypes.number.isRequired,
     dChord: PropTypes.number.isRequired,
-    key: PropTypes.number.isRequired
+    key: PropTypes.number.isRequired,
+    sharp: PropTypes.bool
   }).isRequired,
   onRemoveClick: PropTypes.func.isRequired,
   onChangeDiatonic: PropTypes.func.isRequired,

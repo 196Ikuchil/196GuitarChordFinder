@@ -86,7 +86,8 @@ export const panels = (state = [], action) => {
           id: action.id,
           panelType: action.panelType,
           dChord: action.dChord,
-          key: action.key
+          key: action.key,
+          sharp: action.sharp
         }
       ];
     case 'ADD_C5th_PANEL':
@@ -147,9 +148,6 @@ export const panels = (state = [], action) => {
       return state;
   }
 };
-
-// stateに追加
-export default combineReducers({ panels });
 
 const getTailIndex = (panels) => (panels.length !== 0 ? panels.slice(-1)[0].id : -1);
 
