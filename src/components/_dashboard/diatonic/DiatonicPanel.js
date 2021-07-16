@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 // material
 import { Box, Grid, Button } from '@material-ui/core';
+import { connect } from 'react-redux';
 import { alpha, styled } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -12,6 +13,7 @@ import PropTypes from 'prop-types';
 import KeySelector from './KeySelector';
 
 import { GetDiatonicChordNames } from '../../../utils/music';
+import { mapStateToProps } from '../../../modules/Sharp';
 
 // ----------------------------------------------------------------------
 
@@ -88,8 +90,8 @@ const DROLES = [
 ];
 
 // panel.dChord =0 major , >=0 minor
-export default function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey }) {
-  const chordnames = GetDiatonicChordNames(panel.dChord, panel.key, true);
+function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey, isSharp }) {
+  const chordnames = GetDiatonicChordNames(panel.dChord, panel.key, isSharp);
 
   function reordering() {
     // like [4,1,5,2,6,3,7]
@@ -177,7 +179,7 @@ export default function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, 
 
   return (
     <div>
-      <KeySelector panel={panel} changeDiatonic={onChangeDiatonic} changeKey={onChangeKey}/>
+      <KeySelector panel={panel} changeDiatonic={onChangeDiatonic} changeKey={onChangeKey} isSharp={isSharp}/>
       <Grid container>
         <Grid item xs={12} sm={8} md={8} >
           <BorderBox sx={{ pb: 1, m: { xs: 0, sm: "1em 0"} }}>
@@ -225,5 +227,8 @@ DiatonicPanel.propTypes = {
   }).isRequired,
   onRemoveClick: PropTypes.func.isRequired,
   onChangeDiatonic: PropTypes.func.isRequired,
-  onChangeKey: PropTypes.func.isRequired
+  onChangeKey: PropTypes.func.isRequired,
+  isSharp: PropTypes.bool.isRequired
 };
+
+export default connect(mapStateToProps)(DiatonicPanel);

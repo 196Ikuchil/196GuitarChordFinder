@@ -14,7 +14,7 @@ const StyleFormControl = styled(FormControl)(({ theme }) => ({
   minWidth: '90%'
 }));
 
-export default function KeySelector({ panel, changeDiatonic, changeKey }) {
+export default function KeySelector({ panel, changeDiatonic, changeKey, isSharp }) {
   const handleChangeDiatonic = (event) => {
     changeDiatonic(event.target.value);
   };
@@ -35,7 +35,7 @@ export default function KeySelector({ panel, changeDiatonic, changeKey }) {
   for (let i = 0; i < NOTESLENGTH; i += 1) {
     kComp.push(
       <MenuItem key={i} value={i}>
-        {NOTENAME(i)}
+        {NOTENAME(i, isSharp)}
       </MenuItem>
     );
   }

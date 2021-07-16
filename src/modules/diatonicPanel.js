@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux';
-
 export const PanelTypes = {
   diatonic: 0,
   c5th: 1,
