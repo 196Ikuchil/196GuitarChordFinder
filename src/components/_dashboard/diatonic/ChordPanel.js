@@ -10,15 +10,22 @@ import {
   mapDispatchToProps,
   ChordPanelTypes
 } from '../../../modules/diatonicPanel';
+import { mapStateToProps as getIsSharp } from '../../../modules/Sharp';
 import { ChordPanelSelector } from './ChordPanelSelector';
 
-function ChordPanel({ panel, changeChordPanelKey, changeChordPanelChord, changeChordPanelType }) {
+function ChordPanel({
+  panel,
+  changeChordPanelKey,
+  changeChordPanelChord,
+  changeChordPanelType,
+  isSharp
+}) {
   function renderChord() {
     if (panel.chordPanelType === ChordPanelTypes.guitar) {
       return <GuitarChordBox panel={panel} />;
     }
     if (panel.chordPanelType === ChordPanelTypes.score) {
-      return <PianoScoreBox panel={panel} />;
+      return <PianoScoreBox panel={panel} isSharp={isSharp} />;
     }
     return <div>something wrong</div>;
   }
@@ -29,6 +36,7 @@ function ChordPanel({ panel, changeChordPanelKey, changeChordPanelChord, changeC
         panel={panel}
         changeKey={(id, key) => changeChordPanelKey(id, key)}
         changeChord={(id, chord) => changeChordPanelChord(id, chord)}
+        isSharp={isSharp}
       />
       <Grid container>
         <Grid item xs={12}>
@@ -52,7 +60,8 @@ ChordPanel.propTypes = {
   }).isRequired,
   changeChordPanelKey: PropTypes.func.isRequired,
   changeChordPanelChord: PropTypes.func.isRequired,
-  changeChordPanelType: PropTypes.func.isRequired
+  changeChordPanelType: PropTypes.func.isRequired,
+  isSharp: PropTypes.bool
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChordPanel);
+export default connect(getIsSharp, mapDispatchToProps)(ChordPanel);

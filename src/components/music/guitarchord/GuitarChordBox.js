@@ -40,6 +40,7 @@ const Fm = {
   // optional: tuning keys
   // tuning: ["E", "A", "D", "G", "B", "E"]
 };
+// TODO: isSharp
 export default function GuitarChordBox({ panel }) {
   return <ChordBox chord={{ ...getMainChord(panel.key, panel.chord) }} />;
 }
