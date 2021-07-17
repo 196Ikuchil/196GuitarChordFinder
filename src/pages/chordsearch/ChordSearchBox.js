@@ -8,11 +8,15 @@ import { GetChordNotes } from '../../utils/music';
 import { GuitarChordBox } from '../../components/music/guitarchord';
 import { PianoScoreBox } from '../../components/music/pianoscore';
 import { PianoKeyboardBox } from '../../components/music/pianokeyboard';
+import { GuitarChordPanels } from '../../components/_dashboard/chordsearch';
 
-function ChordSearchBox({ isSharp, searchInfo, changeSearchKey, changeSearchChord }) {
-  function test() {
-    console.log(GetChordNotes(searchInfo.pickupkey, searchInfo.pickupchord));
-  }
+function ChordSearchBox({
+  isSharp,
+  searchInfo,
+  changeSearchKey,
+  changeSearchChord,
+  changePickupChord
+}) {
   return (
     <Grid container spacing={0.5}>
       <Grid item xs={12}>
@@ -50,8 +54,10 @@ function ChordSearchBox({ isSharp, searchInfo, changeSearchKey, changeSearchChor
       </Grid>
       {/* searched items */}
       <Grid item xs={12}>
-        {/* {[0].map()} */}
-        chord panels
+        <GuitarChordPanels
+          info={{ key: searchInfo.key, chord: searchInfo.chord }}
+          changePickupChord={changePickupChord}
+        />
       </Grid>
     </Grid>
   );
@@ -68,7 +74,8 @@ ChordSearchBox.propTypes = {
     pickupchordNum: PropTypes.number.isRequired
   }).isRequired,
   changeSearchKey: PropTypes.func.isRequired,
-  changeSearchChord: PropTypes.func.isRequired
+  changeSearchChord: PropTypes.func.isRequired,
+  changePickupChord: PropTypes.func.isRequired
 };
 
 export default connect(
