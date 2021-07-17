@@ -5,6 +5,7 @@ import { Grid, Card } from '@material-ui/core';
 import { ChordPanelSelector } from '../../components/_dashboard/diatonic/ChordPanelSelector';
 import { mapDispatchToProps as mapDispatchChordsearch } from '../../modules/chordsearch';
 import { GuitarChordBox } from '../../components/music/guitarchord';
+import { PianoScoreBox } from '../../components/music/pianoscore';
 
 function ChordSearchBox({ isSharp, searchInfo, changeSearchKey, changeSearchChord }) {
   return (
@@ -20,13 +21,13 @@ function ChordSearchBox({ isSharp, searchInfo, changeSearchKey, changeSearchChor
                 isSharp={isSharp}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={6} sm={6}>
               <GuitarChordBox
                 panel={{ key: searchInfo.pickupkey, chord: searchInfo.pickupchord }}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              score
+            <Grid item xs={6} sm={6}>
+              <PianoScoreBox panel={{ key: searchInfo.pickupkey, chord: searchInfo.pickupchord }} />
             </Grid>
             <Grid item xs={12}>
               piano keyboard
