@@ -6,5 +6,3 @@ export { default as AppOrderTimeline } from './AppOrderTimeline';
 export { default as AppTasks } from './AppTasks';
 export { default as AppTrafficBySite } from './AppTrafficBySite';
 export { default as AppWeeklySales } from './AppWeeklySales';
-export { default as TestPanel } from './TestPanel';
-export { default as TestPianoScorePanel } from './TestPianoScorePanel';

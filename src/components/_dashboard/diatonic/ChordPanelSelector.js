@@ -16,7 +16,7 @@ const StyleFormControl = styled(FormControl)(({ theme }) => ({
   transform: `scale(0.8)`
 }));
 
-export function ChordPanelSelector({ panel, changeKey, changeChord }) {
+export function ChordPanelSelector({ panel, changeKey, changeChord, isSharp }) {
   const handleChangeChord = (event) => {
     changeChord(panel.id, event.target.value);
   };
@@ -37,7 +37,7 @@ export function ChordPanelSelector({ panel, changeKey, changeChord }) {
   for (let i = 0; i < NOTESLENGTH; i += 1) {
     kComp.push(
       <MenuItem key={i} value={i}>
-        {NOTENAME(i)}
+        {NOTENAME(i, isSharp)}
       </MenuItem>
     );
   }

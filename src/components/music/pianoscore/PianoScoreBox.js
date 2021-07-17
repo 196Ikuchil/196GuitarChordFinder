@@ -6,17 +6,17 @@ import { GetChordNotes } from '../../../utils/music';
 
 // ----------------------------------------------------------------------
 
-function convertChordNumToPianoScore(key, chord) {
-  return getScoreNotes(GetChordNotes(key, chord));
+function convertChordNumToPianoScore(key, chord, isSharp) {
+  return getScoreNotes(GetChordNotes(key, chord), isSharp);
 }
 
-export default function PianoScoreBox({ panel }) {
+export default function PianoScoreBox({ panel, isSharp }) {
   return (
     <Grid container>
       <Grid item xs={12}>
         <Box sx={{ p: 0, pb: 1, pl: 0 }}>
           <PianoScore
-            abcNotation={`X:1\n[${convertChordNumToPianoScore(panel.key, panel.chord)}]`}
+            abcNotation={`X:1\n[${convertChordNumToPianoScore(panel.key, panel.chord, isSharp)}]`}
             parserParams={{}}
             engraverParams={{}} // ここ消すと大きくなる（大きさ固定）
             renderParams={{ viewportHorizontal: false }}

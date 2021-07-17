@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux';
-
 export const PanelTypes = {
   diatonic: 0,
   c5th: 1,
@@ -31,10 +29,19 @@ export const addC5thPanel = (panels) => ({
   panelType: PanelTypes.c5th
 });
 
-export const addChordPanel = (key, chord, panels, id = getTailIndex(panels)) => ({
+export const addChordPanel = (key, chord, panels) => ({
   type: 'ADD_CHORD_PANEL',
   // eslint-disable-next-line no-plusplus
-  id: id + 1, // default panels tail, neigbor of target panel
+  id: getTailIndex(panels) + 1, // default panels tail, neigbor of target panel
+  panelType: PanelTypes.chord,
+  chordPanelType: ChordPanelTypes.guitar,
+  key,
+  chord
+});
+
+export const addChordPanelById = (key, chord, id) => ({
+  type: 'ADD_CHORD_PANEL',
+  id: id + 1,
   panelType: PanelTypes.chord,
   chordPanelType: ChordPanelTypes.guitar,
   key,
@@ -86,7 +93,8 @@ export const panels = (state = [], action) => {
           id: action.id,
           panelType: action.panelType,
           dChord: action.dChord,
-          key: action.key
+          key: action.key,
+          sharp: action.sharp
         }
       ];
     case 'ADD_C5th_PANEL':
@@ -98,15 +106,17 @@ export const panels = (state = [], action) => {
         }
       ];
     case 'ADD_CHORD_PANEL':
+      console.log(...state.slice(action.id).map((x) => Object.assign(x, { id: x.id + 1 })));
       return [
-        ...state,
+        ...state.slice(0, action.id),
         {
           id: action.id,
           panelType: action.panelType,
           chordPanelType: action.chordPanelType,
           key: action.key,
           chord: action.chord
-        }
+        },
+        ...state.slice(action.id)
       ];
     case 'CHANGE_CHORD_PANEL_TYPE':
       return [
@@ -142,14 +152,14 @@ export const panels = (state = [], action) => {
         ...state.slice(action.id + 1)
       ];
     case 'REMOVE_PANEL':
-      return state.filter((panel) => panel.id !== action.id);
+      return [
+        ...state.slice(0, action.id),
+        ...state.slice(action.id + 1).map((i) => Object.assign(i, { id: i.id - 1 }))
+      ];
     default:
       return state;
   }
 };
-
-// stateに追加
-export default combineReducers({ panels });
 
 const getTailIndex = (panels) => (panels.length !== 0 ? panels.slice(-1)[0].id : -1);
 
@@ -164,5 +174,6 @@ export const mapDispatchToProps = (dispatch) => ({
   changeChordPanelType: (id) => dispatch(changeChordPanelType(id)),
   changeChordPanelKey: (id, key) => dispatch(changeChordPanelKey(id, key)),
   changeChordPanelChord: (id, chord) => dispatch(changeChordPanelChord(id, chord)),
-  removePanel: (id) => dispatch(removePanel(id))
+  removePanel: (id) => dispatch(removePanel(id)),
+  addChordPanelById: (key, chord, id) => dispatch(addChordPanelById(key, chord, id))
 });

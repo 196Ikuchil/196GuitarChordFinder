@@ -5,7 +5,7 @@ import { ChordData } from './ChordData';
 
 // F#m
 const chord = {
-  chord: [-2, 100, 100, 4, 4, -2, 1] // [0..5] 1st to 6th string, -x = barres, null=nothing, mute='x' , [6]=position
+  chord: [-2, 100, 100, 4, 4, -2, 1] // [0..5] 1st to 6th string, -x = barres, 100=nothing, mute='x' , [6]=position
 };
 
 function getMainChord(key, chord) {
@@ -40,6 +40,7 @@ const Fm = {
   // optional: tuning keys
   // tuning: ["E", "A", "D", "G", "B", "E"]
 };
+// TODO: isSharp
 export default function GuitarChordBox({ panel }) {
   return <ChordBox chord={{ ...getMainChord(panel.key, panel.chord) }} />;
 }

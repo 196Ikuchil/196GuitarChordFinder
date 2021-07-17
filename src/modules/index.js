@@ -1,1 +1,2 @@
-export { default as PanelStore, PanelTypes } from './diatonicPanel';
+export { panels, PanelTypes } from './diatonicPanel';
+export { isSharp } from './Sharp';

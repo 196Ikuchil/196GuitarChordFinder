@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 // material
-import { Card, CardHeader, Box, Grid, Button } from '@material-ui/core';
+import { Box, Grid, Button } from '@material-ui/core';
+import { connect } from 'react-redux';
 import { alpha, styled } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,7 +12,10 @@ import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import KeySelector from './KeySelector';
 
-import { GetDiatonicChordNames } from '../../../utils/music';
+import { GetDiatonicChordNames, GetDiatonicNotes } from '../../../utils/music';
+import { mapStateToProps as getIsSharp } from '../../../modules/Sharp';
+import { mapDispatchToProps } from '../../../modules/diatonicPanel';
+// eslint-disable-next-line import/named
 
 // ----------------------------------------------------------------------
 
@@ -26,12 +30,18 @@ const roleCellColor = (role, attr, theme) => {
   switch (role) {
     case DROLES[0][0]: // tonic
     case DROLES[1][0]: // tonic m
+    case DROLES[2][0]: // harmonic
+    case DROLES[3][0]: // melo
       return theme.palette.primary[attr];
     case DROLES[0][1]: // dominant
     case DROLES[1][1]: // dominant m
+    case DROLES[2][1]: // harmonic
+    case DROLES[3][1]: // melo
       return theme.palette.error[attr];
     case DROLES[0][2]: // subdominant
     case DROLES[1][2]: // subdominant m
+    case DROLES[2][2]: // harmonic
+    case DROLES[3][2]: // melo
       return theme.palette.success[attr];
     default:
       return theme.palette.allwhite[attr];
@@ -70,66 +80,94 @@ const BorderBox = styled(Box)(({theme})=>({
   borderRadius: "10px"
 }))
 
-function rolePair(chord, role) {
-  return { chord, role };
+function chordInfo(chord, role, noteNum, chordNum) {
+  return { chord, role, noteNum, chordNum };
 }
 
 const DROLES = [
   ['tonic','dominant','subdominant'], // major
   ['tonicm','dominantm','subdominantm'], // minor
-  ['','',''], // harm
-  ['',''] // melo
+  ['tonicm','dominant','subdominantm'], // harm
+  ['tonicm','dominant', 'subdominant'] // melo
 ];
 
 // panel.dChord =0 major , >=0 minor
-export default function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey }) {
-  const chordnames = GetDiatonicChordNames(panel.dChord, panel.key);
+function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey, isSharp, addChordPanelById }) {
+  const chordnames = GetDiatonicChordNames(panel.dChord, panel.key, isSharp);
+  const chordnotes = GetDiatonicNotes(panel.dChord, panel.key)
 
   function reordering() {
     // like [4,1,5,2,6,3,7]
-    if (panel.dChord === 0) {
-      // major
-      return [
-        [
-          rolePair(chordnames[3], DROLES[panel.dChord][2]),
-          rolePair(chordnames[0], DROLES[panel.dChord][0]),
-          rolePair(chordnames[4], DROLES[panel.dChord][1])
-        ],
-        [
-          rolePair(chordnames[1], DROLES[panel.dChord][2]),
-          rolePair(chordnames[5], DROLES[panel.dChord][0]),
-          rolePair(chordnames[2], DROLES[panel.dChord][0])
-        ],
-        [
-          rolePair('', ''),
-          rolePair(chordnames[6], DROLES[panel.dChord][1]),
-          rolePair('', '')
-        ]
-      ];
+    switch (panel.dChord) {
+      case 0:
+        // major
+        return ([
+          [
+            chordInfo(chordnames[3], DROLES[panel.dChord][2], chordnotes[3][0], chordnotes[3][1]),
+            chordInfo(chordnames[0], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1]),
+            chordInfo(chordnames[4], DROLES[panel.dChord][1], chordnotes[4][0], chordnotes[4][1])
+          ],
+          [
+            chordInfo(chordnames[1], DROLES[panel.dChord][2], chordnotes[1][0], chordnotes[1][1]),
+            chordInfo(chordnames[5], DROLES[panel.dChord][0], chordnotes[5][0], chordnotes[5][1]),
+            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[2][0], chordnotes[2][1])
+          ],
+          [
+            chordInfo('', ''),
+            chordInfo(chordnames[6], DROLES[panel.dChord][1], chordnotes[6][0], chordnotes[6][1]),
+            chordInfo('', '')
+          ]
+        ]);
+      case 1:        // minor
+      case 2:        // harm
+        return ([
+          [
+            chordInfo(chordnames[5], DROLES[panel.dChord][2], chordnotes[5][0], chordnotes[5][1]),
+            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1]),
+            chordInfo(chordnames[6], DROLES[panel.dChord][1], chordnotes[6][0], chordnotes[6][1])
+          ],
+          [
+            chordInfo(chordnames[3], DROLES[panel.dChord][2], chordnotes[3][0], chordnotes[3][1]),
+            chordInfo(chordnames[0], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1]),
+            chordInfo(chordnames[4], DROLES[panel.dChord][1], chordnotes[4][0], chordnotes[4][1])
+          ],
+          [
+            chordInfo('', ''),
+            chordInfo(chordnames[1],  DROLES[panel.dChord][2], chordnotes[1][0], chordnotes[1][1]),
+            chordInfo('', '')
+          ]
+        ]);
+      case 3:        // melo
+        return ([
+          [
+            chordInfo(chordnames[5], DROLES[panel.dChord][2], chordnotes[5][0], chordnotes[5][1]),
+            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1]),
+            chordInfo(chordnames[6], DROLES[panel.dChord][1], chordnotes[6][0], chordnotes[6][1])
+          ],
+          [
+            chordInfo(chordnames[3], DROLES[panel.dChord][1], chordnotes[3][0], chordnotes[3][1]),
+            chordInfo(chordnames[0], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1]),
+            chordInfo(chordnames[4], DROLES[panel.dChord][1], chordnotes[4][0], chordnotes[4][1])
+          ],
+          [
+            chordInfo('', ''),
+            chordInfo(chordnames[1],  DROLES[panel.dChord][2], chordnotes[1][0], chordnotes[1][1]),
+            chordInfo('', '')
+          ]
+        ]);
+      default:
+        return [];
     }
-    // others = minor
-    return [
-      [
-        rolePair(chordnames[5], DROLES[panel.dChord][2]),
-        rolePair(chordnames[2], DROLES[panel.dChord][0]),
-        rolePair(chordnames[6], DROLES[panel.dChord][1])
-      ],
-      [
-        rolePair(chordnames[3], DROLES[panel.dChord][2]),
-        rolePair(chordnames[0], DROLES[panel.dChord][0]),
-        rolePair(chordnames[4], DROLES[panel.dChord][1])
-      ],
-      [
-        rolePair('', ''),
-        rolePair(chordnames[1],  DROLES[panel.dChord][2]),
-        rolePair('', '')
-      ]
-    ];
   }
 
+  function addNewChordPanel(key, chord, id) {
+    addChordPanelById(key, chord, id);
+  }
+
+  //  onClick={}
   return (
     <div>
-      <KeySelector panel={panel} changeDiatonic={onChangeDiatonic} changeKey={onChangeKey}/>
+      <KeySelector panel={panel} changeDiatonic={onChangeDiatonic} changeKey={onChangeKey} isSharp={isSharp}/>
       <Grid container>
         <Grid item xs={12} sm={8} md={8} >
           <BorderBox sx={{ pb: 1, m: { xs: 0, sm: "1em 0"} }}>
@@ -139,7 +177,8 @@ export default function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, 
                   {reordering().map((row, i) => (
                     <TableRow key={row[1].chord + i}>
                       {row.map((c, j) => (
-                        <StyledTableCell key={c.chord + j} align="center" role={ c.role } sx={{transform: 'scale(0.9)', margin:'0'}}>
+                        // eslint-disable-next-line react/no-this-in-sfc
+                        <StyledTableCell key={c.chord + j} align="center" onClick={()=> addNewChordPanel(c.noteNum, c.chordNum, panel.id)} role={ c.role } sx={{transform: 'scale(0.9)', margin:'0'}}>
                           <div>{c.chord}</div>
                         </StyledTableCell>
                       ))}
@@ -172,9 +211,14 @@ DiatonicPanel.propTypes = {
   panel: PropTypes.shape({
     id: PropTypes.number.isRequired,
     dChord: PropTypes.number.isRequired,
-    key: PropTypes.number.isRequired
+    key: PropTypes.number.isRequired,
+    sharp: PropTypes.bool
   }).isRequired,
   onRemoveClick: PropTypes.func.isRequired,
   onChangeDiatonic: PropTypes.func.isRequired,
-  onChangeKey: PropTypes.func.isRequired
+  onChangeKey: PropTypes.func.isRequired,
+  isSharp: PropTypes.bool.isRequired,
+  addChordPanelById: PropTypes.func.isRequired
 };
+
+export default connect(getIsSharp, mapDispatchToProps)(DiatonicPanel);

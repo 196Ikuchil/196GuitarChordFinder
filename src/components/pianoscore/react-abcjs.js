@@ -5,17 +5,26 @@ import PropTypes from 'prop-types';
 import abcjsObj from 'abcjs';
 
 // eslint-disable-next-line prettier/prettier
-const ScoreNotes = ['C', '_D', 'D', '_E', 'E', 'F', '_G', 'G', '_A', 'A', '_B', 'B',
+const ScoreNotesflat = ['C', '_D', 'D', '_E', 'E', 'F', '_G', 'G', '_A', 'A', '_B', 'B',
   // eslint-disable-next-line prettier/prettier
                     'c', '_d', 'd', '_e', 'e', 'f', '_g', 'g', '_a', 'a', '_b', 'b'];
 
+// eslint-disable-next-line prettier/prettier
+const ScoreNotessharp = ['C', '^C', 'D', '^D', 'E', 'F', '^F', 'G', '^G', 'A', '^A', 'B',
+  // eslint-disable-next-line prettier/prettier
+                  'c', '^c', 'd', '^d', 'e', 'f', '^f', 'g', '^g', 'a', '^a', 'b'];
+
 // ex,) return "CEG'C"
-export function getScoreNotes(notes) {
+export function getScoreNotes(notes, isSharp) {
   return notes
     .map((n, i) => {
       if (n === 1) {
-        console.log("'".repeat(n / ScoreNotes.length));
-        return "'".repeat(i / ScoreNotes.length) + ScoreNotes[i % ScoreNotes.length];
+        if (isSharp) {
+          return (
+            "'".repeat(i / ScoreNotessharp.length) + ScoreNotessharp[i % ScoreNotessharp.length]
+          );
+        }
+        return "'".repeat(i / ScoreNotesflat.length) + ScoreNotesflat[i % ScoreNotesflat.length];
       }
       return '';
     })
