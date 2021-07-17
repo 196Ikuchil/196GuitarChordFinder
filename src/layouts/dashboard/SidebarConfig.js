@@ -23,8 +23,8 @@ const sidebarConfig = [
     icon: getIcon(musicBoxMultipleOutline)
   },
   {
-    title: 'user',
-    path: '/dashboard/user',
+    title: t('sidebar.chordsearch.title'),
+    path: '/dashboard/chordsearch',
     icon: getIcon(peopleFill)
   },
   {

@@ -6,7 +6,7 @@ import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 import DashboardApp from './pages/DashboardApp';
 import Products from './pages/Products';
 import Blog from './pages/Blog';
-import User from './pages/User';
+import ChordSearch from './pages/chordsearch';
 import NotFound from './pages/Page404';
 
 import Diatonic from './pages/diatonic';
@@ -21,7 +21,7 @@ export default function Router() {
         { path: '/', element: <Navigate to="/dashboard/app" replace /> },
         { path: 'app', element: <DashboardApp /> },
         { path: 'diatonic', element: <Diatonic /> },
-        { path: 'user', element: <User /> },
+        { path: 'chordsearch', element: <ChordSearch /> },
         { path: 'products', element: <Products /> },
         { path: 'blog', element: <Blog /> }
       ]
