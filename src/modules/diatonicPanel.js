@@ -29,10 +29,10 @@ export const addC5thPanel = (panels) => ({
   panelType: PanelTypes.c5th
 });
 
-export const addChordPanel = (key, chord, panels, id = getTailIndex(panels)) => ({
+export const addChordPanel = (key, chord, panels) => ({
   type: 'ADD_CHORD_PANEL',
   // eslint-disable-next-line no-plusplus
-  id: id + 1, // default panels tail, neigbor of target panel
+  id: getTailIndex(panels) + 1, // default panels tail, neigbor of target panel
   panelType: PanelTypes.chord,
   chordPanelType: ChordPanelTypes.guitar,
   key,
@@ -106,15 +106,17 @@ export const panels = (state = [], action) => {
         }
       ];
     case 'ADD_CHORD_PANEL':
+      console.log(...state.slice(action.id).map((x) => Object.assign(x, { id: x.id + 1 })));
       return [
-        ...state,
+        ...state.slice(0, action.id),
         {
           id: action.id,
           panelType: action.panelType,
           chordPanelType: action.chordPanelType,
           key: action.key,
           chord: action.chord
-        }
+        },
+        ...state.slice(action.id)
       ];
     case 'CHANGE_CHORD_PANEL_TYPE':
       return [
@@ -150,7 +152,10 @@ export const panels = (state = [], action) => {
         ...state.slice(action.id + 1)
       ];
     case 'REMOVE_PANEL':
-      return state.filter((panel) => panel.id !== action.id);
+      return [
+        ...state.slice(0, action.id),
+        ...state.slice(action.id + 1).map((i) => Object.assign(i, { id: i.id - 1 }))
+      ];
     default:
       return state;
   }
