@@ -42,7 +42,7 @@ export default function KeySelector({ panel, changeDiatonic, changeKey, isSharp 
 
   return (
     <Grid container>
-      <Grid item xs={6} sm={4}>
+      <Grid item xs={6} sm={6}>
         <StyleFormControl variant="outlined">
           <InputLabel id="diatonic">Diatonic</InputLabel>
           <Select
@@ -55,7 +55,7 @@ export default function KeySelector({ panel, changeDiatonic, changeKey, isSharp 
           </Select>
         </StyleFormControl>
       </Grid>
-      <Grid item xs={6} sm={4}>
+      <Grid item xs={6} sm={6}>
         <StyleFormControl variant="outlined">
           <InputLabel id="key">key</InputLabel>
           <Select labelId="key-selector" onChange={handleChangaKey} value={panel.key} label="key">

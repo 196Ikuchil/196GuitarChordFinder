@@ -44,7 +44,7 @@ export function ChordPanelSelector({ panel, changeKey, changeChord, isSharp }) {
 
   return (
     <Grid container>
-      <Grid item xs={5} sm={5}>
+      <Grid item xs={5} sm={5} md={5}>
         <StyleFormControl size="small">
           <InputLabel id="key">key</InputLabel>
           <Select labelId="key-selector" onChange={handleChangaKey} value={panel.key} label="key">
@@ -52,7 +52,7 @@ export function ChordPanelSelector({ panel, changeKey, changeChord, isSharp }) {
           </Select>
         </StyleFormControl>
       </Grid>
-      <Grid item xs={6} sm={4}>
+      <Grid item xs={6} sm={7} md={7}>
         <StyleFormControl variant="outlined" size="small">
           <InputLabel id="chord">Diatonic</InputLabel>
           <Select
