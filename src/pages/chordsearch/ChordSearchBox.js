@@ -6,6 +6,7 @@ import { ChordPanelSelector } from '../../components/_dashboard/diatonic/ChordPa
 import { mapDispatchToProps as mapDispatchChordsearch } from '../../modules/chordsearch';
 import { GuitarChordBox } from '../../components/music/guitarchord';
 import { PianoScoreBox } from '../../components/music/pianoscore';
+import { PianoKeyboardBox } from '../../components/music/pianokeyboard';
 
 function ChordSearchBox({ isSharp, searchInfo, changeSearchKey, changeSearchChord }) {
   return (
@@ -29,8 +30,14 @@ function ChordSearchBox({ isSharp, searchInfo, changeSearchKey, changeSearchChor
             <Grid item xs={6} sm={6}>
               <PianoScoreBox panel={{ key: searchInfo.pickupkey, chord: searchInfo.pickupchord }} />
             </Grid>
-            <Grid item xs={12}>
-              piano keyboard
+            <Grid item xs={12} sx={{ pb: 3 }}>
+              <Grid container>
+                <Grid item xs={0} sm={3} />
+                <Grid item xs={12} sm={6}>
+                  <PianoKeyboardBox />
+                </Grid>
+                <Grid item xs={0} sm={3} />
+              </Grid>
             </Grid>
           </Grid>
         </Card>
