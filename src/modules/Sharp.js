@@ -10,9 +10,7 @@ export const SetIsSharp = (isSharp) => ({
 export const isSharp = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_ISSHARP':
-      return {
-        isSharp: action.sharp
-      };
+      return { ...state, isSharp: action.sharp };
     default:
       return state;
   }
