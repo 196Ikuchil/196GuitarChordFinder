@@ -31,7 +31,7 @@ export default function ChordBox({ chord }) {
         result.push([i + 1, e]);
       }
     });
-    return CHORD(result, position, BARRES(fromto[1], fromto[0], fret));
+    return CHORD(result, position, BARRES(fromto[fromto.length - 1], fromto[0], fret));
   }
 
   function test() {
