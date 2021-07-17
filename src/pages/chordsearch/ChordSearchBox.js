@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid, Card } from '@material-ui/core';
 import { ChordPanelSelector } from '../../components/_dashboard/diatonic/ChordPanelSelector';
 import { mapDispatchToProps as mapDispatchChordsearch } from '../../modules/chordsearch';
+import { GuitarChordBox } from '../../components/music/guitarchord';
 
 function ChordSearchBox({ isSharp, searchInfo, changeSearchKey, changeSearchChord }) {
   return (
@@ -20,7 +21,9 @@ function ChordSearchBox({ isSharp, searchInfo, changeSearchKey, changeSearchChor
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              guitar chord
+              <GuitarChordBox
+                panel={{ key: searchInfo.pickupkey, chord: searchInfo.pickupchord }}
+              />
             </Grid>
             <Grid item xs={12} sm={6}>
               score
@@ -44,7 +47,10 @@ ChordSearchBox.propTypes = {
   searchInfo: PropTypes.shape({
     id: PropTypes.number.isRequired,
     key: PropTypes.number.isRequired,
-    chord: PropTypes.number.isRequired
+    chord: PropTypes.number.isRequired,
+    pickupkey: PropTypes.number.isRequired,
+    pickupchord: PropTypes.number.isRequired,
+    pickupchordNum: PropTypes.number.isRequired
   }).isRequired,
   changeSearchKey: PropTypes.func.isRequired,
   changeSearchChord: PropTypes.func.isRequired
