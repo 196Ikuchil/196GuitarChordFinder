@@ -1,0 +1,56 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { Grid, Card } from '@material-ui/core';
+import { ChordPanelSelector } from '../../components/_dashboard/diatonic/ChordPanelSelector';
+import { mapDispatchToProps as mapDispatchChordsearch } from '../../modules/chordsearch';
+
+function ChordSearchBox({ isSharp, searchInfo, changeSearchKey, changeSearchChord }) {
+  return (
+    <Grid container spacing={0.5}>
+      <Grid item xs={12}>
+        <Card>
+          <Grid container>
+            <Grid item xs={12}>
+              <ChordPanelSelector
+                panel={searchInfo}
+                changeKey={(id, key) => changeSearchKey(id, key)}
+                changeChord={(id, chord) => changeSearchChord(id, chord)}
+                isSharp={isSharp}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              guitar chord
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              score
+            </Grid>
+            <Grid item xs={12}>
+              piano keyboard
+            </Grid>
+          </Grid>
+        </Card>
+      </Grid>
+      <Grid item xs={12}>
+        {/* {[0].map()} */}
+        chord panels
+      </Grid>
+    </Grid>
+  );
+}
+
+ChordSearchBox.propTypes = {
+  isSharp: PropTypes.bool.isRequired,
+  searchInfo: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    key: PropTypes.number.isRequired,
+    chord: PropTypes.number.isRequired
+  }).isRequired,
+  changeSearchKey: PropTypes.func.isRequired,
+  changeSearchChord: PropTypes.func.isRequired
+};
+
+export default connect(
+  (state) => ({ isSharp: state.isSharp.isSharp, searchInfo: state.searchInfo }),
+  mapDispatchChordsearch
+)(ChordSearchBox);
