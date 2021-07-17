@@ -72,7 +72,6 @@ export function ChordPanelSelector({ panel, changeKey, changeChord, isSharp }) {
 ChordPanelSelector.propTypes = {
   panel: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    chordPanelType: PropTypes.number.isRequired,
     chord: PropTypes.number.isRequired,
     key: PropTypes.number.isRequired
   }).isRequired,

@@ -74,5 +74,6 @@ KeySelector.propTypes = {
     key: PropTypes.number.isRequired
   }).isRequired,
   changeDiatonic: PropTypes.func.isRequired,
-  changeKey: PropTypes.func.isRequired
+  changeKey: PropTypes.func.isRequired,
+  isSharp: PropTypes.bool.isRequired
 };
