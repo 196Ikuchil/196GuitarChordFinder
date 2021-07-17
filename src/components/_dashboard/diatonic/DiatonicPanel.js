@@ -12,8 +12,10 @@ import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import KeySelector from './KeySelector';
 
-import { GetDiatonicChordNames } from '../../../utils/music';
-import { mapStateToProps } from '../../../modules/Sharp';
+import { GetDiatonicChordNames, GetDiatonicNotes } from '../../../utils/music';
+import { mapStateToProps as getIsSharp } from '../../../modules/Sharp';
+import { mapDispatchToProps } from '../../../modules/diatonicPanel';
+// eslint-disable-next-line import/named
 
 // ----------------------------------------------------------------------
 
@@ -78,8 +80,8 @@ const BorderBox = styled(Box)(({theme})=>({
   borderRadius: "10px"
 }))
 
-function rolePair(chord, role) {
-  return { chord, role };
+function chordInfo(chord, role, noteNum, chordNum) {
+  return { chord, role, noteNum, chordNum };
 }
 
 const DROLES = [
@@ -90,8 +92,9 @@ const DROLES = [
 ];
 
 // panel.dChord =0 major , >=0 minor
-function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey, isSharp }) {
+function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey, isSharp, addChordPanelById }) {
   const chordnames = GetDiatonicChordNames(panel.dChord, panel.key, isSharp);
+  const chordnotes = GetDiatonicNotes(panel.dChord, panel.key)
 
   function reordering() {
     // like [4,1,5,2,6,3,7]
@@ -100,83 +103,68 @@ function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey, is
         // major
         return ([
           [
-            rolePair(chordnames[3], DROLES[panel.dChord][2]),
-            rolePair(chordnames[0], DROLES[panel.dChord][0]),
-            rolePair(chordnames[4], DROLES[panel.dChord][1])
+            chordInfo(chordnames[3], DROLES[panel.dChord][2], chordnotes[3][0], chordnotes[3][1]),
+            chordInfo(chordnames[0], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1]),
+            chordInfo(chordnames[4], DROLES[panel.dChord][1], chordnotes[4][0], chordnotes[4][1])
           ],
           [
-            rolePair(chordnames[1], DROLES[panel.dChord][2]),
-            rolePair(chordnames[5], DROLES[panel.dChord][0]),
-            rolePair(chordnames[2], DROLES[panel.dChord][0])
+            chordInfo(chordnames[1], DROLES[panel.dChord][2], chordnotes[1][0], chordnotes[1][1]),
+            chordInfo(chordnames[5], DROLES[panel.dChord][0], chordnotes[5][0], chordnotes[5][1]),
+            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[2][0], chordnotes[2][1])
           ],
           [
-            rolePair('', ''),
-            rolePair(chordnames[6], DROLES[panel.dChord][1]),
-            rolePair('', '')
+            chordInfo('', ''),
+            chordInfo(chordnames[6], DROLES[panel.dChord][1], chordnotes[6][0], chordnotes[6][1]),
+            chordInfo('', '')
           ]
         ]);
-      case 1:
-        // minor
+      case 1:        // minor
+      case 2:        // harm
         return ([
           [
-            rolePair(chordnames[5], DROLES[panel.dChord][2]),
-            rolePair(chordnames[2], DROLES[panel.dChord][0]),
-            rolePair(chordnames[6], DROLES[panel.dChord][1])
+            chordInfo(chordnames[5], DROLES[panel.dChord][2], chordnotes[5][0], chordnotes[5][1]),
+            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1]),
+            chordInfo(chordnames[6], DROLES[panel.dChord][1], chordnotes[6][0], chordnotes[6][1])
           ],
           [
-            rolePair(chordnames[3], DROLES[panel.dChord][2]),
-            rolePair(chordnames[0], DROLES[panel.dChord][0]),
-            rolePair(chordnames[4], DROLES[panel.dChord][1])
+            chordInfo(chordnames[3], DROLES[panel.dChord][2], chordnotes[3][0], chordnotes[3][1]),
+            chordInfo(chordnames[0], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1]),
+            chordInfo(chordnames[4], DROLES[panel.dChord][1], chordnotes[4][0], chordnotes[4][1])
           ],
           [
-            rolePair('', ''),
-            rolePair(chordnames[1],  DROLES[panel.dChord][2]),
-            rolePair('', '')
+            chordInfo('', ''),
+            chordInfo(chordnames[1],  DROLES[panel.dChord][2], chordnotes[1][0], chordnotes[1][1]),
+            chordInfo('', '')
           ]
         ]);
-      case 2:
-        // harm
+      case 3:        // melo
         return ([
           [
-            rolePair(chordnames[5], DROLES[panel.dChord][2]),
-            rolePair(chordnames[2], DROLES[panel.dChord][0]),
-            rolePair(chordnames[6], DROLES[panel.dChord][1])
+            chordInfo(chordnames[5], DROLES[panel.dChord][2], chordnotes[5][0], chordnotes[5][1]),
+            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1]),
+            chordInfo(chordnames[6], DROLES[panel.dChord][1], chordnotes[6][0], chordnotes[6][1])
           ],
           [
-            rolePair(chordnames[3], DROLES[panel.dChord][2]),
-            rolePair(chordnames[0], DROLES[panel.dChord][0]),
-            rolePair(chordnames[4], DROLES[panel.dChord][1])
+            chordInfo(chordnames[3], DROLES[panel.dChord][1], chordnotes[3][0], chordnotes[3][1]),
+            chordInfo(chordnames[0], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1]),
+            chordInfo(chordnames[4], DROLES[panel.dChord][1], chordnotes[4][0], chordnotes[4][1])
           ],
           [
-            rolePair('', ''),
-            rolePair(chordnames[1],  DROLES[panel.dChord][2]),
-            rolePair('', '')
+            chordInfo('', ''),
+            chordInfo(chordnames[1],  DROLES[panel.dChord][2], chordnotes[1][0], chordnotes[1][1]),
+            chordInfo('', '')
           ]
         ]);
-        case 3:
-          // melo
-          return ([
-            [
-              rolePair(chordnames[5], DROLES[panel.dChord][2]),
-              rolePair(chordnames[2], DROLES[panel.dChord][0]),
-              rolePair(chordnames[6], DROLES[panel.dChord][1])
-            ],
-            [
-              rolePair(chordnames[3], DROLES[panel.dChord][2]),
-              rolePair(chordnames[0], DROLES[panel.dChord][0]),
-              rolePair(chordnames[4], DROLES[panel.dChord][1])
-            ],
-            [
-              rolePair('', ''),
-              rolePair(chordnames[1],  DROLES[panel.dChord][2]),
-              rolePair('', '')
-            ]
-          ]);
       default:
         return [];
     }
   }
 
+  function addNewChordPanel(key, chord, id) {
+    addChordPanelById(key, chord, id);
+  }
+
+  //  onClick={}
   return (
     <div>
       <KeySelector panel={panel} changeDiatonic={onChangeDiatonic} changeKey={onChangeKey} isSharp={isSharp}/>
@@ -189,7 +177,8 @@ function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey, is
                   {reordering().map((row, i) => (
                     <TableRow key={row[1].chord + i}>
                       {row.map((c, j) => (
-                        <StyledTableCell key={c.chord + j} align="center" role={ c.role } sx={{transform: 'scale(0.9)', margin:'0'}}>
+                        // eslint-disable-next-line react/no-this-in-sfc
+                        <StyledTableCell key={c.chord + j} align="center" onClick={()=> addNewChordPanel(c.noteNum, c.chordNum, panel.id)} role={ c.role } sx={{transform: 'scale(0.9)', margin:'0'}}>
                           <div>{c.chord}</div>
                         </StyledTableCell>
                       ))}
@@ -228,7 +217,8 @@ DiatonicPanel.propTypes = {
   onRemoveClick: PropTypes.func.isRequired,
   onChangeDiatonic: PropTypes.func.isRequired,
   onChangeKey: PropTypes.func.isRequired,
-  isSharp: PropTypes.bool.isRequired
+  isSharp: PropTypes.bool.isRequired,
+  addChordPanelById: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps)(DiatonicPanel);
+export default connect(getIsSharp, mapDispatchToProps)(DiatonicPanel);

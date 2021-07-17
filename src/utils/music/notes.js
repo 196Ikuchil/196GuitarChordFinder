@@ -1,6 +1,6 @@
 export const NOTESLENGTH = 12;
 export const NOTENAME = (number, sharp = false) => {
-  number %= 12;
+  number %= NOTESLENGTH;
   switch (number) {
     case 0:
       return 'C';
@@ -114,5 +114,5 @@ export function GetDiatonicNotes(num, key) {
     default:
       d = [];
   }
-  return d.map((x) => [x[0] + key, x[1]]);
+  return d.map((x) => [(x[0] + key) % NOTESLENGTH, x[1]]);
 }

@@ -17,3 +17,5 @@ export function GetDiatonicChordNames(diatonicnum, key, sharp) {
   const d = GetDiatonicNotes(diatonicnum, key);
   return d.map((x) => GetChordName(x[0], x[1], sharp));
 }
+
+export { GetDiatonicNotes } from './notes';

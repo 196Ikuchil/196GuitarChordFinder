@@ -39,6 +39,15 @@ export const addChordPanel = (key, chord, panels, id = getTailIndex(panels)) => 
   chord
 });
 
+export const addChordPanelById = (key, chord, id) => ({
+  type: 'ADD_CHORD_PANEL',
+  id: id + 1,
+  panelType: PanelTypes.chord,
+  chordPanelType: ChordPanelTypes.guitar,
+  key,
+  chord
+});
+
 export const changeChordPanelType = (id) => ({
   type: 'CHANGE_CHORD_PANEL_TYPE',
   id
@@ -160,5 +169,6 @@ export const mapDispatchToProps = (dispatch) => ({
   changeChordPanelType: (id) => dispatch(changeChordPanelType(id)),
   changeChordPanelKey: (id, key) => dispatch(changeChordPanelKey(id, key)),
   changeChordPanelChord: (id, chord) => dispatch(changeChordPanelChord(id, chord)),
-  removePanel: (id) => dispatch(removePanel(id))
+  removePanel: (id) => dispatch(removePanel(id)),
+  addChordPanelById: (key, chord, id) => dispatch(addChordPanelById(key, chord, id))
 });
