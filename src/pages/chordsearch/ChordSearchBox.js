@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Grid, Card } from '@material-ui/core';
+import { Grid, Card, Box, Button } from '@material-ui/core';
 import { ChordPanelSelector } from '../../components/_dashboard/diatonic/ChordPanelSelector';
 import { mapDispatchToProps as mapDispatchChordsearch } from '../../modules/chordsearch';
+import { mapDispatchToProps as mapDispatchKeep } from '../../modules/keep';
 import { GetChordNotes } from '../../utils/music';
 import { GuitarChordBox } from '../../components/music/guitarchord';
 import { PianoScoreBox } from '../../components/music/pianoscore';
@@ -15,12 +16,28 @@ function ChordSearchBox({
   searchInfo,
   changeSearchKey,
   changeSearchChord,
-  changePickupChord
+  changePickupChord,
+  addChordKeep
 }) {
   return (
     <Grid container spacing={0.5}>
       <Grid item xs={12}>
         <Card>
+          <Box item xs={12}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() =>
+                addChordKeep(
+                  searchInfo.pickupkey,
+                  searchInfo.pickupchord,
+                  searchInfo.pickupchordNum
+                )
+              }
+            >
+              ToKeep
+            </Button>
+          </Box>
           <Grid container>
             <Grid item xs={6} sm={6}>
               <GuitarChordBox
@@ -85,10 +102,15 @@ ChordSearchBox.propTypes = {
   }).isRequired,
   changeSearchKey: PropTypes.func.isRequired,
   changeSearchChord: PropTypes.func.isRequired,
-  changePickupChord: PropTypes.func.isRequired
+  changePickupChord: PropTypes.func.isRequired,
+  addChordKeep: PropTypes.func.isRequired
 };
+
+function mapDispatchToProps(dispatch) {
+  return { ...mapDispatchChordsearch(dispatch), ...mapDispatchKeep(dispatch) };
+}
 
 export default connect(
   (state) => ({ isSharp: state.isSharp.isSharp, searchInfo: state.searchInfo }),
-  mapDispatchChordsearch
+  mapDispatchToProps
 )(ChordSearchBox);

@@ -49,13 +49,17 @@ function KeepBox({ isSharp, chordkeeps, keepchordpickup, removeChordKeep, change
       </Grid>
       {/* searched items */}
       <Grid item xs={12}>
-        {chordkeeps.map((chord, i) => (
-          <GuitarChordPanel
-            key={i}
-            info={chord}
-            changePickupChord={(k, c, n) => changeKeepPickupChord(k, c, n)}
-          />
-        ))}
+        <Grid container>
+          {chordkeeps.map((chord, i) => (
+            <Grid item key={i} xs={6} sm={3} md={2}>
+              <GuitarChordPanel
+                info={chord}
+                changePickupChord={(k, c, n) => changeKeepPickupChord(k, c, n)}
+                removeChordKeep={() => removeChordKeep(i)}
+              />
+            </Grid>
+          ))}
+        </Grid>
       </Grid>
     </Grid>
   );

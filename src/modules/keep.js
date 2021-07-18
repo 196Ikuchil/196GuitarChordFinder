@@ -22,7 +22,7 @@ export const chordkeeps = (state = [], action) => {
         }
       ];
     case 'REMOVE_CHORD_KEEP':
-      return state.filter((x) => x.index !== action.index);
+      return state.filter((x, i) => i !== action.index);
     default:
       return state;
   }
@@ -36,7 +36,7 @@ const initializeState = {
 };
 
 export const changeKeepPickupChord = (key, chord, chordNum) => ({
-  type: 'CHANGE_PICKUP_CHORD',
+  type: 'CHANGE_KEEP_PICKUP_CHORD',
   pickupkey: key,
   pickupchord: chord,
   pickupchordNum: chordNum
@@ -44,7 +44,7 @@ export const changeKeepPickupChord = (key, chord, chordNum) => ({
 
 export const keepchordpickup = (state = initializeState, action) => {
   switch (action.type) {
-    case 'CHANGE_PICKUP_CHORD':
+    case 'CHANGE_KEEP_PICKUP_CHORD':
       return {
         ...state,
         pickupkey: action.pickupkey,
