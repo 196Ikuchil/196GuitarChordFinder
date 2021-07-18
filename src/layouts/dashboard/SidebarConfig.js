@@ -26,11 +26,6 @@ const sidebarConfig = [
     title: t('sidebar.keep.title'),
     path: '/dashboard/keep',
     icon: getIcon(shoppingBagFill)
-  },
-  {
-    title: 'blog',
-    path: '/dashboard/blog',
-    icon: getIcon(fileTextFill)
   }
 ];
 
