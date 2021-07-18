@@ -106,7 +106,6 @@ export const panels = (state = [], action) => {
         }
       ];
     case 'ADD_CHORD_PANEL':
-      console.log(...state.slice(action.id).map((x) => Object.assign(x, { id: x.id + 1 })));
       return [
         ...state.slice(0, action.id),
         {

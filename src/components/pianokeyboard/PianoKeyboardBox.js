@@ -32,8 +32,23 @@ export default function PianoKeyboard({ notes }) {
   }
 
   function noteRange() {
-    console.log(notes);
-    const i = notes.indexOf(1);
+    let i = notes.indexOf(1);
+
+    // start from white key
+    if (i < keyboardNotes.indexOf('f3')) {
+      i = keyboardNotes.indexOf('c3');
+    } else if (i < keyboardNotes.indexOf('c4')) {
+      i = keyboardNotes.indexOf('f3');
+    } else if (i < keyboardNotes.indexOf('f4')) {
+      i = keyboardNotes.indexOf('c4');
+    } else if (i < keyboardNotes.indexOf('c5')) {
+      i = keyboardNotes.indexOf('f4');
+    } else if (i < keyboardNotes.indexOf('f5')) {
+      i = keyboardNotes.indexOf('c5');
+    } else {
+      i = keyboardNotes.indexOf('f5');
+    }
+
     return {
       first: MidiNumbers.fromNote(keyboardNotes[i]),
       last: MidiNumbers.fromNote(keyboardNotes[i + keyNum])
