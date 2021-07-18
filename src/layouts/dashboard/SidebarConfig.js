@@ -13,11 +13,6 @@ const t = (key) => <Trans i18nKey={key} />;
 
 const sidebarConfig = [
   {
-    title: t('sidebar.dashboard.title'),
-    path: '/dashboard/app',
-    icon: getIcon(pieChart2Fill)
-  },
-  {
     title: t('sidebar.diatonic.title'),
     path: '/dashboard/diatonic',
     icon: getIcon(musicBoxMultipleOutline)
@@ -28,14 +23,9 @@ const sidebarConfig = [
     icon: getIcon(peopleFill)
   },
   {
-    title: 'product',
-    path: '/dashboard/products',
+    title: t('sidebar.keep.title'),
+    path: '/dashboard/keep',
     icon: getIcon(shoppingBagFill)
-  },
-  {
-    title: 'blog',
-    path: '/dashboard/blog',
-    icon: getIcon(fileTextFill)
   }
 ];
 

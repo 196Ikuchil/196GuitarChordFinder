@@ -1,13 +1,13 @@
 {
   "sidebar": {
-    "dashboard":{
-      "title": "dashboard_en"
-    },
     "diatonic":{
       "title":"scrapbook"
     },
     "chordsearch": {
       "title": "chordsearch.en"
+    },
+    "keep":{
+      "title": "キープ"
     }
   }
 }
