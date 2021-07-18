@@ -31,5 +31,6 @@ PianoScoreBox.propTypes = {
   panel: PropTypes.shape({
     key: PropTypes.number.isRequired,
     chord: PropTypes.number.isRequired
-  }).isRequired
+  }).isRequired,
+  isSharp: PropTypes.bool.isRequired
 };

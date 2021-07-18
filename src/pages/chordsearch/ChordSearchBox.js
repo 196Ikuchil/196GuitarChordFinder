@@ -32,7 +32,13 @@ function ChordSearchBox({
               />
             </Grid>
             <Grid item xs={6} sm={6}>
-              <PianoScoreBox panel={{ key: searchInfo.pickupkey, chord: searchInfo.pickupchord }} />
+              <PianoScoreBox
+                panel={{
+                  key: searchInfo.pickupkey,
+                  chord: searchInfo.pickupchord
+                }}
+                isSharp={isSharp}
+              />
             </Grid>
             <Grid item xs={12} sx={{ pb: 3 }}>
               <Grid container>
