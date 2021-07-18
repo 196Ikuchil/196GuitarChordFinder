@@ -24,7 +24,11 @@ function ChordSearchBox({
           <Grid container>
             <Grid item xs={6} sm={6}>
               <GuitarChordBox
-                panel={{ key: searchInfo.pickupkey, chord: searchInfo.pickupchord }}
+                panel={{
+                  key: searchInfo.pickupkey,
+                  chord: searchInfo.pickupchord,
+                  chordNum: searchInfo.pickupchordNum
+                }}
               />
             </Grid>
             <Grid item xs={6} sm={6}>

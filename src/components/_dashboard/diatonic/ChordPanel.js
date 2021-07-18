@@ -22,7 +22,7 @@ function ChordPanel({
 }) {
   function renderChord() {
     if (panel.chordPanelType === ChordPanelTypes.guitar) {
-      return <GuitarChordBox panel={panel} />;
+      return <GuitarChordBox panel={Object.assign(panel, { chordNum: 0 })} />;
     }
     if (panel.chordPanelType === ChordPanelTypes.score) {
       return <PianoScoreBox panel={panel} isSharp={isSharp} />;
