@@ -29,8 +29,8 @@ export default function PianoScoreBox({ panel, isSharp }) {
 
 PianoScoreBox.propTypes = {
   panel: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     key: PropTypes.number.isRequired,
     chord: PropTypes.number.isRequired
-  }).isRequired
+  }).isRequired,
+  isSharp: PropTypes.bool.isRequired
 };

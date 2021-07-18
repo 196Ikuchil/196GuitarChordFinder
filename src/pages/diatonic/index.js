@@ -12,13 +12,15 @@ export default function Diatonic() {
   return (
     <Page title="Dashboard | Diatonic">
       <Container maxWidth="xl">
-        <Box sx={{ pb: 2 }}>
-          <Typography variant="h4">スクラップブック</Typography>
+        <Box display="flex" pb={1} bgcolor="background.paper">
+          <Box sx={{ pt: 1 }} flexGrow={1}>
+            <Typography variant="h4">スクラップブック</Typography>
+          </Box>
+          <Box sx={{ pb: 1 }}>
+            <SharpToggleButton />
+          </Box>
         </Box>
-        <Box sx={{ pb: 2 }}>
-          <SharpToggleButton />
-        </Box>
-        <Box sx={{ pb: 2 }}>
+        <Box sx={{ pb: 1 }}>
           <AddBasePanelButton />
         </Box>
         <BasePanels />

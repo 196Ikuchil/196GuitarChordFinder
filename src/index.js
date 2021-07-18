@@ -13,14 +13,14 @@ import * as serviceWorker from './serviceWorker';
 import reportWebVitals from './reportWebVitals';
 
 // store
-import { panels, isSharp } from './modules';
+import { panels, isSharp, searchInfo } from './modules';
 
 import './i18n';
 
 import 'font-awesome/css/font-awesome.min.css';
 
 // ----------------------------------------------------------------------
-const rootReducer = combineReducers({ panels, isSharp });
+const rootReducer = combineReducers({ panels, isSharp, searchInfo });
 
 const store = createStore(
   rootReducer,

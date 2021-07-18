@@ -1,0 +1,1 @@
+export { GuitarChordPanels } from './GuitarChordPanels';

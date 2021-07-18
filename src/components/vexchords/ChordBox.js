@@ -34,20 +34,6 @@ export default function ChordBox({ chord }) {
     return CHORD(result, position, BARRES(fromto[fromto.length - 1], fromto[0], fret));
   }
 
-  function test() {
-    if (chord.chord[0] === 0) {
-      return C;
-    }
-    return Fm;
-  }
-
-  function test2() {
-    if (chord.chord[0] === 0) {
-      return <div>test1</div>;
-    }
-    return <div>test2</div>;
-  }
-
   const C = {
     chord: [
       [2, 1, '1'],
