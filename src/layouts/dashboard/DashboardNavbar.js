@@ -7,7 +7,6 @@ import { Box, Stack, AppBar, Toolbar, IconButton } from '@material-ui/core';
 // components
 import { MHidden } from '../../components/@material-extend';
 //
-import Searchbar from './Searchbar';
 import LanguagePopover from './LanguagePopover';
 
 // ----------------------------------------------------------------------
@@ -50,7 +49,6 @@ export default function DashboardNavbar({ onOpenSidebar }) {
           </IconButton>
         </MHidden>
 
-        <Searchbar />
         <Box sx={{ flexGrow: 1 }} />
 
         <Stack direction="row" spacing={{ xs: 0.5, sm: 1.5 }}>

@@ -7,9 +7,13 @@ export default function ChordSearch() {
   return (
     <Page title="Dashboard | Diatonic">
       <Container maxWidth="xl">
-        <Box sx={{ pb: 2 }}>
-          <Typography variant="h4">chord search</Typography>
-          <SharpToggleButton />
+        <Box display="flex" pb={3} bgcolor="background.paper">
+          <Box sx={{ pt: 1 }} flexGrow={1}>
+            <Typography variant="h4">chord search</Typography>
+          </Box>
+          <Box>
+            <SharpToggleButton />
+          </Box>
         </Box>
         <Box sx={{ pb: 2 }}>
           <ChordSearchBox />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, MenuItem } from '@material-ui/core';
+import { Menu, MenuItem, Button } from '@material-ui/core';
 import { connect } from 'react-redux';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
@@ -43,10 +43,10 @@ const AddBasePanelButton = ({ panels, dispatch }) => {
 
   return (
     <div>
-      <StyledIconButton aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-        <AddIcon />
-        New..
-      </StyledIconButton>
+      <Button variant="contained" color="primary" onClick={handleClick}>
+        {/* <AddIcon /> */}
+        Add..
+      </Button>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
