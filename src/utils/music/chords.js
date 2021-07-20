@@ -55,9 +55,9 @@ export const CHORDNOTES = (chord) => {
     case 4:
       return _7(baseMinor); // m7
     case 5:
-      return b5(baseMajor);
+      return b5(baseMajor); // (-5)
     case 6:
-      return b5(baseMinor);
+      return b5(baseMinor); // m(-5)
     case 7:
       return b5(_7(baseMinor)); // m7(-5)
     case 8:
