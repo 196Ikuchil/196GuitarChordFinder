@@ -1,9 +1,7 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Menu, MenuItem, Button } from '@material-ui/core';
 import { connect } from 'react-redux';
-import IconButton from '@material-ui/core/IconButton';
-import AddIcon from '@material-ui/icons/Add';
-import { styled } from '@material-ui/core/styles';
 import {
   addDiatonicPanel,
   mapStateToProps,
@@ -11,12 +9,9 @@ import {
   addChordPanel
 } from '../../../modules/diatonicPanel';
 
-const StyledIconButton = styled(IconButton)(() => ({
-  padding: 0
-}));
-
 const AddBasePanelButton = ({ panels, dispatch }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const { t } = useTranslation();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -45,7 +40,7 @@ const AddBasePanelButton = ({ panels, dispatch }) => {
     <div>
       <Button variant="contained" color="primary" onClick={handleClick}>
         {/* <AddIcon /> */}
-        Add..
+        {t('scrapbook.button.add')}
       </Button>
       <Menu
         id="simple-menu"
@@ -54,9 +49,9 @@ const AddBasePanelButton = ({ panels, dispatch }) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={onClickDiatonic}>ダイアトニック</MenuItem>
-        <MenuItem onClick={onClickC5th}>五度圏表</MenuItem>
-        <MenuItem onClick={onClickChord}>簡易コードパネル</MenuItem>
+        <MenuItem onClick={onClickDiatonic}>{t('scrapbook.select.diatonic')}</MenuItem>
+        <MenuItem onClick={onClickC5th}>{t('scrapbook.select.c5th')}</MenuItem>
+        <MenuItem onClick={onClickChord}>{t('scrapbook.select.chord')}</MenuItem>
       </Menu>
     </div>
   );

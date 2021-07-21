@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 // material
-import { Box, Grid, Button } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { alpha, styled } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -95,7 +96,7 @@ const DROLES = [
 function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey, isSharp, addChordPanelById }) {
   const chordnames = GetDiatonicChordNames(panel.dChord, panel.key, isSharp);
   const chordnotes = GetDiatonicNotes(panel.dChord, panel.key)
-
+  const { t } = useTranslation();
   function reordering() {
     // like [4,1,5,2,6,3,7]
     switch (panel.dChord) {
@@ -195,7 +196,7 @@ function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey, is
               <Box sx={{ p: 1, pt: {xs: 0, sm: "1em"} }}>
                 {DROLES[panel.dChord].map((d) => (
                   <Grid item xs={12} key={d}>
-                    <RoleDescribeBox align="center" role={d} sx={{margin:"1%"}}>{d}</RoleDescribeBox>
+                    <RoleDescribeBox align="center" role={d} sx={{margin:"1%"}}>{t(`scrapbook.rolls.${d}`)}</RoleDescribeBox>
                   </Grid>
                 ))}
               </Box>

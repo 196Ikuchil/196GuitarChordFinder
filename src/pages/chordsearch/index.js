@@ -10,7 +10,7 @@ function ChordSearch({ t }) {
       <Container maxWidth="xl">
         <Box display="flex" pb={3} bgcolor="background.paper">
           <Box sx={{ pt: 1 }} flexGrow={1}>
-            <Typography variant="h4">{t('chordsearch')}</Typography>
+            <Typography variant="h4">{t('chordsearch.title')}</Typography>
           </Box>
           <Box>
             <SharpToggleButton />

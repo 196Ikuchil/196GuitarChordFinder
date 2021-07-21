@@ -19,8 +19,8 @@ const sidebarConfig = [
     icon: getIcon(shoppingBagFill)
   },
   {
-    title: 'sidebar.diatonic.title',
-    path: '/dashboard/diatonic',
+    title: 'sidebar.scrapbook.title',
+    path: '/dashboard/scrapbook',
     icon: getIcon(musicBoxMultipleOutline)
   }
 ];
