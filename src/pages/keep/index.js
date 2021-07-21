@@ -1,19 +1,20 @@
 // material
 import { Box, Container, Typography } from '@material-ui/core';
 // components
+import { withTranslation } from 'react-i18next';
 import Page from '../../components/Page';
 import SharpToggleButton from '../../components/SharpToggle';
 import KeepBox from './KeepBox';
 
 // ----------------------------------------------------------------------
 
-export default function Keep() {
+function Keep({ t }) {
   return (
     <Page title="Dashboard | Keep">
       <Container maxWidth="xl">
         <Box display="flex" pb={1} bgcolor="background.paper">
           <Box sx={{ pt: 1 }} flexGrow={1}>
-            <Typography variant="h4">ki-pu</Typography>
+            <Typography variant="h4">{t('keep.title')}</Typography>
           </Box>
           <Box sx={{ pb: 1 }}>
             <SharpToggleButton />
@@ -24,3 +25,5 @@ export default function Keep() {
     </Page>
   );
 }
+
+export default withTranslation()(Keep);

@@ -1,5 +1,6 @@
 // material
 import { Box, Container, Typography } from '@material-ui/core';
+import { withTranslation } from 'react-i18next';
 // components
 import Page from '../../components/Page';
 import { AddBasePanelButton } from '../../components/_dashboard/diatonic';
@@ -8,13 +9,13 @@ import SharpToggleButton from '../../components/SharpToggle';
 
 // ----------------------------------------------------------------------
 
-export default function Diatonic() {
+function Diatonic({ t }) {
   return (
     <Page title="Dashboard | Diatonic">
       <Container maxWidth="xl">
         <Box display="flex" pb={1} bgcolor="background.paper">
           <Box sx={{ pt: 1 }} flexGrow={1}>
-            <Typography variant="h4">スクラップブック</Typography>
+            <Typography variant="h4">{t('scrapbook.title')}</Typography>
           </Box>
           <Box sx={{ pb: 1 }}>
             <SharpToggleButton />
@@ -28,3 +29,5 @@ export default function Diatonic() {
     </Page>
   );
 }
+
+export default withTranslation()(Diatonic);

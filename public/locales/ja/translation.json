@@ -1,6 +1,6 @@
 {
   "sidebar": {
-    "diatonic":{
+    "scrapbook":{
       "title": "スクラップブック"
     },
     "chordsearch": {
@@ -9,5 +9,28 @@
     "keep":{
       "title": "キープ"
     }
+  },
+  "toppage": {
+    "chordsearch": {
+      "title": "コード検索",
+      "description": "ギターコードと構成音、抑える鍵盤をを検索できます。"
+    },
+    "keep": {
+      "title": "キープ",
+      "description": "コード検索でキープしたコードを一覧で表示できます。"
+    },
+    "scrapbook": {
+      "title": "スクラップブック[テスト版]",
+      "description": "五度圏表やダイアトニックコード表を表示させながら、基本的なコードをチェックすることができます。"
+    }
+  },
+  "keep": {
+    "title": "キープ"
+  },
+  "chordsearch": {
+    "title": "コード検索"
+  },
+  "scrapbook": {
+    "title": "スクラップブック[テスト版]"
   }
 }
