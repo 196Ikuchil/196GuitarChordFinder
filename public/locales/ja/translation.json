@@ -1,6 +1,6 @@
 {
   "sidebar": {
-    "diatonic":{
+    "scrapbook":{
       "title": "スクラップブック"
     },
     "chordsearch": {
@@ -8,6 +8,50 @@
     },
     "keep":{
       "title": "キープ"
+    }
+  },
+  "toppage": {
+    "hello": "Hi, welcome back",
+    "chordsearch": {
+      "title": "コード検索",
+      "description": "ギターコードと構成音、抑える鍵盤をを検索できます。"
+    },
+    "keep": {
+      "title": "キープ",
+      "description": "コード検索でキープしたコードを一覧で表示できます。"
+    },
+    "scrapbook": {
+      "title": "スクラップブック[テスト版]",
+      "description": "五度圏表やダイアトニックコード表を表示させながら、基本的なコードをチェックすることができます。"
+    },
+    "contactus": {
+      "to": "hogehoge",
+      "description": "バグや間違いなどはこちらに書き込みください。"
+    }
+  },
+  "keep": {
+    "title": "キープ"
+  },
+  "chordsearch": {
+    "title": "コード検索"
+  },
+  "scrapbook": {
+    "title": "スクラップブック[テスト版]",
+    "button": {
+      "add": "追加"
+    },
+    "select": {
+      "diatonic": "ダイアトニックコード表",
+      "c5th": "五度圏表",
+      "chord": "簡易コード検索"
+    },
+    "rolls": {
+      "tonic": "トニック",
+      "dominant": "ドミナント",
+      "subdominant": "サブドミナント",
+      "tonicm": "トニックマイナー",
+      "dominantm": "ドミナントマイナー",
+      "subdominantm": "サブドミナントマイナー"
     }
   }
 }

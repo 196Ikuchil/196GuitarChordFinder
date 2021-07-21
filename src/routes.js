@@ -17,9 +17,8 @@ export default function Router() {
       path: '/dashboard',
       element: <DashboardLayout />,
       children: [
-        { path: '/', element: <Navigate to="/dashboard/toppage" replace /> },
-        { path: 'toppage', element: <TopPage /> },
-        { path: 'diatonic', element: <Diatonic /> },
+        { path: '/', element: <TopPage /> },
+        { path: 'scrapbook', element: <Diatonic /> },
         { path: 'chordsearch', element: <ChordSearch /> },
         { path: 'keep', element: <Keep /> }
       ]

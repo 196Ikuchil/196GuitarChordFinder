@@ -16,10 +16,13 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     fallbackLng: 'ja',
-    debug: true,
-
+    debug: false,
+    defaultNS: 'translation',
     interpolation: {
       escapeValue: false // not needed for react as it escapes by default
+    },
+    react: {
+      useSuspense: false //   <---- this will do the magic
     }
   });
 

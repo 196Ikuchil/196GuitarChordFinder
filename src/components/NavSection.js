@@ -7,6 +7,7 @@ import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill';
 // material
 import { alpha, useTheme, experimentalStyled as styled } from '@material-ui/core/styles';
 import { Box, List, ListItem, Collapse, ListItemText, ListItemIcon } from '@material-ui/core';
+import { withTranslation } from 'react-i18next';
 
 // ----------------------------------------------------------------------
 
@@ -153,17 +154,22 @@ NavSection.propTypes = {
   navConfig: PropTypes.array
 };
 
-export default function NavSection({ navConfig, ...other }) {
+function NavSection({ navConfig, t, i18n, ...other }) {
   const { pathname } = useLocation();
   const match = (path) => (path ? !!matchPath({ path, end: false }, pathname) : false);
 
+  function translate(a) {
+    return { ...a, title: t(a.title) };
+  }
   return (
     <Box {...other}>
       <List disablePadding>
         {navConfig.map((item, index) => (
-          <NavItem key={item.title + index} item={item} active={match} />
+          <NavItem key={item.title + index} item={translate(item)} active={match} />
         ))}
       </List>
     </Box>
   );
 }
+
+export default withTranslation()(NavSection);
