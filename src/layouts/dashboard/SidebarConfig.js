@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react';
-import peopleFill from '@iconify/icons-eva/people-fill';
 import shoppingBagFill from '@iconify/icons-eva/shopping-bag-fill';
 import musicBoxMultipleOutline from '@iconify-icons/mdi/music-box-multiple-outline';
+import bxSearchAlt from '@iconify-icons/bx/bx-search-alt';
 
 // ----------------------------------------------------------------------
 
@@ -11,7 +11,7 @@ const sidebarConfig = [
   {
     title: 'sidebar.chordsearch.title',
     path: '/dashboard/chordsearch',
-    icon: getIcon(peopleFill)
+    icon: getIcon(bxSearchAlt)
   },
   {
     title: 'sidebar.keep.title',
