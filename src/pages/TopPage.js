@@ -12,19 +12,24 @@ function TopPage({ t }) {
       <Container maxWidth="xl">
         <Box sx={{ pb: 5 }}>
           <Typography variant="h4">{t('toppage.hello')}</Typography>
-          <div>{t('toppage.chordsearch.title')}</div>
-          <div>{t('toppage.chordsearch.description')}</div>
-          <div>image here</div>
-          <div>{t('toppage.keep.title')}</div>
-          <div>{t('toppage.keep.description')}</div>
-          <div>image here</div>
-          <div>{t('toppage.scrapbook.title')}</div>
-          <div>{t('toppage.scrapbook.description')}</div>
-          <div>image here</div>
+          <Typography variant="h3">{t('toppage.chordsearch.title')}</Typography>
+          <Typography>{t('toppage.chordsearch.description')}</Typography>
+          <Typography>image here</Typography>
+          <Typography variant="h3">{t('toppage.keep.title')}</Typography>
+          <Typography>{t('toppage.keep.description')}</Typography>
+          <Typography>image here</Typography>
+          <Typography variant="h3">{t('toppage.scrapbook.title')}</Typography>
+          <Typography>{t('toppage.scrapbook.description')}</Typography>
+          <Typography>image here</Typography>
         </Box>
         <Box>
-          <div>{t('toppage.contactus.to')}</div>
-          <div>{t('toppage.contactus.description')}</div>
+          <Typography variant="body2">{t('toppage.warning')}</Typography>
+        </Box>
+        <br />
+        <Box>
+          <Typography variant="caption">{t('toppage.contactus.to')}</Typography>
+          <br />
+          <Typography variant="caption">{t('toppage.contactus.description')}</Typography>
         </Box>
       </Container>
     </Page>
