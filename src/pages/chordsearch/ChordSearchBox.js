@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Grid, Card, Box, Button } from '@material-ui/core';
+import { useTranslation } from 'react-i18next';
 import { ChordPanelSelector } from '../../components/_dashboard/diatonic/ChordPanelSelector';
 import { mapDispatchToProps as mapDispatchChordsearch } from '../../modules/chordsearch';
 import { mapDispatchToProps as mapDispatchKeep } from '../../modules/keep';
@@ -20,6 +21,7 @@ function ChordSearchBox({
   changePickupChord,
   addChordKeep
 }) {
+  const { t } = useTranslation();
   return (
     <Grid container spacing={0.5}>
       <Grid item xs={12}>
@@ -38,7 +40,7 @@ function ChordSearchBox({
                     )
                   }
                 >
-                  ToKeep
+                  {t('chordsearch.button.tokeep')}
                 </Button>
               </Box>
             </Grid>

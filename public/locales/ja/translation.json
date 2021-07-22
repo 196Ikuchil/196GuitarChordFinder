@@ -33,7 +33,10 @@
     "title": "キープ"
   },
   "chordsearch": {
-    "title": "コード検索"
+    "title": "コード検索",
+    "button": {
+      "tokeep": "キープへ追加"
+    }
   },
   "scrapbook": {
     "title": "スクラップブック[テスト版]",
