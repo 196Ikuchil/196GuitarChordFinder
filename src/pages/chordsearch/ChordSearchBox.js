@@ -10,6 +10,7 @@ import { GuitarChordBox } from '../../components/music/guitarchord';
 import { PianoScoreBox } from '../../components/music/pianoscore';
 import { PianoKeyboardBox } from '../../components/music/pianokeyboard';
 import { GuitarChordPanels } from '../../components/_dashboard/chordsearch';
+import { ChordLabel } from '../../components/ChordLabel';
 
 function ChordSearchBox({
   isSharp,
@@ -23,23 +24,47 @@ function ChordSearchBox({
     <Grid container spacing={0.5}>
       <Grid item xs={12}>
         <Card>
-          <Box item xs={12}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() =>
-                addChordKeep(
-                  searchInfo.pickupkey,
-                  searchInfo.pickupchord,
-                  searchInfo.pickupchordNum
-                )
-              }
-            >
-              ToKeep
-            </Button>
-          </Box>
           <Grid container>
-            <Grid item xs={6} sm={6}>
+            <Grid item xs={4}>
+              <Box>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() =>
+                    addChordKeep(
+                      searchInfo.pickupkey,
+                      searchInfo.pickupchord,
+                      searchInfo.pickupchordNum
+                    )
+                  }
+                >
+                  ToKeep
+                </Button>
+              </Box>
+            </Grid>
+            <Grid item xs={8} display={{ xs: 'block', sm: 'none' }}>
+              <Grid display={{ margin: 6 }}>
+                <ChordLabel
+                  k={searchInfo.pickupkey}
+                  chord={searchInfo.pickupchord}
+                  isSharp={isSharp}
+                  variant="h4"
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item xs={3} display={{ xs: 'none', sm: 'block' }}>
+              <Grid display={{ marginTop: 40 }}>
+                <ChordLabel
+                  k={searchInfo.pickupkey}
+                  chord={searchInfo.pickupchord}
+                  isSharp={isSharp}
+                  variant="h3"
+                />
+              </Grid>
+            </Grid>
+            <Grid item xs={6} sm={5}>
               <GuitarChordBox
                 panel={{
                   key: searchInfo.pickupkey,
@@ -48,7 +73,7 @@ function ChordSearchBox({
                 }}
               />
             </Grid>
-            <Grid item xs={6} sm={6}>
+            <Grid item xs={6} sm={4}>
               <PianoScoreBox
                 panel={{
                   key: searchInfo.pickupkey,
