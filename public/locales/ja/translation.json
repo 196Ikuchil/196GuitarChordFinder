@@ -42,7 +42,8 @@
   "scrapbook": {
     "title": "スクラップブック[テスト版]",
     "button": {
-      "add": "追加"
+      "add": "追加",
+      "tochordsearch": "検索へ"
     },
     "select": {
       "diatonic": "ダイアトニックコード表",
