@@ -8,6 +8,7 @@ import { PianoScoreBox } from '../../components/music/pianoscore';
 import { PianoKeyboardBox } from '../../components/music/pianokeyboard';
 import { GuitarChordPanel } from '../../components/_dashboard/keep';
 import { mapStateToProps, mapDispatchToProps } from '../../modules/keep';
+import { ChordLabel } from '../../components/ChordLabel';
 
 function KeepBox({ isSharp, chordkeeps, keepchordpickup, removeChordKeep, changeKeepPickupChord }) {
   return (
@@ -15,7 +16,17 @@ function KeepBox({ isSharp, chordkeeps, keepchordpickup, removeChordKeep, change
       <Grid item xs={12}>
         <Card>
           <Grid container>
-            <Grid item xs={6} sm={6}>
+            <Grid item xs={12} sm={3} display="block">
+              <Grid display={{ marginTop: 40 }}>
+                <ChordLabel
+                  k={keepchordpickup.pickupkey}
+                  chord={keepchordpickup.pickupchord}
+                  isSharp={isSharp}
+                  variant="h3"
+                />
+              </Grid>
+            </Grid>
+            <Grid item xs={6} sm={4}>
               <GuitarChordBox
                 panel={{
                   key: keepchordpickup.pickupkey,
@@ -24,7 +35,7 @@ function KeepBox({ isSharp, chordkeeps, keepchordpickup, removeChordKeep, change
                 }}
               />
             </Grid>
-            <Grid item xs={6} sm={6}>
+            <Grid item xs={6} sm={5}>
               <PianoScoreBox
                 panel={{
                   key: keepchordpickup.pickupkey,
