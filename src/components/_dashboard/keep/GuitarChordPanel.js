@@ -1,12 +1,15 @@
-import { Grid, Card, Button, Box } from '@material-ui/core';
+import { Grid, Card, Button, IconButton, Box } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import ClearIcon from '@material-ui/icons/Clear';
 import { GuitarChordBox } from '../../music/guitarchord';
 import { ChordData } from '../../music/guitarchord/ChordData';
 
 export function GuitarChordPanel({ info, changePickupChord, removeChordKeep }) {
   return (
     <Card>
-      <Button onClick={() => removeChordKeep()}>X</Button>
+      <IconButton onClick={() => removeChordKeep()}>
+        <ClearIcon />
+      </IconButton>
       <Button
         style={{ margin: 'auto', display: 'flex' }}
         onClick={() => changePickupChord(info.key, info.chord, info.chordNum)}
