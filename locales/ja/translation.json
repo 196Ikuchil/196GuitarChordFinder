@@ -27,7 +27,7 @@
     },
     "warning": "ブラウザをリロードすると、Keep等の情報はリセットされますが、仕様ですのでご注意ください。",
     "contactus": {
-      "to": "hogehoge",
+      "to": "https://github.com/196Ikuchil/196GuitarChordFinder/issues",
       "description": "バグや間違いなどはこちらに書き込みください。"
     },
     "policy": "プライバシーポリシー"
