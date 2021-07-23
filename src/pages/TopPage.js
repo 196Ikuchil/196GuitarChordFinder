@@ -56,9 +56,10 @@ function TopPage({ t }) {
         <br />
         <Box>
           <center>
+            <Typography variant="caption">{t('toppage.contactus.description')}</Typography>
+            <br />
             <Typography variant="caption">{t('toppage.contactus.to')}</Typography>
             <br />
-            <Typography variant="caption">{t('toppage.contactus.description')}</Typography>
             <br />
             <Button variant="secondary" component={Link} to={`${process.env.PUBLIC_URL}/policy`}>
               {t('toppage.policy')}
