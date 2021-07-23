@@ -12,7 +12,7 @@
     "lint": "eslint --ext .js,.jsx ./src",
     "lint:fix": "eslint --fix --ext .js,.jsx ./src",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "set homepage=https://196Ikuchil.github.io/196GuitarChordFinder/ && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -102,6 +102,5 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "gh-pages": "^3.2.3",
     "prettier": "^2.3.1"
-  },
-  "homepage": "https://196Ikuchil.github.io/196GuitarChordFinder/"
+  }
 }
