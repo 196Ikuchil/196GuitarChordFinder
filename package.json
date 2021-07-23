@@ -59,6 +59,7 @@
     "font-awesome": "^4.7.0",
     "formik": "^2.2.9",
     "framer-motion": "^4.1.17",
+    "glob-parent": "^5.1.2",
     "history": "^5.0.0",
     "i18next": "^20.3.2",
     "i18next-browser-languagedetector": "^6.1.2",
