@@ -10,6 +10,14 @@ function TopPage({ t }) {
   return (
     <Page title="TopPage">
       <Container maxWidth="xl">
+        <Box>
+          <center>
+            <img src={`${process.env.PUBLIC_URL}/static/icon.png`} alt="Logo" />
+          </center>
+          <center>
+            <Typography variant="h2">{t('toppage.sitename')}</Typography>
+          </center>
+        </Box>
         <Box sx={{ pb: 5 }}>
           <Typography variant="h4">{t('toppage.hello')}</Typography>
           <Typography variant="h3">{t('toppage.chordsearch.title')}</Typography>
