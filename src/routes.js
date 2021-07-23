@@ -16,27 +16,14 @@ export default function Router() {
   return useRoutes([
     {
       path: '/196GuitarChordFinder',
+      element: <DashboardLayout />,
       children: [
-        {
-          path: '/dashboard',
-          element: <DashboardLayout />,
-          children: [
-            { path: '/', element: <TopPage /> },
-            { path: 'scrapbook', element: <Diatonic /> },
-            { path: 'chordsearch', element: <ChordSearch /> },
-            { path: 'keep', element: <Keep /> },
-            { path: '*', element: <Navigate to="/196GuitarChordFinder/dashboard" /> }
-          ]
-        },
-        {
-          path: '/',
-          element: <LogoOnlyLayout />,
-          children: [
-            { path: '/', element: <Navigate to="/196GuitarChordFinder/dashboard" /> },
-            { path: '*', element: <Navigate to="/196GuitarChordFinder/dashboard" /> },
-            { path: '/policy', element: <Policy /> }
-          ]
-        }
+        { path: '/', element: <TopPage /> },
+        { path: 'scrapbook', element: <Diatonic /> },
+        { path: 'chordsearch', element: <ChordSearch /> },
+        { path: 'keep', element: <Keep /> },
+        { path: '*', element: <Navigate to="/196GuitarChordFinder/" /> },
+        { path: '/policy', element: <Policy /> }
       ]
     },
     { path: '*', element: <NotFound /> }

@@ -26,7 +26,7 @@ function TopPage({ t }) {
               img={`${process.env.PUBLIC_URL}/static/images/top/finder.png`}
               pagename={t('toppage.chordsearch.title')}
               description={t('toppage.chordsearch.description')}
-              path="/196GuitarChordFinder/dashboard/chordsearch"
+              path="/196GuitarChordFinder/chordsearch"
             />
           </center>
         </Box>
@@ -36,7 +36,7 @@ function TopPage({ t }) {
               img={`${process.env.PUBLIC_URL}/static/images/top/keep.png`}
               pagename={t('toppage.keep.title')}
               description={t('toppage.keep.description')}
-              path="/196GuitarChordFinder/dashboard/keep"
+              path="/196GuitarChordFinder/keep"
             />
           </center>
         </Box>
@@ -46,7 +46,7 @@ function TopPage({ t }) {
               img={`${process.env.PUBLIC_URL}/static/images/top/scrapbook.png`}
               pagename={t('toppage.scrapbook.title')}
               description={t('toppage.scrapbook.description')}
-              path="/196GuitarChordFinder/dashboard/scrapbook"
+              path="/196GuitarChordFinder/scrapbook"
             />
           </center>
         </Box>
