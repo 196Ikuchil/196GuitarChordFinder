@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/196GuitarChordFinder/static/css/main.e1731ddf.chunk.css",
-    "main.js": "/196GuitarChordFinder/static/js/main.1bc022d7.chunk.js",
-    "main.js.map": "/196GuitarChordFinder/static/js/main.1bc022d7.chunk.js.map",
-    "runtime-main.js": "/196GuitarChordFinder/static/js/runtime-main.48daaae6.js",
-    "runtime-main.js.map": "/196GuitarChordFinder/static/js/runtime-main.48daaae6.js.map",
-    "static/css/2.9dd5704e.chunk.css": "/196GuitarChordFinder/static/css/2.9dd5704e.chunk.css",
-    "static/js/2.b98a8988.chunk.js": "/196GuitarChordFinder/static/js/2.b98a8988.chunk.js",
-    "static/js/2.b98a8988.chunk.js.map": "/196GuitarChordFinder/static/js/2.b98a8988.chunk.js.map",
-    "static/js/3.84da6821.chunk.js": "/196GuitarChordFinder/static/js/3.84da6821.chunk.js",
-    "static/js/3.84da6821.chunk.js.map": "/196GuitarChordFinder/static/js/3.84da6821.chunk.js.map",
-    "index.html": "/196GuitarChordFinder/index.html",
-    "static/css/2.9dd5704e.chunk.css.map": "/196GuitarChordFinder/static/css/2.9dd5704e.chunk.css.map",
-    "static/css/main.e1731ddf.chunk.css.map": "/196GuitarChordFinder/static/css/main.e1731ddf.chunk.css.map",
-    "static/js/2.b98a8988.chunk.js.LICENSE.txt": "/196GuitarChordFinder/static/js/2.b98a8988.chunk.js.LICENSE.txt",
-    "static/media/font-awesome.min.css": "/196GuitarChordFinder/static/media/fontawesome-webfont.f691f37e.woff",
-    "static/media/getFetch.cjs": "/196GuitarChordFinder/static/media/getFetch.582d29c4.cjs"
+    "main.css": "/static/css/main.e1731ddf.chunk.css",
+    "main.js": "/static/js/main.dc443783.chunk.js",
+    "main.js.map": "/static/js/main.dc443783.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.49e29765.js",
+    "runtime-main.js.map": "/static/js/runtime-main.49e29765.js.map",
+    "static/css/2.288a5880.chunk.css": "/static/css/2.288a5880.chunk.css",
+    "static/js/2.b98a8988.chunk.js": "/static/js/2.b98a8988.chunk.js",
+    "static/js/2.b98a8988.chunk.js.map": "/static/js/2.b98a8988.chunk.js.map",
+    "static/js/3.84da6821.chunk.js": "/static/js/3.84da6821.chunk.js",
+    "static/js/3.84da6821.chunk.js.map": "/static/js/3.84da6821.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.288a5880.chunk.css.map": "/static/css/2.288a5880.chunk.css.map",
+    "static/css/main.e1731ddf.chunk.css.map": "/static/css/main.e1731ddf.chunk.css.map",
+    "static/js/2.b98a8988.chunk.js.LICENSE.txt": "/static/js/2.b98a8988.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.min.css": "/static/media/fontawesome-webfont.f691f37e.woff",
+    "static/media/getFetch.cjs": "/static/media/getFetch.582d29c4.cjs"
   },
   "entrypoints": [
-    "static/js/runtime-main.48daaae6.js",
-    "static/css/2.9dd5704e.chunk.css",
+    "static/js/runtime-main.49e29765.js",
+    "static/css/2.288a5880.chunk.css",
     "static/js/2.b98a8988.chunk.js",
     "static/css/main.e1731ddf.chunk.css",
-    "static/js/main.1bc022d7.chunk.js"
+    "static/js/main.dc443783.chunk.js"
   ]
 }
