@@ -24,7 +24,8 @@ export default function Router() {
             { path: '/', element: <TopPage /> },
             { path: 'scrapbook', element: <Diatonic /> },
             { path: 'chordsearch', element: <ChordSearch /> },
-            { path: 'keep', element: <Keep /> }
+            { path: 'keep', element: <Keep /> },
+            { path: '*', element: <Navigate to="/196GuitarChordFinder/dashboard" /> }
           ]
         },
         {
@@ -32,7 +33,7 @@ export default function Router() {
           element: <LogoOnlyLayout />,
           children: [
             { path: '/', element: <Navigate to="/196GuitarChordFinder/dashboard" /> },
-            { path: '*', element: <NotFound /> },
+            { path: '*', element: <Navigate to="/196GuitarChordFinder/dashboard" /> },
             { path: '/policy', element: <Policy /> }
           ]
         }
