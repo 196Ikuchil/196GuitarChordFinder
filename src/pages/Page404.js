@@ -26,7 +26,12 @@ export default function Page404() {
         <MotionContainer initial="initial" open>
           <Box sx={{ maxWidth: 480, margin: 'auto', textAlign: 'center' }}>
             <div>404</div>
-            <Button to="/" size="large" variant="contained" component={RouterLink}>
+            <Button
+              to={`${process.env.PUBLIC_URL}/`}
+              size="large"
+              variant="contained"
+              component={RouterLink}
+            >
               Go to Home
             </Button>
           </Box>

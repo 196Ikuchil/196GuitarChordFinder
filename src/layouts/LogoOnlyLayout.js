@@ -24,7 +24,7 @@ export default function LogoOnlyLayout() {
   return (
     <>
       <HeaderStyle>
-        <RouterLink to="/">
+        <RouterLink to={`${process.env.PUBLIC_URL}/`}>
           <Logo />
         </RouterLink>
       </HeaderStyle>

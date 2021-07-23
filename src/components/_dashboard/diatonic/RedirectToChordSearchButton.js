@@ -28,7 +28,7 @@ function RedirectToChordSearchButton({
         color="primary"
         onClick={() => handleClick()}
         component={Link}
-        to="/dashboard/chordsearch"
+        to="/196GuitarChordFinder/dashboard/chordsearch"
       >
         {t('scrapbook.button.tochordsearch')}
       </Button>
