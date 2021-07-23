@@ -9,6 +9,7 @@ import Keep from './pages/keep';
 import NotFound from './pages/Page404';
 
 import Diatonic from './pages/diatonic';
+import Policy from './pages/Policy';
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -28,7 +29,8 @@ export default function Router() {
       element: <LogoOnlyLayout />,
       children: [
         { path: '/', element: <Navigate to="/dashboard" /> },
-        { path: '*', element: <NotFound /> }
+        { path: '*', element: <NotFound /> },
+        { path: '/policy', element: <Policy /> }
       ]
     },
 

@@ -5,7 +5,12 @@ import PropTypes from 'prop-types';
 import { Grid, Card, IconButton } from '@material-ui/core';
 import ClearIcon from '@material-ui/icons/Clear';
 import { mapStateToProps, mapDispatchToProps, PanelTypes } from '../../modules/diatonicPanel';
-import { DiatonicPanel, C5thPanel, ChordPanel } from '../../components/_dashboard/diatonic';
+import {
+  DiatonicPanel,
+  C5thPanel,
+  ChordPanel,
+  RedirectToChordSearchButton
+} from '../../components/_dashboard/diatonic';
 
 function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) {
   function switchRenderPanel(panel) {
@@ -42,9 +47,16 @@ function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) 
       return (
         <Grid key={panel.id} item xs={6} sm={3} md={2}>
           <Card>
-            <IconButton onClick={() => removePanel(panel.id)}>
-              <ClearIcon />
-            </IconButton>
+            <Grid container>
+              <Grid item xs={3} sm={6}>
+                <IconButton onClick={() => removePanel(panel.id)}>
+                  <ClearIcon />
+                </IconButton>
+              </Grid>
+              <Grid item xs={7} sm={6}>
+                <RedirectToChordSearchButton panel={panel} />
+              </Grid>
+            </Grid>
             <ChordPanel panel={panel} />
           </Card>
         </Grid>

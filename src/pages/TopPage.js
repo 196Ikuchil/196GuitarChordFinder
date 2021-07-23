@@ -1,8 +1,10 @@
 // material
-import { Box, Container, Typography } from '@material-ui/core';
+import { Box, Container, Typography, Button } from '@material-ui/core';
 // components
 import { withTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import Page from '../components/Page';
+import { PageCard } from '../components/_dashboard/top';
 
 // ----------------------------------------------------------------------
 
@@ -10,26 +12,58 @@ function TopPage({ t }) {
   return (
     <Page title="TopPage">
       <Container maxWidth="xl">
-        <Box sx={{ pb: 5 }}>
-          <Typography variant="h4">{t('toppage.hello')}</Typography>
-          <Typography variant="h3">{t('toppage.chordsearch.title')}</Typography>
-          <Typography>{t('toppage.chordsearch.description')}</Typography>
-          <Typography>image here</Typography>
-          <Typography variant="h3">{t('toppage.keep.title')}</Typography>
-          <Typography>{t('toppage.keep.description')}</Typography>
-          <Typography>image here</Typography>
-          <Typography variant="h3">{t('toppage.scrapbook.title')}</Typography>
-          <Typography>{t('toppage.scrapbook.description')}</Typography>
-          <Typography>image here</Typography>
+        <Box>
+          <center>
+            <img src={`${process.env.PUBLIC_URL}/static/icon.png`} alt="Logo" />
+          </center>
+          <center>
+            <Typography variant="h2">{t('toppage.sitename')}</Typography>
+          </center>
+        </Box>
+        <Box sx={{ p: 3 }}>
+          <center>
+            <PageCard
+              img={`${process.env.PUBLIC_URL}/static/images/top/finder.png`}
+              pagename={t('toppage.chordsearch.title')}
+              description={t('toppage.chordsearch.description')}
+              path="/dashboard/chordsearch"
+            />
+          </center>
+        </Box>
+        <Box sx={{ p: 3 }}>
+          <center>
+            <PageCard
+              img={`${process.env.PUBLIC_URL}/static/images/top/keep.png`}
+              pagename={t('toppage.keep.title')}
+              description={t('toppage.keep.description')}
+              path="/dashboard/keep"
+            />
+          </center>
+        </Box>
+        <Box sx={{ p: 3 }}>
+          <center>
+            <PageCard
+              img={`${process.env.PUBLIC_URL}/static/images/top/scrapbook.png`}
+              pagename={t('toppage.scrapbook.title')}
+              description={t('toppage.scrapbook.description')}
+              path="/dashboard/scrapbook"
+            />
+          </center>
         </Box>
         <Box>
           <Typography variant="body2">{t('toppage.warning')}</Typography>
         </Box>
         <br />
         <Box>
-          <Typography variant="caption">{t('toppage.contactus.to')}</Typography>
-          <br />
-          <Typography variant="caption">{t('toppage.contactus.description')}</Typography>
+          <center>
+            <Typography variant="caption">{t('toppage.contactus.to')}</Typography>
+            <br />
+            <Typography variant="caption">{t('toppage.contactus.description')}</Typography>
+            <br />
+            <Button variant="secondary" component={Link} to="/policy">
+              {t('toppage.policy')}
+            </Button>
+          </center>
         </Box>
       </Container>
     </Page>

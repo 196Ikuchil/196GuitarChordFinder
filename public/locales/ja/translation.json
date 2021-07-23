@@ -12,9 +12,10 @@
   },
   "toppage": {
     "hello": "Hi, welcome back",
+    "sitename": "196 Guitar Chord Finder",
     "chordsearch": {
       "title": "コード検索",
-      "description": "ギターコードと構成音、抑える鍵盤をを検索できます。"
+      "description": "ギターコードと構成音、抑える鍵盤を検索できます。"
     },
     "keep": {
       "title": "キープ",
@@ -28,7 +29,8 @@
     "contactus": {
       "to": "hogehoge",
       "description": "バグや間違いなどはこちらに書き込みください。"
-    }
+    },
+    "policy": "プライバシーポリシー"
   },
   "keep": {
     "title": "キープ"
@@ -42,7 +44,8 @@
   "scrapbook": {
     "title": "スクラップブック[テスト版]",
     "button": {
-      "add": "追加"
+      "add": "追加",
+      "tochordsearch": "検索へ"
     },
     "select": {
       "diatonic": "ダイアトニックコード表",
