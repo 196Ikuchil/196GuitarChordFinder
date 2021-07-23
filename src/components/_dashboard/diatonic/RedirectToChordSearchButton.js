@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { mapStateToProps, mapDispatchToProps } from '../../../modules/chordsearch';
 
 function RedirectToChordSearchButton({
@@ -22,7 +23,13 @@ function RedirectToChordSearchButton({
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={() => handleClick()}>
+      <Button
+        variant="outlined"
+        color="primary"
+        onClick={() => handleClick()}
+        component={Link}
+        to="/dashboard/chordsearch"
+      >
         {t('scrapbook.button.tochordsearch')}
       </Button>
     </div>
