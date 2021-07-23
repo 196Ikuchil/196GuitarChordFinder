@@ -1,7 +1,8 @@
 // material
-import { Box, Container, Typography } from '@material-ui/core';
+import { Box, Container, Typography, Button } from '@material-ui/core';
 // components
 import { withTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import Page from '../components/Page';
 import { PageCard } from '../components/_dashboard/top';
 
@@ -58,6 +59,10 @@ function TopPage({ t }) {
             <Typography variant="caption">{t('toppage.contactus.to')}</Typography>
             <br />
             <Typography variant="caption">{t('toppage.contactus.description')}</Typography>
+            <br />
+            <Button variant="secondary" component={Link} to="/policy">
+              {t('toppage.policy')}
+            </Button>
           </center>
         </Box>
       </Container>

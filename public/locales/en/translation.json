@@ -29,7 +29,8 @@
     "contactus": {
       "to": "hogehoge",
       "description": "Report bugs, mistakes, etc."
-    }
+    },
+    "policy": "privacy policy"
   },
   "keep": {
     "title": "Keep"

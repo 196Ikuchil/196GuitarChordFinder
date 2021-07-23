@@ -29,7 +29,8 @@
     "contactus": {
       "to": "hogehoge",
       "description": "バグや間違いなどはこちらに書き込みください。"
-    }
+    },
+    "policy": "プライバシーポリシー"
   },
   "keep": {
     "title": "キープ"
