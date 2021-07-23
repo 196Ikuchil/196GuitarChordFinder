@@ -1,13 +1,63 @@
 {
   "sidebar": {
-    "diatonic":{
-      "title":"scrapbook"
+    "scrapbook":{
+      "title": "Scrapbook"
     },
     "chordsearch": {
-      "title": "chordsearch.en"
+      "title": "Finder"
     },
     "keep":{
-      "title": "keep"
+      "title": "Keep"
+    }
+  },
+  "toppage": {
+    "hello": "Hi, welcome back",
+    "sitename": "196 Guitar Chord Finder",
+    "chordsearch": {
+      "title": "Finder",
+      "description": "Search for guitar chords and their constituent notes, and keys to hold down."
+    },
+    "keep": {
+      "title": "Keep",
+      "description": "List the codes added to the keep in the code search."
+    },
+    "scrapbook": {
+      "title": "Scrapbook[WIP]",
+      "description": "Displays a table of fifths and diatonic chords. Check more basic chords."
+    },
+    "warning": "[Warning]Keep and other information will be reset when you reload the browser.",
+    "contactus": {
+      "to": "hogehoge",
+      "description": "Report bugs, mistakes, etc."
+    }
+  },
+  "keep": {
+    "title": "Keep"
+  },
+  "chordsearch": {
+    "title": "Finder",
+    "button": {
+      "tokeep": "Add to keep"
+    }
+  },
+  "scrapbook": {
+    "title": "Scrapbook[WIP]",
+    "button": {
+      "add": "Add",
+      "tochordsearch": "To finder"
+    },
+    "select": {
+      "diatonic": "diatonic chord chart",
+      "c5th": "circle of 5th",
+      "chord": "chord mini finder"
+    },
+    "rolls": {
+      "tonic": "Tonic",
+      "dominant": "Dominant",
+      "subdominant": "Sub-dominant",
+      "tonicm": "Tonic minor",
+      "dominantm": "Dominant minor",
+      "subdominantm": "Sub-dominant minor"
     }
   }
 }
