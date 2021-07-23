@@ -67,6 +67,7 @@ function KeepBox({ isSharp, chordkeeps, keepchordpickup, removeChordKeep, change
                 info={chord}
                 changePickupChord={(k, c, n) => changeKeepPickupChord(k, c, n)}
                 removeChordKeep={() => removeChordKeep(i)}
+                isSharp={isSharp}
               />
             </Grid>
           ))}
