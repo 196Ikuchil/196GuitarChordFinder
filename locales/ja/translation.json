@@ -1,0 +1,64 @@
+{
+  "sidebar": {
+    "scrapbook":{
+      "title": "スクラップブック"
+    },
+    "chordsearch": {
+      "title": "コード検索"
+    },
+    "keep":{
+      "title": "キープ"
+    }
+  },
+  "toppage": {
+    "hello": "Hi, welcome back",
+    "sitename": "196 Guitar Chord Finder",
+    "chordsearch": {
+      "title": "コード検索",
+      "description": "ギターコードと構成音、抑える鍵盤を検索できます。"
+    },
+    "keep": {
+      "title": "キープ",
+      "description": "コード検索でキープしたコードを一覧で表示できます。"
+    },
+    "scrapbook": {
+      "title": "スクラップブック[テスト版]",
+      "description": "五度圏表やダイアトニックコード表を表示させながら、基本的なコードをチェックすることができます。"
+    },
+    "warning": "ブラウザをリロードすると、Keep等の情報はリセットされますが、仕様ですのでご注意ください。",
+    "contactus": {
+      "to": "hogehoge",
+      "description": "バグや間違いなどはこちらに書き込みください。"
+    },
+    "policy": "プライバシーポリシー"
+  },
+  "keep": {
+    "title": "キープ"
+  },
+  "chordsearch": {
+    "title": "コード検索",
+    "button": {
+      "tokeep": "キープへ追加"
+    }
+  },
+  "scrapbook": {
+    "title": "スクラップブック[テスト版]",
+    "button": {
+      "add": "追加",
+      "tochordsearch": "検索へ"
+    },
+    "select": {
+      "diatonic": "ダイアトニックコード表",
+      "c5th": "五度圏表",
+      "chord": "簡易コード検索"
+    },
+    "rolls": {
+      "tonic": "トニック",
+      "dominant": "ドミナント",
+      "subdominant": "サブドミナント",
+      "tonicm": "トニックマイナー",
+      "dominantm": "ドミナントマイナー",
+      "subdominantm": "サブドミナントマイナー"
+    }
+  }
+}
