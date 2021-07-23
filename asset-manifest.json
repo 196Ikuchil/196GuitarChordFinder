@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "https://196Ikuchil.github.io/196GuitarChordFinder/static/css/main.e1731ddf.chunk.css",
-    "main.js": "https://196Ikuchil.github.io/196GuitarChordFinder/static/js/main.6cfedf23.chunk.js",
-    "main.js.map": "https://196Ikuchil.github.io/196GuitarChordFinder/static/js/main.6cfedf23.chunk.js.map",
-    "runtime-main.js": "https://196Ikuchil.github.io/196GuitarChordFinder/static/js/runtime-main.e85bfaa6.js",
-    "runtime-main.js.map": "https://196Ikuchil.github.io/196GuitarChordFinder/static/js/runtime-main.e85bfaa6.js.map",
-    "static/css/2.ed55a375.chunk.css": "https://196Ikuchil.github.io/196GuitarChordFinder/static/css/2.ed55a375.chunk.css",
-    "static/js/2.b98a8988.chunk.js": "https://196Ikuchil.github.io/196GuitarChordFinder/static/js/2.b98a8988.chunk.js",
-    "static/js/2.b98a8988.chunk.js.map": "https://196Ikuchil.github.io/196GuitarChordFinder/static/js/2.b98a8988.chunk.js.map",
-    "static/js/3.84da6821.chunk.js": "https://196Ikuchil.github.io/196GuitarChordFinder/static/js/3.84da6821.chunk.js",
-    "static/js/3.84da6821.chunk.js.map": "https://196Ikuchil.github.io/196GuitarChordFinder/static/js/3.84da6821.chunk.js.map",
-    "index.html": "https://196Ikuchil.github.io/196GuitarChordFinder/index.html",
-    "static/css/2.ed55a375.chunk.css.map": "https://196Ikuchil.github.io/196GuitarChordFinder/static/css/2.ed55a375.chunk.css.map",
-    "static/css/main.e1731ddf.chunk.css.map": "https://196Ikuchil.github.io/196GuitarChordFinder/static/css/main.e1731ddf.chunk.css.map",
-    "static/js/2.b98a8988.chunk.js.LICENSE.txt": "https://196Ikuchil.github.io/196GuitarChordFinder/static/js/2.b98a8988.chunk.js.LICENSE.txt",
-    "static/media/font-awesome.min.css": "https://196Ikuchil.github.io/196GuitarChordFinder/static/media/fontawesome-webfont.f691f37e.woff",
-    "static/media/getFetch.cjs": "https://196Ikuchil.github.io/196GuitarChordFinder/static/media/getFetch.582d29c4.cjs"
+    "main.css": "/196GuitarChordFinder/static/css/main.e1731ddf.chunk.css",
+    "main.js": "/196GuitarChordFinder/static/js/main.1bc022d7.chunk.js",
+    "main.js.map": "/196GuitarChordFinder/static/js/main.1bc022d7.chunk.js.map",
+    "runtime-main.js": "/196GuitarChordFinder/static/js/runtime-main.48daaae6.js",
+    "runtime-main.js.map": "/196GuitarChordFinder/static/js/runtime-main.48daaae6.js.map",
+    "static/css/2.9dd5704e.chunk.css": "/196GuitarChordFinder/static/css/2.9dd5704e.chunk.css",
+    "static/js/2.b98a8988.chunk.js": "/196GuitarChordFinder/static/js/2.b98a8988.chunk.js",
+    "static/js/2.b98a8988.chunk.js.map": "/196GuitarChordFinder/static/js/2.b98a8988.chunk.js.map",
+    "static/js/3.84da6821.chunk.js": "/196GuitarChordFinder/static/js/3.84da6821.chunk.js",
+    "static/js/3.84da6821.chunk.js.map": "/196GuitarChordFinder/static/js/3.84da6821.chunk.js.map",
+    "index.html": "/196GuitarChordFinder/index.html",
+    "static/css/2.9dd5704e.chunk.css.map": "/196GuitarChordFinder/static/css/2.9dd5704e.chunk.css.map",
+    "static/css/main.e1731ddf.chunk.css.map": "/196GuitarChordFinder/static/css/main.e1731ddf.chunk.css.map",
+    "static/js/2.b98a8988.chunk.js.LICENSE.txt": "/196GuitarChordFinder/static/js/2.b98a8988.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.min.css": "/196GuitarChordFinder/static/media/fontawesome-webfont.f691f37e.woff",
+    "static/media/getFetch.cjs": "/196GuitarChordFinder/static/media/getFetch.582d29c4.cjs"
   },
   "entrypoints": [
-    "static/js/runtime-main.e85bfaa6.js",
-    "static/css/2.ed55a375.chunk.css",
+    "static/js/runtime-main.48daaae6.js",
+    "static/css/2.9dd5704e.chunk.css",
     "static/js/2.b98a8988.chunk.js",
     "static/css/main.e1731ddf.chunk.css",
-    "static/js/main.6cfedf23.chunk.js"
+    "static/js/main.1bc022d7.chunk.js"
   ]
 }
