@@ -18,6 +18,9 @@ i18n
     fallbackLng: 'ja',
     debug: false,
     defaultNS: 'translation',
+    backend: {
+      loadPath: `${process.env.PUBLIC_URL}/locales/{{lng}}/{{ns}}.json`
+    },
     interpolation: {
       escapeValue: false // not needed for react as it escapes by default
     },

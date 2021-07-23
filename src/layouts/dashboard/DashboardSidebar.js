@@ -48,7 +48,11 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
       }}
     >
       <Box sx={{ px: 2.5, py: 3 }}>
-        <Box component={RouterLink} to="/" sx={{ display: 'inline-flex' }}>
+        <Box
+          component={RouterLink}
+          to={`${process.env.PUBLIC_URL}/`}
+          sx={{ display: 'inline-flex' }}
+        >
           <Logo />
         </Box>
       </Box>

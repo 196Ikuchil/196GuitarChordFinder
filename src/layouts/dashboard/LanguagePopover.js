@@ -15,12 +15,12 @@ const LANGS = [
   {
     value: 'ja',
     label: 'Japanese',
-    icon: '/static/icons/ic_flag_ja.svg'
+    icon: `${process.env.PUBLIC_URL}/static/icons/ic_flag_ja.svg`
   },
   {
     value: 'en',
     label: 'English',
-    icon: '/static/icons/ic_flag_en.svg'
+    icon: `${process.env.PUBLIC_URL}/static/icons/ic_flag_en.svg`
   }
 ];
 

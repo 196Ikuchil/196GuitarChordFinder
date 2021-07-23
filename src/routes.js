@@ -15,25 +15,17 @@ import Policy from './pages/Policy';
 export default function Router() {
   return useRoutes([
     {
-      path: '/dashboard',
+      path: '/196GuitarChordFinder',
       element: <DashboardLayout />,
       children: [
         { path: '/', element: <TopPage /> },
         { path: 'scrapbook', element: <Diatonic /> },
         { path: 'chordsearch', element: <ChordSearch /> },
-        { path: 'keep', element: <Keep /> }
-      ]
-    },
-    {
-      path: '/',
-      element: <LogoOnlyLayout />,
-      children: [
-        { path: '/', element: <Navigate to="/dashboard" /> },
-        { path: '*', element: <NotFound /> },
+        { path: 'keep', element: <Keep /> },
+        { path: '*', element: <Navigate to="/196GuitarChordFinder/" /> },
         { path: '/policy', element: <Policy /> }
       ]
     },
-
     { path: '*', element: <NotFound /> }
   ]);
 }
