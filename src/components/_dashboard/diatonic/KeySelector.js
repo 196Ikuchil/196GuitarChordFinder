@@ -69,7 +69,6 @@ export default function KeySelector({ panel, changeDiatonic, changeKey, isSharp 
 
 KeySelector.propTypes = {
   panel: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     dChord: PropTypes.number.isRequired,
     key: PropTypes.number.isRequired
   }).isRequired,
