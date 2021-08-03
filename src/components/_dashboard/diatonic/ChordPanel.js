@@ -15,6 +15,7 @@ import { ChordPanelSelector } from './ChordPanelSelector';
 
 function ChordPanel({
   panel,
+  index,
   changeChordPanelKey,
   changeChordPanelChord,
   changeChordPanelType,
@@ -34,6 +35,7 @@ function ChordPanel({
     <div>
       <ChordPanelSelector
         panel={panel}
+        index={index}
         changeKey={(id, key) => changeChordPanelKey(id, key)}
         changeChord={(id, chord) => changeChordPanelChord(id, chord)}
         isSharp={isSharp}
@@ -41,7 +43,7 @@ function ChordPanel({
       <Grid container>
         <Grid item xs={12}>
           <Box sx={{ p: 1, pb: 0, pt: 0 }}>
-            <Button sx={{ pl: 3 }} onClick={() => changeChordPanelType(panel.id)}>
+            <Button sx={{ pl: 3 }} onClick={() => changeChordPanelType(index)}>
               {renderChord()}
             </Button>
           </Box>
@@ -53,11 +55,11 @@ function ChordPanel({
 
 ChordPanel.propTypes = {
   panel: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     chordPanelType: PropTypes.number.isRequired,
     key: PropTypes.number.isRequired,
     chord: PropTypes.number.isRequired
   }).isRequired,
+  index: PropTypes.number.isRequired,
   changeChordPanelKey: PropTypes.func.isRequired,
   changeChordPanelChord: PropTypes.func.isRequired,
   changeChordPanelType: PropTypes.func.isRequired,

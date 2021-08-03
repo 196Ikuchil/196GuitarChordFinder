@@ -16,12 +16,12 @@ const StyleFormControl = styled(FormControl)(({ theme }) => ({
   transform: `scale(0.8)`
 }));
 
-export function ChordPanelSelector({ panel, changeKey, changeChord, isSharp }) {
+export function ChordPanelSelector({ panel, index, changeKey, changeChord, isSharp }) {
   const handleChangeChord = (event) => {
-    changeChord(panel.id, event.target.value);
+    changeChord(index, event.target.value);
   };
   const handleChangaKey = (event) => {
-    changeKey(panel.id, event.target.value);
+    changeKey(index, event.target.value);
   };
 
   const dComp = [];
@@ -71,10 +71,11 @@ export function ChordPanelSelector({ panel, changeKey, changeChord, isSharp }) {
 
 ChordPanelSelector.propTypes = {
   panel: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     chord: PropTypes.number.isRequired,
     key: PropTypes.number.isRequired
   }).isRequired,
+  index: PropTypes.number.isRequired,
   changeKey: PropTypes.func.isRequired,
-  changeChord: PropTypes.func.isRequired
+  changeChord: PropTypes.func.isRequired,
+  isSharp: PropTypes.bool
 };

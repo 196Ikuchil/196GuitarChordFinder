@@ -12,74 +12,68 @@ export const ChordPanelTypes = {
 // increment chord panel type 0 -> 1->2->0
 const getNextChordPanelType = (type) => (type + 1) % Object.keys(ChordPanelTypes).length;
 // ACTION
-
+// add to tail
 export const addDiatonicPanel = (dChord, key, panels) => ({
   type: 'ADD_DIATONIC_PANEL',
-  // eslint-disable-next-line no-plusplus
-  id: getTailIndex(panels) + 1,
   panelType: PanelTypes.diatonic,
   dChord,
   key
 });
-
+// add to tail
 export const addC5thPanel = (panels) => ({
   type: 'ADD_C5th_PANEL',
-  // eslint-disable-next-line no-plusplus
-  id: getTailIndex(panels) + 1,
   panelType: PanelTypes.c5th
 });
-
+// add to tail
 export const addChordPanel = (key, chord, panels) => ({
   type: 'ADD_CHORD_PANEL',
-  // eslint-disable-next-line no-plusplus
-  id: getTailIndex(panels) + 1, // default panels tail, neigbor of target panel
+  panelType: PanelTypes.chord,
+  chordPanelType: ChordPanelTypes.guitar,
+  key,
+  chord
+});
+// add after the specified index
+export const addChordPanelById = (key, chord, index) => ({
+  type: 'INSERT_CHORD_PANEL',
+  index: index + 1,
   panelType: PanelTypes.chord,
   chordPanelType: ChordPanelTypes.guitar,
   key,
   chord
 });
 
-export const addChordPanelById = (key, chord, id) => ({
-  type: 'ADD_CHORD_PANEL',
-  id: id + 1,
-  panelType: PanelTypes.chord,
-  chordPanelType: ChordPanelTypes.guitar,
-  key,
-  chord
-});
-
-export const changeChordPanelType = (id) => ({
+export const changeChordPanelType = (index) => ({
   type: 'CHANGE_CHORD_PANEL_TYPE',
-  id
+  index
 });
 
-export const changeChordPanelKey = (id, key) => ({
+export const changeChordPanelKey = (index, key) => ({
   type: 'CHANGE_CHORD_PANEL_KEY',
-  id,
+  index,
   key
 });
 
-export const changeChordPanelChord = (id, chord) => ({
+export const changeChordPanelChord = (index, chord) => ({
   type: 'CHANGE_CHORD_PANEL_CHORD',
-  id,
+  index,
   chord
 });
 
-export const changeDiatonic = (id, dChord) => ({
+export const changeDiatonic = (index, dChord) => ({
   type: 'CHANGE_DIATONIC',
-  id,
+  index,
   dChord
 });
 
-export const changeDiatonicKey = (id, key) => ({
+export const changeDiatonicKey = (index, key) => ({
   type: 'CHANGE_DIATONIC_KEY',
-  id,
+  index,
   key
 });
 
-export const removePanel = (id) => ({
+export const removePanel = (index) => ({
   type: 'REMOVE_PANEL',
-  id
+  index
 });
 
 // action creator
@@ -90,7 +84,6 @@ export const panels = (state = [], action) => {
       return [
         ...state,
         {
-          id: action.id,
           panelType: action.panelType,
           dChord: action.dChord,
           key: action.key,
@@ -101,66 +94,69 @@ export const panels = (state = [], action) => {
       return [
         ...state,
         {
-          id: action.id,
           panelType: action.panelType
         }
       ];
     case 'ADD_CHORD_PANEL':
       return [
-        ...state.slice(0, action.id),
+        ...state,
         {
-          id: action.id,
+          panelType: action.panelType,
+          chordPanelType: action.chordPanelType,
+          key: action.key,
+          chord: action.chord
+        }
+      ];
+    case 'INSERT_CHORD_PANEL':
+      return [
+        ...state.slice(0, action.index),
+        {
           panelType: action.panelType,
           chordPanelType: action.chordPanelType,
           key: action.key,
           chord: action.chord
         },
-        ...state.slice(action.id)
+        ...state.slice(action.index)
       ];
     case 'CHANGE_CHORD_PANEL_TYPE':
       return [
-        ...state.slice(0, action.id),
+        ...state.slice(0, action.index),
         {
-          ...state[action.id],
-          chordPanelType: getNextChordPanelType(state[action.id].chordPanelType)
+          ...state[action.index],
+          chordPanelType: getNextChordPanelType(state[action.index].chordPanelType)
         },
-        ...state.slice(action.id + 1)
+        ...state.slice(action.index + 1)
       ];
     case 'CHANGE_CHORD_PANEL_KEY':
       return [
-        ...state.slice(0, action.id),
-        { ...state[action.id], key: action.key },
-        ...state.slice(action.id + 1)
+        ...state.slice(0, action.index),
+        { ...state[action.index], key: action.key },
+        ...state.slice(action.index + 1)
       ];
     case 'CHANGE_CHORD_PANEL_CHORD':
       return [
-        ...state.slice(0, action.id),
-        { ...state[action.id], chord: action.chord },
-        ...state.slice(action.id + 1)
+        ...state.slice(0, action.index),
+        { ...state[action.index], chord: action.chord },
+        ...state.slice(action.index + 1)
       ];
     case 'CHANGE_DIATONIC':
       return [
-        ...state.slice(0, action.id),
-        { ...state[action.id], dChord: action.dChord },
-        ...state.slice(action.id + 1)
+        ...state.slice(0, action.index),
+        { ...state[action.index], dChord: action.dChord },
+        ...state.slice(action.index + 1)
       ];
     case 'CHANGE_DIATONIC_KEY':
       return [
-        ...state.slice(0, action.id),
-        { ...state[action.id], key: action.key },
-        ...state.slice(action.id + 1)
+        ...state.slice(0, action.index),
+        { ...state[action.index], key: action.key },
+        ...state.slice(action.index + 1)
       ];
     case 'REMOVE_PANEL':
-      return [
-        ...state.slice(0, action.id),
-        ...state.slice(action.id + 1).map((i) => Object.assign(i, { id: i.id - 1 }))
-      ];
+      return [...state.slice(0, action.index), ...state.slice(action.index + 1)];
     default:
       return state;
   }
 };
-
-const getTailIndex = (panels) => (panels.length !== 0 ? panels.slice(-1)[0].id : -1);
 
 // component
 export const mapStateToProps = (state) => ({
