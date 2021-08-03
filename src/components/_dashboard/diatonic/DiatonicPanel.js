@@ -93,7 +93,7 @@ const DROLES = [
 ];
 
 // panel.dChord =0 major , >=0 minor
-function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey, isSharp, addChordPanelById }) {
+function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChangeKey, isSharp, addChordPanelById }) {
   const chordnames = GetDiatonicChordNames(panel.dChord, panel.key, isSharp);
   const chordnotes = GetDiatonicNotes(panel.dChord, panel.key)
   const { t } = useTranslation();
@@ -161,8 +161,8 @@ function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey, is
     }
   }
 
-  function addNewChordPanel(key, chord, id) {
-    addChordPanelById(key, chord, id);
+  function addNewChordPanel(key, chord, index) {
+    addChordPanelById(key, chord, index);
   }
 
   //  onClick={}
@@ -179,7 +179,7 @@ function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey, is
                     <TableRow key={row[1].chord + i}>
                       {row.map((c, j) => (
                         // eslint-disable-next-line react/no-this-in-sfc
-                        <StyledTableCell key={c.chord + j} align="center" onClick={()=> addNewChordPanel(c.noteNum, c.chordNum, j)} role={ c.role } sx={{transform: 'scale(0.9)', margin:'0'}}>
+                        <StyledTableCell key={c.chord + j} align="center" onClick={()=> addNewChordPanel(c.noteNum, c.chordNum, index)} role={ c.role } sx={{transform: 'scale(0.9)', margin:'0'}}>
                           <div>{c.chord}</div>
                         </StyledTableCell>
                       ))}
@@ -214,6 +214,7 @@ DiatonicPanel.propTypes = {
     key: PropTypes.number.isRequired,
     sharp: PropTypes.bool
   }).isRequired,
+  index: PropTypes.number.isRequired,
   onRemoveClick: PropTypes.func.isRequired,
   onChangeDiatonic: PropTypes.func.isRequired,
   onChangeKey: PropTypes.func.isRequired,

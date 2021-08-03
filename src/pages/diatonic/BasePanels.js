@@ -23,6 +23,7 @@ function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) 
             </IconButton>
             <DiatonicPanel
               panel={panel}
+              index={index}
               onRemoveClick={() => removePanel(index)}
               onChangeDiatonic={(dChord) => changeDiatonic(index, dChord)}
               onChangeKey={(key) => changeDiatonicKey(index, key)}
