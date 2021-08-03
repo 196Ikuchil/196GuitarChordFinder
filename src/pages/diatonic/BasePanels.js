@@ -13,19 +13,19 @@ import {
 } from '../../components/_dashboard/diatonic';
 
 function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) {
-  function switchRenderPanel(panel) {
+  function switchRenderPanel(panel, index) {
     if (panel.panelType === PanelTypes.diatonic) {
       return (
-        <Grid key={panel.id} item xs={12}>
+        <Grid key={index} item xs={12}>
           <Card>
-            <IconButton onClick={() => removePanel(panel.id)}>
+            <IconButton onClick={() => removePanel(index)}>
               <ClearIcon />
             </IconButton>
             <DiatonicPanel
               panel={panel}
-              onRemoveClick={() => removePanel(panel.id)}
-              onChangeDiatonic={(dChord) => changeDiatonic(panel.id, dChord)}
-              onChangeKey={(key) => changeDiatonicKey(panel.id, key)}
+              onRemoveClick={() => removePanel(index)}
+              onChangeDiatonic={(dChord) => changeDiatonic(index, dChord)}
+              onChangeKey={(key) => changeDiatonicKey(index, key)}
             />
           </Card>
         </Grid>
@@ -33,9 +33,9 @@ function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) 
     }
     if (panel.panelType === PanelTypes.c5th) {
       return (
-        <Grid key={panel.id} item xs={12} sm={8}>
+        <Grid key={index} item xs={12} sm={8}>
           <Card>
-            <IconButton onClick={() => removePanel(panel.id)}>
+            <IconButton onClick={() => removePanel(index)}>
               <ClearIcon />
             </IconButton>
             <C5thPanel />
@@ -45,11 +45,11 @@ function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) 
     }
     if (panel.panelType === PanelTypes.chord) {
       return (
-        <Grid key={panel.id} item xs={6} sm={3} md={2}>
+        <Grid key={index} item xs={6} sm={3} md={2}>
           <Card>
             <Grid container>
               <Grid item xs={3} sm={6}>
-                <IconButton onClick={() => removePanel(panel.id)}>
+                <IconButton onClick={() => removePanel(index)}>
                   <ClearIcon />
                 </IconButton>
               </Grid>
@@ -57,7 +57,7 @@ function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) 
                 <RedirectToChordSearchButton panel={panel} />
               </Grid>
             </Grid>
-            <ChordPanel panel={panel} />
+            <ChordPanel panel={panel} index={index} />
           </Card>
         </Grid>
       );
@@ -67,7 +67,7 @@ function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) 
 
   return (
     <Grid container spacing={0.5}>
-      {panels.map((panel) => switchRenderPanel(panel))}
+      {panels.map((panel, i) => switchRenderPanel(panel, i))}
     </Grid>
   );
 }
@@ -75,7 +75,6 @@ function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) 
 BasePanels.propTypes = {
   panels: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
       panelType: PropTypes.number.isRequired,
       dChord: PropTypes.number, // need on panel type ==0
       key: PropTypes.number, // need on panel type ==0

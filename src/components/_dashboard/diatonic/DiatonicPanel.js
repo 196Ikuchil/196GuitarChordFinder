@@ -179,7 +179,7 @@ function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey, is
                     <TableRow key={row[1].chord + i}>
                       {row.map((c, j) => (
                         // eslint-disable-next-line react/no-this-in-sfc
-                        <StyledTableCell key={c.chord + j} align="center" onClick={()=> addNewChordPanel(c.noteNum, c.chordNum, panel.id)} role={ c.role } sx={{transform: 'scale(0.9)', margin:'0'}}>
+                        <StyledTableCell key={c.chord + j} align="center" onClick={()=> addNewChordPanel(c.noteNum, c.chordNum, j)} role={ c.role } sx={{transform: 'scale(0.9)', margin:'0'}}>
                           <div>{c.chord}</div>
                         </StyledTableCell>
                       ))}
@@ -210,7 +210,6 @@ function DiatonicPanel({ panel, onRemoveClick, onChangeDiatonic, onChangeKey, is
 
 DiatonicPanel.propTypes = {
   panel: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     dChord: PropTypes.number.isRequired,
     key: PropTypes.number.isRequired,
     sharp: PropTypes.bool
