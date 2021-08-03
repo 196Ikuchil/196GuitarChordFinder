@@ -34,7 +34,7 @@ export const addChordPanel = (key, chord, panels) => ({
 });
 // add after the specified index
 export const addChordPanelById = (key, chord, index) => ({
-  type: 'ADD_CHORD_PANEL',
+  type: 'INSERT_CHORD_PANEL',
   index: index + 1,
   panelType: PanelTypes.chord,
   chordPanelType: ChordPanelTypes.guitar,
@@ -98,6 +98,16 @@ export const panels = (state = [], action) => {
         }
       ];
     case 'ADD_CHORD_PANEL':
+      return [
+        ...state,
+        {
+          panelType: action.panelType,
+          chordPanelType: action.chordPanelType,
+          key: action.key,
+          chord: action.chord
+        }
+      ];
+    case 'INSERT_CHORD_PANEL':
       return [
         ...state.slice(0, action.index),
         {
