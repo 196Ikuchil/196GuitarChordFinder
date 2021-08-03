@@ -114,9 +114,9 @@ function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChange
             chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[2][0], chordnotes[2][1])
           ],
           [
-            chordInfo('', ''),
+            chordInfo('', '', '', ''),
             chordInfo(chordnames[6], DROLES[panel.dChord][1], chordnotes[6][0], chordnotes[6][1]),
-            chordInfo('', '')
+            chordInfo('', '', '', '')
           ]
         ]);
       case 1:        // minor
@@ -133,9 +133,9 @@ function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChange
             chordInfo(chordnames[4], DROLES[panel.dChord][1], chordnotes[4][0], chordnotes[4][1])
           ],
           [
-            chordInfo('', ''),
+            chordInfo('', '', '', ''),
             chordInfo(chordnames[1],  DROLES[panel.dChord][2], chordnotes[1][0], chordnotes[1][1]),
-            chordInfo('', '')
+            chordInfo('', '', '', '')
           ]
         ]);
       case 3:        // melo
@@ -151,9 +151,9 @@ function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChange
             chordInfo(chordnames[4], DROLES[panel.dChord][1], chordnotes[4][0], chordnotes[4][1])
           ],
           [
-            chordInfo('', ''),
+            chordInfo('', '', '', ''),
             chordInfo(chordnames[1],  DROLES[panel.dChord][2], chordnotes[1][0], chordnotes[1][1]),
-            chordInfo('', '')
+            chordInfo('', '', '', '')
           ]
         ]);
       default:
@@ -162,7 +162,9 @@ function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChange
   }
 
   function addNewChordPanel(key, chord, index) {
-    addChordPanelById(key, chord, index);
+    if(key !== '') {
+      addChordPanelById(key, chord, index);
+    }
   }
 
   //  onClick={}
