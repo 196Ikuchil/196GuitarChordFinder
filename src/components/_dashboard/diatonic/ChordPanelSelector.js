@@ -74,7 +74,7 @@ ChordPanelSelector.propTypes = {
     chord: PropTypes.number.isRequired,
     key: PropTypes.number.isRequired
   }).isRequired,
-  index: PropTypes.number.isRequired,
+  index: PropTypes.number,
   changeKey: PropTypes.func.isRequired,
   changeChord: PropTypes.func.isRequired,
   isSharp: PropTypes.bool

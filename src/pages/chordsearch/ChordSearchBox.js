@@ -27,21 +27,24 @@ function ChordSearchBox({
       <Grid item xs={12}>
         <Card>
           <Grid container>
-            <Grid item xs={4}>
-              <Box>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() =>
-                    addChordKeep(
-                      searchInfo.pickupkey,
-                      searchInfo.pickupchord,
-                      searchInfo.pickupchordNum
-                    )
-                  }
-                >
-                  {t('chordsearch.button.tokeep')}
-                </Button>
+            <Grid item xs={12}>
+              <Box display="flex">
+                <Box sx={{ pt: 1 }} flexGrow={2} />
+                <Box>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() =>
+                      addChordKeep(
+                        searchInfo.pickupkey,
+                        searchInfo.pickupchord,
+                        searchInfo.pickupchordNum
+                      )
+                    }
+                  >
+                    {t('chordsearch.button.tokeep')}
+                  </Button>
+                </Box>
               </Box>
             </Grid>
             <Grid item xs={8} display={{ xs: 'block', sm: 'none' }}>
