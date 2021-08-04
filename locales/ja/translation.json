@@ -43,6 +43,7 @@
   },
   "scrapbook": {
     "title": "スクラップブック[テスト版]",
+    "remove_all": "一括クリア",
     "button": {
       "add": "追加",
       "tochordsearch": "検索へ"
