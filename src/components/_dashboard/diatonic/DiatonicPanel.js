@@ -60,10 +60,19 @@ const StyledTableCell = styled(TableCell)(({ theme, role }) => ({
     justifyContent: 'center',
     width: theme.spacing(8),
     height: theme.spacing(8),
+    zIndex: 1,
     backgroundImage: `linear-gradient(135deg, ${alpha(roleCellColor(role, 'main', theme), 0.3)} 0%, ${alpha(
       roleCellColor(role, 'main', theme),
       0.6
-    )} 100%)`
+    )} 100%)`,
+    '&:hover': {
+      backgroundImage: `linear-gradient(135deg, ${alpha(roleCellColor(role, 'main', theme), 0.3)} 0%, ${alpha(
+        roleCellColor(role, 'main', theme),
+        0.8
+      )} 100%)`,
+      verflow: 'hidden',
+      borderRadius: '1vh'
+    }
   }));
 
 const RoleDescribeBox = styled(Box)(({theme, role}) => ({
