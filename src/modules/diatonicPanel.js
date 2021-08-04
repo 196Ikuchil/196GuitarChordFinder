@@ -9,6 +9,12 @@ export const ChordPanelTypes = {
   score: 1
 };
 
+const initState = {
+  panelType: PanelTypes.diatonic,
+  dChord: 0,
+  key: 0
+};
+
 // increment chord panel type 0 -> 1->2->0
 const getNextChordPanelType = (type) => (type + 1) % Object.keys(ChordPanelTypes).length;
 // ACTION
@@ -76,9 +82,13 @@ export const removePanel = (index) => ({
   index
 });
 
+export const removeAllPanel = () => ({
+  type: 'REMOVE_All_PANEL'
+});
+
 // action creator
 
-export const panels = (state = [], action) => {
+export const panels = (state = [initState], action) => {
   switch (action.type) {
     case 'ADD_DIATONIC_PANEL':
       return [
@@ -86,8 +96,7 @@ export const panels = (state = [], action) => {
         {
           panelType: action.panelType,
           dChord: action.dChord,
-          key: action.key,
-          sharp: action.sharp
+          key: action.key
         }
       ];
     case 'ADD_C5th_PANEL':
@@ -153,6 +162,8 @@ export const panels = (state = [], action) => {
       ];
     case 'REMOVE_PANEL':
       return [...state.slice(0, action.index), ...state.slice(action.index + 1)];
+    case 'REMOVE_All_PANEL':
+      return [];
     default:
       return state;
   }
@@ -170,5 +181,6 @@ export const mapDispatchToProps = (dispatch) => ({
   changeChordPanelKey: (id, key) => dispatch(changeChordPanelKey(id, key)),
   changeChordPanelChord: (id, chord) => dispatch(changeChordPanelChord(id, chord)),
   removePanel: (id) => dispatch(removePanel(id)),
+  removeAllPanel: () => dispatch(removeAllPanel()),
   addChordPanelById: (key, chord, id) => dispatch(addChordPanelById(key, chord, id))
 });

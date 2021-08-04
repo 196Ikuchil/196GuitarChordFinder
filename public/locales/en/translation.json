@@ -42,7 +42,8 @@
     }
   },
   "scrapbook": {
-    "title": "Scrapbook[WIP]",
+    "title": "SCRAPBOOK",
+    "remove_all": "Clear all",
     "button": {
       "add": "Add",
       "tochordsearch": "To finder"
