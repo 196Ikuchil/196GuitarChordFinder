@@ -6,7 +6,7 @@ import SharpToggleButton from '../../components/SharpToggle';
 
 function ChordSearch({ t }) {
   return (
-    <Page title="Dashboard | Diatonic">
+    <Page title="Dashboard | Chord finder">
       <Container maxWidth="xl">
         <Box display="flex" pb={3} bgcolor="background.paper">
           <Box sx={{ pt: 1 }} flexGrow={1}>

@@ -3,7 +3,7 @@ import { Box, Container, Typography } from '@material-ui/core';
 import { withTranslation } from 'react-i18next';
 // components
 import Page from '../../components/Page';
-import { AddBasePanelButton } from '../../components/_dashboard/diatonic';
+import { AddBasePanelButton, RemoveAllButton } from '../../components/_dashboard/diatonic';
 import BasePanels from './BasePanels';
 import SharpToggleButton from '../../components/SharpToggle';
 
@@ -21,8 +21,13 @@ function Diatonic({ t }) {
             <SharpToggleButton />
           </Box>
         </Box>
-        <Box sx={{ pb: 1 }}>
-          <AddBasePanelButton />
+        <Box display="flex" sx={{ pb: 1 }}>
+          <Box sx={{ pt: 1 }} flexGrow={1}>
+            <RemoveAllButton />
+          </Box>
+          <Box sx={{ pb: 1 }}>
+            <AddBasePanelButton />
+          </Box>
         </Box>
         <BasePanels />
       </Container>
