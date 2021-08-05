@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 // material
-import { Box, Grid, Typography } from '@material-ui/core';
+import React from 'react';
+import { Box, Grid } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { alpha, styled } from '@material-ui/core/styles';
@@ -11,10 +12,12 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import KeySelector from './KeySelector';
 import DiatonicPanelTypography from './DiatonicPanelTypography';
 
-import { GetDiatonicChordNames, GetDiatonicNotes } from '../../../utils/music';
+import { GetDiatonicChordNames, GetDiatonicNotes, GetDiatonicNumName } from '../../../utils/music';
 import { mapStateToProps as getIsSharp } from '../../../modules/Sharp';
 import { mapDispatchToProps } from '../../../modules/diatonicPanel';
 // eslint-disable-next-line import/named
@@ -113,8 +116,8 @@ const BorderBox = styled(Box)(({theme})=>({
   borderRadius: "10px"
 }))
 
-function chordInfo(chord, role, noteNum, chordNum) {
-  return { chord, role, noteNum, chordNum };
+function chordInfo(chord, role, noteNum, chordNum, dNumName) {
+  return { chord, role, noteNum, chordNum, dNumName };
 }
 
 const DROLES = [
@@ -128,7 +131,11 @@ const DROLES = [
 function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChangeKey, isSharp, addChordPanelById }) {
   const chordnames = GetDiatonicChordNames(panel.dChord, panel.key, isSharp);
   const chordnotes = GetDiatonicNotes(panel.dChord, panel.key)
+  const diatonicNumName = GetDiatonicNumName(panel.dChord)
   const { t } = useTranslation();
+
+  const [open, setOpen] = React.useState(false);
+
   function reordering() {
     // like [4,1,5,2,6,3,7]
     switch (panel.dChord) {
@@ -136,56 +143,56 @@ function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChange
         // major
         return ([
           [
-            chordInfo(chordnames[3], DROLES[panel.dChord][2], chordnotes[3][0], chordnotes[3][1]),
-            chordInfo(chordnames[0], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1]),
-            chordInfo(chordnames[4], DROLES[panel.dChord][1], chordnotes[4][0], chordnotes[4][1])
+            chordInfo(chordnames[3], DROLES[panel.dChord][2], chordnotes[3][0], chordnotes[3][1], diatonicNumName[3]),
+            chordInfo(chordnames[0], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1], diatonicNumName[0]),
+            chordInfo(chordnames[4], DROLES[panel.dChord][1], chordnotes[4][0], chordnotes[4][1], diatonicNumName[4])
           ],
           [
-            chordInfo(chordnames[1], DROLES[panel.dChord][2], chordnotes[1][0], chordnotes[1][1]),
-            chordInfo(chordnames[5], DROLES[panel.dChord][0], chordnotes[5][0], chordnotes[5][1]),
-            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[2][0], chordnotes[2][1])
+            chordInfo(chordnames[1], DROLES[panel.dChord][2], chordnotes[1][0], chordnotes[1][1], diatonicNumName[1]),
+            chordInfo(chordnames[5], DROLES[panel.dChord][0], chordnotes[5][0], chordnotes[5][1], diatonicNumName[5]),
+            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[2][0], chordnotes[2][1], diatonicNumName[2])
           ],
           [
-            chordInfo('', '', '', ''),
-            chordInfo(chordnames[6], DROLES[panel.dChord][1], chordnotes[6][0], chordnotes[6][1]),
-            chordInfo('', '', '', '')
+            chordInfo('', '', '', '', ''),
+            chordInfo(chordnames[6], DROLES[panel.dChord][1], chordnotes[6][0], chordnotes[6][1], diatonicNumName[6]),
+            chordInfo('', '', '', '', '')
           ]
         ]);
       case 1:        // minor
       case 2:        // harm
         return ([
           [
-            chordInfo(chordnames[5], DROLES[panel.dChord][2], chordnotes[5][0], chordnotes[5][1]),
-            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1]),
-            chordInfo(chordnames[6], DROLES[panel.dChord][1], chordnotes[6][0], chordnotes[6][1])
+            chordInfo(chordnames[5], DROLES[panel.dChord][2], chordnotes[5][0], chordnotes[5][1], diatonicNumName[5]),
+            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1], diatonicNumName[2]),
+            chordInfo(chordnames[6], DROLES[panel.dChord][1], chordnotes[6][0], chordnotes[6][1], diatonicNumName[6])
           ],
           [
-            chordInfo(chordnames[3], DROLES[panel.dChord][2], chordnotes[3][0], chordnotes[3][1]),
-            chordInfo(chordnames[0], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1]),
-            chordInfo(chordnames[4], DROLES[panel.dChord][1], chordnotes[4][0], chordnotes[4][1])
+            chordInfo(chordnames[3], DROLES[panel.dChord][2], chordnotes[3][0], chordnotes[3][1], diatonicNumName[3]),
+            chordInfo(chordnames[0], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1], diatonicNumName[0]),
+            chordInfo(chordnames[4], DROLES[panel.dChord][1], chordnotes[4][0], chordnotes[4][1], diatonicNumName[4])
           ],
           [
-            chordInfo('', '', '', ''),
-            chordInfo(chordnames[1],  DROLES[panel.dChord][2], chordnotes[1][0], chordnotes[1][1]),
-            chordInfo('', '', '', '')
+            chordInfo('', '', '', '', ''),
+            chordInfo(chordnames[1],  DROLES[panel.dChord][2], chordnotes[1][0], chordnotes[1][1], diatonicNumName[1]),
+            chordInfo('', '', '', '', '')
           ]
         ]);
       case 3:        // melo
         return ([
           [
-            chordInfo(chordnames[5], DROLES[panel.dChord][2], chordnotes[5][0], chordnotes[5][1]),
-            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1]),
-            chordInfo(chordnames[6], DROLES[panel.dChord][1], chordnotes[6][0], chordnotes[6][1])
+            chordInfo(chordnames[5], DROLES[panel.dChord][2], chordnotes[5][0], chordnotes[5][1], diatonicNumName[5]),
+            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1], diatonicNumName[2]),
+            chordInfo(chordnames[6], DROLES[panel.dChord][1], chordnotes[6][0], chordnotes[6][1], diatonicNumName[6])
           ],
           [
-            chordInfo(chordnames[3], DROLES[panel.dChord][1], chordnotes[3][0], chordnotes[3][1]),
-            chordInfo(chordnames[0], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1]),
-            chordInfo(chordnames[4], DROLES[panel.dChord][1], chordnotes[4][0], chordnotes[4][1])
+            chordInfo(chordnames[3], DROLES[panel.dChord][1], chordnotes[3][0], chordnotes[3][1], diatonicNumName[3]),
+            chordInfo(chordnames[0], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1], diatonicNumName[0]),
+            chordInfo(chordnames[4], DROLES[panel.dChord][1], chordnotes[4][0], chordnotes[4][1], diatonicNumName[4])
           ],
           [
-            chordInfo('', '', '', ''),
-            chordInfo(chordnames[1],  DROLES[panel.dChord][2], chordnotes[1][0], chordnotes[1][1]),
-            chordInfo('', '', '', '')
+            chordInfo('', '', '', '', ''),
+            chordInfo(chordnames[1],  DROLES[panel.dChord][2], chordnotes[1][0], chordnotes[1][1], diatonicNumName[1]),
+            chordInfo('', '', '', '', '')
           ]
         ]);
       default:
@@ -214,7 +221,7 @@ function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChange
                       {row.map((c, j) => (
                         // eslint-disable-next-line react/no-this-in-sfc
                         <StyledTableCell key={c.chord + j} align="center" onClick={()=> addNewChordPanel(c.noteNum, c.chordNum, index, getRoleColorName(c.role))} role={ c.role } sx={{transform: 'scale(0.9)', margin:'0'}}>
-                          <DiatonicPanelTypography chordname={c.chord} popovername="testtest" isOpen/>
+                          <DiatonicPanelTypography chordname={c.chord} popovername={c.dNumName} isOpen={open}/>
                         </StyledTableCell>
                       ))}
                     </TableRow>
@@ -225,8 +232,8 @@ function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChange
           </BorderBox>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Grid container>
-            <Grid item xs={12}>
+          <Grid container alignItems="center" justify="center">
+            <Grid item xs={8} sm={12}>
               <Box sx={{ p: 1, pt: {xs: 0, sm: "1em"} }}>
                 {DROLES[panel.dChord].map((d) => (
                   <Grid item xs={12} key={d}>
@@ -234,6 +241,18 @@ function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChange
                   </Grid>
                 ))}
               </Box>
+            </Grid>
+            <Grid item xs={4} sm={12} align="center" sx={{ p: 1, pt: {xs: 0, sm: "2em"} }}>
+              <ToggleButton
+                size="large"
+                value="check"
+                selected={open}
+                onChange={() => {
+                  setOpen(!open)
+                }}
+              >
+                <MusicNoteIcon />
+              </ToggleButton>
             </Grid>
           </Grid>
         </Grid>
