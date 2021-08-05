@@ -1,4 +1,4 @@
-import { NOTENAME, GetDiatonicNotes } from './notes';
+import { NOTENAME, GetDiatonicNotes, DIATONIC_NUMNAME } from './notes';
 import { CHORDNAME, CHORDNOTES } from './chords';
 
 // ex GetChordScale(0,4) => "Cm7"
@@ -16,6 +16,10 @@ export function GetChordNotes(root, chord) {
 export function GetDiatonicChordNames(diatonicnum, key, sharp) {
   const d = GetDiatonicNotes(diatonicnum, key);
   return d.map((x) => GetChordName(x[0], x[1], sharp));
+}
+
+export function GetDiatonicNumName(diatonicnum) {
+  return DIATONIC_NUMNAME[diatonicnum];
 }
 
 export { GetDiatonicNotes } from './notes';
