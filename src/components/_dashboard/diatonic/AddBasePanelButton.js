@@ -32,7 +32,7 @@ const AddBasePanelButton = ({ panels, dispatch }) => {
   };
 
   const onClickChord = () => {
-    dispatch(addChordPanel(0, 0, panels));
+    dispatch(addChordPanel(0, 0));
     handleClose();
   };
 

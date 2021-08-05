@@ -49,6 +49,28 @@ const roleCellColor = (role, attr, theme) => {
   }
 };
 
+const getRoleColorName = (role) => {
+  switch (role) {
+    case DROLES[0][0]: // tonic
+    case DROLES[1][0]: // tonic m
+    case DROLES[2][0]: // harmonic
+    case DROLES[3][0]: // melo
+      return "primary"
+    case DROLES[0][1]: // dominant
+    case DROLES[1][1]: // dominant m
+    case DROLES[2][1]: // harmonic
+    case DROLES[3][1]: // melo
+      return "error"
+    case DROLES[0][2]: // subdominant
+    case DROLES[1][2]: // subdominant m
+    case DROLES[2][2]: // harmonic
+    case DROLES[3][2]: // melo
+      return "success"
+    default:
+      return "grey"
+  }
+};
+
 const StyledTableCell = styled(TableCell)(({ theme, role }) => ({
     lineHeight: '0.5em',
     fontSize: '100%',
@@ -170,9 +192,9 @@ function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChange
     }
   }
 
-  function addNewChordPanel(key, chord, index) {
+  function addNewChordPanel(key, chord, index, color) {
     if(key !== '') {
-      addChordPanelById(key, chord, index);
+      addChordPanelById(key, chord, index, color);
     }
   }
 
@@ -190,7 +212,7 @@ function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChange
                     <TableRow key={row[1].chord + i}>
                       {row.map((c, j) => (
                         // eslint-disable-next-line react/no-this-in-sfc
-                        <StyledTableCell key={c.chord + j} align="center" onClick={()=> addNewChordPanel(c.noteNum, c.chordNum, index)} role={ c.role } sx={{transform: 'scale(0.9)', margin:'0'}}>
+                        <StyledTableCell key={c.chord + j} align="center" onClick={()=> addNewChordPanel(c.noteNum, c.chordNum, index, getRoleColorName(c.role))} role={ c.role } sx={{transform: 'scale(0.9)', margin:'0'}}>
                           <div>{c.chord}</div>
                         </StyledTableCell>
                       ))}

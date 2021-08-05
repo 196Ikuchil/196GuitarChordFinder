@@ -25,7 +25,7 @@ function RedirectToChordSearchButton({
     <div>
       <Button
         variant="outlined"
-        color="primary"
+        color={panel.color}
         onClick={() => handleClick()}
         component={Link}
         to="/chordsearch"
@@ -39,7 +39,8 @@ function RedirectToChordSearchButton({
 RedirectToChordSearchButton.propTypes = {
   panel: PropTypes.shape({
     key: PropTypes.number.isRequired,
-    chord: PropTypes.number.isRequired
+    chord: PropTypes.number.isRequired,
+    color: PropTypes.string.isRequired
   }),
   changeSearchKey: PropTypes.func.isRequired,
   changeSearchChord: PropTypes.func.isRequired,
