@@ -80,7 +80,8 @@ BasePanels.propTypes = {
       dChord: PropTypes.number, // need on panel type ==0
       key: PropTypes.number, // need on panel type ==0
       chordPanelType: PropTypes.number, // need on panel type == 2
-      chord: PropTypes.number // need on panel type == 2
+      chord: PropTypes.number, // need on panel type == 2
+      color: PropTypes.string
     }).isRequired
   ).isRequired,
   removePanel: PropTypes.func.isRequired,

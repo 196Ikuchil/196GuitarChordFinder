@@ -31,7 +31,7 @@ export const addC5thPanel = (panels) => ({
   panelType: PanelTypes.c5th
 });
 // add to tail
-export const addChordPanel = (key, chord, panels) => ({
+export const addChordPanel = (key, chord) => ({
   type: 'ADD_CHORD_PANEL',
   panelType: PanelTypes.chord,
   chordPanelType: ChordPanelTypes.guitar,
@@ -39,13 +39,14 @@ export const addChordPanel = (key, chord, panels) => ({
   chord
 });
 // add after the specified index
-export const addChordPanelById = (key, chord, index) => ({
+export const addChordPanelById = (key, chord, index, color) => ({
   type: 'INSERT_CHORD_PANEL',
   index: index + 1,
   panelType: PanelTypes.chord,
   chordPanelType: ChordPanelTypes.guitar,
   key,
-  chord
+  chord,
+  color
 });
 
 export const changeChordPanelType = (index) => ({
@@ -113,7 +114,8 @@ export const panels = (state = [initState], action) => {
           panelType: action.panelType,
           chordPanelType: action.chordPanelType,
           key: action.key,
-          chord: action.chord
+          chord: action.chord,
+          color: 'allBlack'
         }
       ];
     case 'INSERT_CHORD_PANEL':
@@ -123,7 +125,8 @@ export const panels = (state = [initState], action) => {
           panelType: action.panelType,
           chordPanelType: action.chordPanelType,
           key: action.key,
-          chord: action.chord
+          chord: action.chord,
+          color: action.color
         },
         ...state.slice(action.index)
       ];
@@ -182,5 +185,5 @@ export const mapDispatchToProps = (dispatch) => ({
   changeChordPanelChord: (id, chord) => dispatch(changeChordPanelChord(id, chord)),
   removePanel: (id) => dispatch(removePanel(id)),
   removeAllPanel: () => dispatch(removeAllPanel()),
-  addChordPanelById: (key, chord, id) => dispatch(addChordPanelById(key, chord, id))
+  addChordPanelById: (key, chord, id, color) => dispatch(addChordPanelById(key, chord, id, color))
 });
