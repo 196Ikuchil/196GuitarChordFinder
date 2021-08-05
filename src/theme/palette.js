@@ -35,6 +35,14 @@ const WHITE = {
   darker: '#ffffff',
   contrastText: '#fff'
 };
+const BLACK = {
+  lighter: '#000',
+  light: '#000',
+  main: '#000',
+  dark: '#000',
+  darker: '#000',
+  contrastText: '#000'
+};
 const SECONDARY = {
   lighter: '#C8FACD',
   light: '#5BE584',
@@ -100,6 +108,7 @@ const palette = {
   success: { ...SUCCESS },
   warning: { ...WARNING },
   error: { ...ERROR },
+  allBlack: { ...BLACK },
   allwhite: { ...WHITE },
   grey: GREY,
   gradients: GRADIENTS,
