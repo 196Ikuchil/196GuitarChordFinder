@@ -61,7 +61,7 @@ function TopPage({ t }) {
             <Typography variant="caption">{t('toppage.contactus.to')}</Typography>
             <br />
             <br />
-            <Button variant="secondary" component={Link} to={`${process.env.PUBLIC_URL}/policy`}>
+            <Button variant="secondary" component={Link} to="/policy">
               {t('toppage.policy')}
             </Button>
           </center>

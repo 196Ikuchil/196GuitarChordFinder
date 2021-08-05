@@ -19,10 +19,11 @@ const RootStyle = styled(Page)(({ theme }) => ({
 
 export default function Policy() {
   return (
-    <RootStyle title="404">
+    <RootStyle title="Policy">
       <Container>
         <MotionContainer initial="initial" open>
           <Box sx={{ maxWidth: 480, margin: 'auto', textAlign: 'center' }}>
+            <h1>Policy</h1>
             <h3>広告の配信について</h3>
             <div>
               当ページでは、
@@ -39,7 +40,7 @@ export default function Policy() {
               注記）クッキー（Cookie）とは：当ページや他サイトへのアクセスに関する情報で、氏名、住所、メールアドレス、電話番号は含まれていません。
             </div>
             <br />
-            <h3>About Ad serving</h3>
+            <h3>Ad serving</h3>
             <div>
               This page uses <a href="https://www.google.co.jp/adsense/start/">this</a> a
               third-party ad serving service. These ad-serving companies use cookies in order to
@@ -93,7 +94,7 @@ export default function Policy() {
             <h3>リンクについて</h3>
             <div>基本的にリンクフリーです。</div>
             <br />
-            <h3>About links</h3>
+            <h3>Links</h3>
             <div>Basically, links are free. </div>
             <br />
             <h2>免責事項</h2>
