@@ -14,14 +14,13 @@ import Policy from './pages/Policy';
 export default function Router() {
   return useRoutes([
     {
-      path: '/196GuitarChordFinder',
       element: <DashboardLayout />,
       children: [
         { path: '/', element: <TopPage /> },
         { path: 'scrapbook', element: <Diatonic /> },
         { path: 'chordsearch', element: <ChordSearch /> },
         { path: 'keep', element: <Keep /> },
-        { path: '*', element: <Navigate to="/196GuitarChordFinder/" /> },
+        { path: '*', element: <Navigate to="/" /> },
         { path: '/policy', element: <Policy /> }
       ]
     },
