@@ -30,7 +30,7 @@ const store = createStore(
 ReactDOM.render(
   <HelmetProvider>
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="/196GuitarChordFinder">
         <App />
       </BrowserRouter>
     </Provider>
