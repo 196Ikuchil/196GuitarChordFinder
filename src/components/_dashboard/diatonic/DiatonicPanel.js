@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 // material
-import { Box, Grid } from '@material-ui/core';
+import { Box, Grid, Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { alpha, styled } from '@material-ui/core/styles';
@@ -12,6 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import KeySelector from './KeySelector';
+import DiatonicPanelTypography from './DiatonicPanelTypography';
 
 import { GetDiatonicChordNames, GetDiatonicNotes } from '../../../utils/music';
 import { mapStateToProps as getIsSharp } from '../../../modules/Sharp';
@@ -213,7 +214,7 @@ function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChange
                       {row.map((c, j) => (
                         // eslint-disable-next-line react/no-this-in-sfc
                         <StyledTableCell key={c.chord + j} align="center" onClick={()=> addNewChordPanel(c.noteNum, c.chordNum, index, getRoleColorName(c.role))} role={ c.role } sx={{transform: 'scale(0.9)', margin:'0'}}>
-                          <div>{c.chord}</div>
+                          <DiatonicPanelTypography chordname={c.chord} popovername="testtest" isOpen/>
                         </StyledTableCell>
                       ))}
                     </TableRow>
