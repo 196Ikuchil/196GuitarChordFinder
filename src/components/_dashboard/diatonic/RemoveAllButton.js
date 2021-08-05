@@ -13,7 +13,7 @@ const RemoveAllButton = ({ removeAllPanel }) => {
   };
 
   return (
-    <Button variant="outlined" color="error" onClick={handleClick}>
+    <Button size="large" variant="outlined" color="error" onClick={handleClick}>
       {t('scrapbook.remove_all')}
     </Button>
   );

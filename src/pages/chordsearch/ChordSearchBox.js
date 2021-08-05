@@ -32,6 +32,7 @@ function ChordSearchBox({
                 <Box sx={{ pt: 1 }} flexGrow={2} />
                 <Box>
                   <Button
+                    size="large"
                     variant="contained"
                     color="primary"
                     onClick={() =>
