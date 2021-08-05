@@ -10,17 +10,17 @@ const getIcon = (name) => <Icon icon={name} width={22} height={22} />;
 const sidebarConfig = [
   {
     title: 'sidebar.chordsearch.title',
-    path: '/196GuitarChordFinder/chordsearch',
+    path: '/chordsearch',
     icon: getIcon(bxSearchAlt)
   },
   {
     title: 'sidebar.keep.title',
-    path: '/196GuitarChordFinder/keep',
+    path: '/keep',
     icon: getIcon(shoppingBagFill)
   },
   {
     title: 'sidebar.scrapbook.title',
-    path: '/196GuitarChordFinder/scrapbook',
+    path: '/scrapbook',
     icon: getIcon(musicBoxMultipleOutline)
   }
 ];

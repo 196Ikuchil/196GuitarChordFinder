@@ -1,7 +1,6 @@
 import { Navigate, useRoutes } from 'react-router-dom';
 // layouts
 import DashboardLayout from './layouts/dashboard';
-import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 //
 import TopPage from './pages/TopPage';
 import ChordSearch from './pages/chordsearch';
@@ -15,14 +14,13 @@ import Policy from './pages/Policy';
 export default function Router() {
   return useRoutes([
     {
-      path: '/196GuitarChordFinder',
       element: <DashboardLayout />,
       children: [
         { path: '/', element: <TopPage /> },
         { path: 'scrapbook', element: <Diatonic /> },
         { path: 'chordsearch', element: <ChordSearch /> },
         { path: 'keep', element: <Keep /> },
-        { path: '*', element: <Navigate to="/196GuitarChordFinder/" /> },
+        { path: '*', element: <Navigate to="/" /> },
         { path: '/policy', element: <Policy /> }
       ]
     },

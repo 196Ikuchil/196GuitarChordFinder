@@ -26,7 +26,7 @@ function TopPage({ t }) {
               img={`${process.env.PUBLIC_URL}/static/images/top/finder.png`}
               pagename={t('toppage.chordsearch.title')}
               description={t('toppage.chordsearch.description')}
-              path="/196GuitarChordFinder/chordsearch"
+              path="/chordsearch"
             />
           </center>
         </Box>
@@ -36,7 +36,7 @@ function TopPage({ t }) {
               img={`${process.env.PUBLIC_URL}/static/images/top/keep.png`}
               pagename={t('toppage.keep.title')}
               description={t('toppage.keep.description')}
-              path="/196GuitarChordFinder/keep"
+              path="/keep"
             />
           </center>
         </Box>
@@ -46,7 +46,7 @@ function TopPage({ t }) {
               img={`${process.env.PUBLIC_URL}/static/images/top/scrapbook.png`}
               pagename={t('toppage.scrapbook.title')}
               description={t('toppage.scrapbook.description')}
-              path="/196GuitarChordFinder/scrapbook"
+              path="/scrapbook"
             />
           </center>
         </Box>
@@ -61,7 +61,7 @@ function TopPage({ t }) {
             <Typography variant="caption">{t('toppage.contactus.to')}</Typography>
             <br />
             <br />
-            <Button variant="secondary" component={Link} to={`${process.env.PUBLIC_URL}/policy`}>
+            <Button variant="secondary" component={Link} to="/policy">
               {t('toppage.policy')}
             </Button>
           </center>

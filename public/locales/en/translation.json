@@ -22,7 +22,7 @@
       "description": "List the codes added to the keep in the code search."
     },
     "scrapbook": {
-      "title": "Scrapbook[WIP]",
+      "title": "SCRAPBOOK",
       "description": "Displays a table of fifths and diatonic chords. Check more basic chords."
     },
     "warning": "[Warning]Keep and other information will be reset when you reload the browser.",
