@@ -38,7 +38,7 @@ const AddBasePanelButton = ({ panels, dispatch }) => {
 
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={handleClick}>
+      <Button size="large" variant="contained" color="primary" onClick={handleClick}>
         {/* <AddIcon /> */}
         {t('scrapbook.button.add')}
       </Button>
