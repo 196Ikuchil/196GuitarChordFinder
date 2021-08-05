@@ -2,7 +2,7 @@
 import 'simplebar/src/simplebar.css';
 
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
@@ -30,9 +30,9 @@ const store = createStore(
 ReactDOM.render(
   <HelmetProvider>
     <Provider store={store}>
-      <BrowserRouter basename="/196GuitarChordFinder">
+      <HashRouter basename="/196GuitarChordFinder">
         <App />
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   </HelmetProvider>,
   document.getElementById('root')
