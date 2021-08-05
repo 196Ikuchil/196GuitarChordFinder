@@ -9,17 +9,45 @@ const useStyles = makeStyles((theme) => ({
     pointerEvents: 'none'
   },
   paper: {
-    padding: theme.spacing(1)
+    padding: theme.spacing(0.5)
   }
 }));
 
 const DiatonicPanelTypography = ({ chordname, popovername, isOpen }) => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const typoRef = React.useRef();
 
   return (
     <div>
-      <Typography>{chordname}</Typography>
+      <Typography
+        ref={typoRef}
+        // aria-owns={open ? 'mouse-over-popover' : undefined}
+        // aria-haspopup="true"
+        // onMouseEnter={handlePopoverOpen}
+        // onMouseLeave={handlePopoverClose}
+      >
+        {chordname}
+      </Typography>
+      <Popover
+        id="mouse-over-popover"
+        className={classes.popover}
+        classes={{
+          paper: classes.paper
+        }}
+        open={isOpen}
+        anchorEl={typoRef.current}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center'
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center'
+        }}
+        disableRestoreFocus
+      >
+        <Typography>{popovername}</Typography>
+      </Popover>
     </div>
   );
 };
