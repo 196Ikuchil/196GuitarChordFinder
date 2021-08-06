@@ -41,6 +41,9 @@
   },
   "chordsearch": {
     "title": "Finder",
+    "tips": {
+      "keepbutton": "Temporarily save the currently displayed code to Keep."
+    },
     "button": {
       "tokeep": "Add to keep"
     }
@@ -51,6 +54,9 @@
     "button": {
       "add": "Add",
       "tochordsearch": "Search in Finder"
+    },
+    "tips": {
+      "addbutton": "Insert panel first"
     },
     "select": {
       "diatonic": "diatonic chord chart",
