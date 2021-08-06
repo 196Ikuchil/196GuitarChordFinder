@@ -50,7 +50,7 @@
     "remove_all": "Clear all",
     "button": {
       "add": "Add",
-      "tochordsearch": "To finder"
+      "tochordsearch": "Search in Finder"
     },
     "select": {
       "diatonic": "diatonic chord chart",

@@ -49,12 +49,12 @@ function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) 
         <Grid key={index} item xs={6} sm={3} md={2}>
           <Card>
             <Grid container>
-              <Grid item xs={3} sm={6}>
+              <Grid item xs={3} sm={4}>
                 <IconButton onClick={() => removePanel(index)}>
                   <ClearIcon />
                 </IconButton>
               </Grid>
-              <Grid item xs={7} sm={6}>
+              <Grid item xs={8} sm={7}>
                 <RedirectToChordSearchButton panel={panel} />
               </Grid>
             </Grid>
