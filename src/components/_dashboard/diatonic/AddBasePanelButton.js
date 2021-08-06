@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { Menu, MenuItem, Button } from '@material-ui/core';
 import { connect } from 'react-redux';
+import { LightTooltip } from '../../LightTooltip';
 import {
   addDiatonicPanel,
   mapStateToProps,
@@ -38,10 +40,15 @@ const AddBasePanelButton = ({ panels, dispatch }) => {
 
   return (
     <div>
-      <Button size="large" variant="contained" color="primary" onClick={handleClick}>
-        {/* <AddIcon /> */}
-        {t('scrapbook.button.add')}
-      </Button>
+      <LightTooltip
+        open={panels.length < 2}
+        text={t('scrapbook.tips.addbutton')}
+        placement="left-start"
+      >
+        <Button size="large" variant="contained" color="primary" onClick={handleClick}>
+          {t('scrapbook.button.add')}
+        </Button>
+      </LightTooltip>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
@@ -55,6 +62,14 @@ const AddBasePanelButton = ({ panels, dispatch }) => {
       </Menu>
     </div>
   );
+};
+
+AddBasePanelButton.propTypes = {
+  panels: PropTypes.arrayOf(
+    PropTypes.shape({
+      panelType: PropTypes.number.isRequired
+    }).isRequired
+  ).isRequired
 };
 
 export default connect(mapStateToProps)(AddBasePanelButton);
