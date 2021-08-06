@@ -12,10 +12,12 @@ import { PianoScoreBox } from '../../components/music/pianoscore';
 import { PianoKeyboardBox } from '../../components/music/pianokeyboard';
 import { GuitarChordPanels } from '../../components/_dashboard/chordsearch';
 import { ChordLabel } from '../../components/ChordLabel';
+import { LightTooltip } from '../../components/LightTooltip';
 
 function ChordSearchBox({
   isSharp,
   searchInfo,
+  keep,
   changeSearchKey,
   changeSearchChord,
   changePickupChord,
@@ -31,20 +33,26 @@ function ChordSearchBox({
               <Box display="flex">
                 <Box sx={{ pt: 1 }} flexGrow={2} />
                 <Box>
-                  <Button
-                    size="large"
-                    variant="contained"
-                    color="primary"
-                    onClick={() =>
-                      addChordKeep(
-                        searchInfo.pickupkey,
-                        searchInfo.pickupchord,
-                        searchInfo.pickupchordNum
-                      )
-                    }
+                  <LightTooltip
+                    condition={keep.length < 1 ? 1 : 0}
+                    text={t('chordsearch.tips.keepbutton')}
+                    placement="left-start"
                   >
-                    {t('chordsearch.button.tokeep')}
-                  </Button>
+                    <Button
+                      size="large"
+                      variant="contained"
+                      color="primary"
+                      onClick={() =>
+                        addChordKeep(
+                          searchInfo.pickupkey,
+                          searchInfo.pickupchord,
+                          searchInfo.pickupchordNum
+                        )
+                      }
+                    >
+                      {t('chordsearch.button.tokeep')}
+                    </Button>
+                  </LightTooltip>
                 </Box>
               </Box>
             </Grid>
@@ -131,6 +139,7 @@ ChordSearchBox.propTypes = {
     pickupchord: PropTypes.number.isRequired,
     pickupchordNum: PropTypes.number.isRequired
   }).isRequired,
+  keep: PropTypes.array.isRequired,
   changeSearchKey: PropTypes.func.isRequired,
   changeSearchChord: PropTypes.func.isRequired,
   changePickupChord: PropTypes.func.isRequired,
@@ -142,6 +151,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(
-  (state) => ({ isSharp: state.isSharp.isSharp, searchInfo: state.searchInfo }),
+  (state) => ({
+    isSharp: state.isSharp.isSharp,
+    searchInfo: state.searchInfo,
+    keep: state.chordkeeps
+  }),
   mapDispatchToProps
 )(ChordSearchBox);

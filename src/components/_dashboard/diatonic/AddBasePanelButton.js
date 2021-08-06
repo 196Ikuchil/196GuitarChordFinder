@@ -41,7 +41,7 @@ const AddBasePanelButton = ({ panels, dispatch }) => {
   return (
     <div>
       <LightTooltip
-        open={panels.length < 2}
+        condition={panels.length < 2 ? 1 : 0}
         text={t('scrapbook.tips.addbutton')}
         placement="left-start"
       >
