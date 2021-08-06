@@ -33,10 +33,17 @@
     "policy": "privacy policy"
   },
   "keep": {
-    "title": "Keep"
+    "title": "Keep",
+    "empty": {
+      "button": "Jump to Finder",
+      "msg": "The code has not been registered in Keep yet. Please register it first."
+    }
   },
   "chordsearch": {
     "title": "Finder",
+    "tips": {
+      "keepbutton": "Temporarily save the currently displayed code to Keep."
+    },
     "button": {
       "tokeep": "Add to keep"
     }
@@ -46,7 +53,10 @@
     "remove_all": "Clear all",
     "button": {
       "add": "Add",
-      "tochordsearch": "To finder"
+      "tochordsearch": "Search in Finder"
+    },
+    "tips": {
+      "addbutton": "Insert panel first"
     },
     "select": {
       "diatonic": "diatonic chord chart",
