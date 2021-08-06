@@ -51,7 +51,9 @@ function TopPage({ t }) {
           </center>
         </Box>
         <Box>
-          <Typography variant="body2">{t('toppage.warning')}</Typography>
+          <center>
+            <Typography variant="body2">{t('toppage.warning')}</Typography>
+          </center>
         </Box>
         <br />
         <Box>
