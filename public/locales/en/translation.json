@@ -33,7 +33,11 @@
     "policy": "privacy policy"
   },
   "keep": {
-    "title": "Keep"
+    "title": "Keep",
+    "empty": {
+      "button": "Jump to Finder",
+      "msg": "The code has not been registered in Keep yet. Please register it first."
+    }
   },
   "chordsearch": {
     "title": "Finder",

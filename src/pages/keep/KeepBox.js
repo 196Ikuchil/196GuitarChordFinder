@@ -6,7 +6,7 @@ import { GetChordNotes } from '../../utils/music';
 import { GuitarChordBox } from '../../components/music/guitarchord';
 import { PianoScoreBox } from '../../components/music/pianoscore';
 import { PianoKeyboardBox } from '../../components/music/pianokeyboard';
-import { GuitarChordPanel } from '../../components/_dashboard/keep';
+import { GuitarChordPanel, EmptyMessagePanel } from '../../components/_dashboard/keep';
 import { mapStateToProps, mapDispatchToProps } from '../../modules/keep';
 import { ChordLabel } from '../../components/ChordLabel';
 
@@ -59,20 +59,30 @@ function KeepBox({ isSharp, chordkeeps, keepchordpickup, removeChordKeep, change
         </Card>
       </Grid>
       {/* searched items */}
-      <Grid item xs={12}>
-        <Grid container>
-          {chordkeeps.map((chord, i) => (
-            <Grid item key={i} xs={6} sm={3} md={2}>
-              <GuitarChordPanel
-                info={chord}
-                changePickupChord={(k, c, n) => changeKeepPickupChord(k, c, n)}
-                removeChordKeep={() => removeChordKeep(i)}
-                isSharp={isSharp}
-              />
-            </Grid>
-          ))}
+      {!chordkeeps.length ? (
+        <>
+          <Grid item xs={1} sm={2} />
+          <Grid item xs={12} sm={8}>
+            <EmptyMessagePanel />
+          </Grid>
+          <Grid item xs={1} sm={2} />
+        </>
+      ) : (
+        <Grid item xs={12}>
+          <Grid container>
+            {chordkeeps.map((chord, i) => (
+              <Grid item key={i} xs={6} sm={3} md={2}>
+                <GuitarChordPanel
+                  info={chord}
+                  changePickupChord={(k, c, n) => changeKeepPickupChord(k, c, n)}
+                  removeChordKeep={() => removeChordKeep(i)}
+                  isSharp={isSharp}
+                />
+              </Grid>
+            ))}
+          </Grid>
         </Grid>
-      </Grid>
+      )}
     </Grid>
   );
 }
