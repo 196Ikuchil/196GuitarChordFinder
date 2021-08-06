@@ -23,7 +23,8 @@ export default function Policy() {
       <Container>
         <MotionContainer initial="initial" open>
           <Box sx={{ maxWidth: 480, margin: 'auto', textAlign: 'center' }}>
-            <h1>Policy</h1>
+            <h1>Privacy Policy</h1>
+            <br />
             <h3>広告の配信について</h3>
             <div>
               当ページでは、
@@ -128,7 +129,10 @@ export default function Policy() {
               will always be disclosed on this page.
             </div>
             <br />
-            <div>運営者(author)：@196Ikuchil 連絡先(mailto)：196Ikuchil@gmail.com</div>
+            <div>
+              運営者(author)：@196Ikuchil <br />
+              連絡先(mailto)：196Ikuchil@gmail.com
+            </div>
             <br />
           </Box>
         </MotionContainer>

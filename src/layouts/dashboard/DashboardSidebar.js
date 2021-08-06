@@ -3,12 +3,13 @@ import { useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 // material
 import { experimentalStyled as styled } from '@material-ui/core/styles';
-import { Box, Link, Button, Drawer, Typography, Avatar, Stack } from '@material-ui/core';
+import { Box, Drawer } from '@material-ui/core';
 // components
 import Logo from '../../components/Logo';
 import Scrollbar from '../../components/Scrollbar';
 import NavSection from '../../components/NavSection';
 import { MHidden } from '../../components/@material-extend';
+import PolicyLinkBox from '../../components/PolicyLinkBox';
 //
 import sidebarConfig from './SidebarConfig';
 
@@ -58,8 +59,6 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
       </Box>
 
       <NavSection navConfig={sidebarConfig} />
-
-      <Box sx={{ flexGrow: 1 }} />
     </Scrollbar>
   );
 
@@ -74,6 +73,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           }}
         >
           {renderContent}
+          <PolicyLinkBox />
         </Drawer>
       </MHidden>
 
@@ -89,6 +89,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           }}
         >
           {renderContent}
+          <PolicyLinkBox />
         </Drawer>
       </MHidden>
     </RootStyle>
