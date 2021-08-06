@@ -20,15 +20,7 @@ const DiatonicPanelTypography = ({ chordname, popovername, isOpen }) => {
 
   return (
     <div>
-      <Typography
-        ref={typoRef}
-        // aria-owns={open ? 'mouse-over-popover' : undefined}
-        // aria-haspopup="true"
-        // onMouseEnter={handlePopoverOpen}
-        // onMouseLeave={handlePopoverClose}
-      >
-        {chordname}
-      </Typography>
+      <Typography ref={typoRef}>{chordname}</Typography>
       <Popover
         id="mouse-over-popover"
         className={classes.popover}

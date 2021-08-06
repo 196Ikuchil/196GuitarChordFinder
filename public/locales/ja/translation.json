@@ -41,6 +41,9 @@
   },
   "chordsearch": {
     "title": "コード検索",
+    "tips": {
+      "keepbutton": "表示されているコードをキープに一時保存"
+    },
     "button": {
       "tokeep": "キープへ追加"
     }
@@ -51,6 +54,9 @@
     "button": {
       "add": "追加",
       "tochordsearch": "検索へ"
+    },
+    "tips": {
+      "addbutton": "ここからパネルを追加"
     },
     "select": {
       "diatonic": "ダイアトニックコード表",

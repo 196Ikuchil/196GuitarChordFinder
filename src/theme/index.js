@@ -26,7 +26,10 @@ export default function ThemeConfig({ children }) {
       typography,
       breakpoints,
       shadows,
-      customShadows
+      customShadows,
+      zIndex: {
+        tooltip: 1000
+      }
     }),
     []
   );

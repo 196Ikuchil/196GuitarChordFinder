@@ -18,7 +18,7 @@ function PageCard({ img, pagename, description, path }) {
       <ButtonBase component={Link} to={path}>
         <CardContent>
           <CardMedia className="pageimage" component="img" image={img} title="title" />
-          <Typography gutterBottom variant="h4" component="h2">
+          <Typography gutterBottom variant="h3" component="h2">
             {pagename}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
