@@ -38,6 +38,10 @@ function aug() {
   return baseMajor.map((x, i) => (i === 7 ? 0 : i === 8 ? 1 : x));
 }
 
+function _6(base) {
+  return base.map((x, i) => (i === 9 ? 1 : x))
+}
+
 const CHORDS = [
   ['M',baseMajor],
   ['m', baseMinor],
@@ -52,7 +56,8 @@ const CHORDS = [
   ['augM7', M7(aug())], // augM7
   ['aug7', _7(aug())], // aug7
   ['dim', baseDim],
-  ['dim7', d7(baseDim)] // dim7
+  ['dim7', d7(baseDim)], // dim7
+  ['6', _6(baseMajor)] // 6
 ];
 
 export const CHORDS_LENGTH = CHORDS.length
