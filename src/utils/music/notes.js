@@ -85,7 +85,7 @@ export const DIATONIC_NUMNAME = [
   // major
   ['IM7', 'IIm7', 'IIIm7', 'IVM7', 'V7', 'VIm7', 'VIIm7(♭5)'],
   // minor
-  ['Im7', 'IIm7(♭5)', '♭IIM7', 'IVm7', 'Vm7', '♭VIM7', '♭VII7'],
+  ['Im7', 'IIm7(♭5)', '♭IIIM7', 'IVm7', 'Vm7', '♭VIM7', '♭VII7'],
   // harmo
   ['ImM7', 'IIm7(♭5)', '♭IIIaugM7', 'IVm7', 'V7', '♭VIM7', 'VIIdim7'],
   // melo
