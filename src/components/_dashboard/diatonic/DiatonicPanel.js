@@ -163,7 +163,7 @@ function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChange
         return ([
           [
             chordInfo(chordnames[5], DROLES[panel.dChord][2], chordnotes[5][0], chordnotes[5][1], diatonicNumName[5]),
-            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1], diatonicNumName[2]),
+            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[2][0], chordnotes[2][1], diatonicNumName[2]),
             chordInfo(chordnames[6], DROLES[panel.dChord][1], chordnotes[6][0], chordnotes[6][1], diatonicNumName[6])
           ],
           [
@@ -181,7 +181,7 @@ function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChange
         return ([
           [
             chordInfo(chordnames[5], DROLES[panel.dChord][2], chordnotes[5][0], chordnotes[5][1], diatonicNumName[5]),
-            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1], diatonicNumName[2]),
+            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[2][0], chordnotes[2][1], diatonicNumName[2]),
             chordInfo(chordnames[6], DROLES[panel.dChord][1], chordnotes[6][0], chordnotes[6][1], diatonicNumName[6])
           ],
           [
