@@ -3,7 +3,7 @@ import { CHORDNAME, CHORDNOTES } from './chords';
 
 // ex GetChordScale(0,4) => "Cm7"
 export function GetChordName(root, chord, sharp) {
-  return NOTENAME(root, sharp) + CHORDNAME[chord];
+  return NOTENAME(root, sharp) + CHORDNAME(chord);
 }
 
 // ex [0,0,1,0,0,0,1,0,0,1,0.......]

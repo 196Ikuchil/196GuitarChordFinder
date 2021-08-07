@@ -7,7 +7,7 @@ import { NOTENAME } from '../utils/music/notes';
 export const ChordLabel = ({ k, chord, isSharp, variant }) => (
   <Box>
     <center>
-      <Typography variant={variant}>{`${NOTENAME(k, isSharp)} ${CHORDNAME[chord]}`}</Typography>
+      <Typography variant={variant}>{`${NOTENAME(k, isSharp)} ${CHORDNAME(chord)}`}</Typography>
     </center>
   </Box>
 );

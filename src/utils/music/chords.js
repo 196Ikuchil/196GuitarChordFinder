@@ -38,41 +38,23 @@ function aug() {
   return baseMajor.map((x, i) => (i === 7 ? 0 : i === 8 ? 1 : x));
 }
 
-// eslint-disable-next-line prettier/prettier
-export const CHORDNAME = ['M', 'm', 'M7', '7', 'm7', '(-5)', 'm(-5)', 'm7(-5)',
-  'mM7', 'aug', 'augM7', 'aug7', 'dim', 'dim7'];
+const CHORDS = [
+  ['M',baseMajor],
+  ['m', baseMinor],
+  ['M7',M7(baseMajor)],
+  ['7', _7(baseMajor)], // 7
+  ['m7', _7(baseMinor)], // m7
+  ['(-5)', b5(baseMajor)], // (-5)
+  ['m(-5)',b5(baseMinor)], // m(-5)
+  ['m7(-5)',b5(_7(baseMinor))], // mM7
+  ['mM7', M7(baseMinor)],// mM7
+  ['aug', aug()],
+  ['augM7', M7(aug())], // augM7
+  ['aug7', _7(aug())], // aug7
+  ['dim', baseDim],
+  ['dim7', d7(baseDim)] // dim7
+];
 
-export const CHORDNOTES = (chord) => {
-  switch (chord) {
-    case 0:
-      return baseMajor;
-    case 1:
-      return baseMinor;
-    case 2:
-      return M7(baseMajor);
-    case 3:
-      return _7(baseMajor); // 7
-    case 4:
-      return _7(baseMinor); // m7
-    case 5:
-      return b5(baseMajor); // (-5)
-    case 6:
-      return b5(baseMinor); // m(-5)
-    case 7:
-      return b5(_7(baseMinor)); // m7(-5)
-    case 8:
-      return M7(baseMinor); // mM7
-    case 9:
-      return aug();
-    case 10:
-      return M7(aug()); // augM7
-    case 11:
-      return _7(aug()); // aug7
-    case 12:
-      return baseDim;
-    case 13:
-      return d7(baseDim); // dim7
-    default:
-      return -1;
-  }
-};
+export const CHORDS_LENGTH = CHORDS.length
+export const CHORDNAME = (n) => CHORDS[n][0]
+export const CHORDNOTES = (chord) => CHORDS[chord][1]
