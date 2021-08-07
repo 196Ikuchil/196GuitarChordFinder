@@ -1,17 +1,15 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, Popper } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import Popover from '@material-ui/core/Popover';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
-  popover: {
+  popper: {
     pointerEvents: 'none',
-    zIndex: 1000
-  },
-  paper: {
+    zIndex: 1000,
+    backgroundColor: theme.palette.grey[300],
     padding: theme.spacing(0.5),
-    backgroundColor: theme.palette.grey[400]
+    borderRadius: 10
   }
 }));
 
@@ -22,26 +20,22 @@ const DiatonicPanelTypography = ({ chordname, popovername, isOpen }) => {
   return (
     <div>
       <Typography ref={typoRef}>{chordname}</Typography>
-      <Popover
+      <Popper
         id="mouse-over-popover"
-        className={classes.popover}
-        classes={{
-          paper: classes.paper
-        }}
+        className={classes.popper}
         open={isOpen}
         anchorEl={typoRef.current}
-        anchorOrigin={{
+        anchororigin={{
           vertical: 'bottom',
           horizontal: 'center'
         }}
-        transformOrigin={{
+        transformorigin={{
           vertical: 'top',
           horizontal: 'center'
         }}
-        disableRestoreFocus
       >
         <Typography>{popovername}</Typography>
-      </Popover>
+      </Popper>
     </div>
   );
 };
