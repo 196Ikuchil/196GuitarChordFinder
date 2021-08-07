@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/196GuitarChordFinder/static/css/main.eee69b7c.chunk.css",
-    "main.js": "/196GuitarChordFinder/static/js/main.eac1c716.chunk.js",
-    "main.js.map": "/196GuitarChordFinder/static/js/main.eac1c716.chunk.js.map",
+    "main.js": "/196GuitarChordFinder/static/js/main.909fa1e1.chunk.js",
+    "main.js.map": "/196GuitarChordFinder/static/js/main.909fa1e1.chunk.js.map",
     "runtime-main.js": "/196GuitarChordFinder/static/js/runtime-main.6bab68b4.js",
     "runtime-main.js.map": "/196GuitarChordFinder/static/js/runtime-main.6bab68b4.js.map",
     "static/css/2.795e0b0f.chunk.css": "/196GuitarChordFinder/static/css/2.795e0b0f.chunk.css",
@@ -22,6 +22,6 @@
     "static/css/2.795e0b0f.chunk.css",
     "static/js/2.bf312885.chunk.js",
     "static/css/main.eee69b7c.chunk.css",
-    "static/js/main.eac1c716.chunk.js"
+    "static/js/main.909fa1e1.chunk.js"
   ]
 }
