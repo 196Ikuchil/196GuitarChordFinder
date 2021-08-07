@@ -2,7 +2,6 @@ import { Grid, Card, Button, IconButton, Box } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import ClearIcon from '@material-ui/icons/Clear';
 import { GuitarChordBox } from '../../music/guitarchord';
-import { ChordData } from '../../music/guitarchord/ChordData';
 import { ChordLabel } from '../../ChordLabel';
 
 export function GuitarChordPanel({ info, changePickupChord, removeChordKeep, isSharp }) {

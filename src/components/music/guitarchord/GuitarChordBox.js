@@ -1,7 +1,7 @@
 import { Box } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { ChordBox } from '../../vexchords';
-import { ChordData } from './ChordData';
+import { getSelectedChordData } from './ChordData';
 
 // F#m
 const chord = {
@@ -9,7 +9,7 @@ const chord = {
 };
 
 function getSelectedChord(key, chord, chordNum) {
-  return { chord: ChordData[key][chord][chordNum].slice() };
+  return { chord: getSelectedChordData(key, chord, chordNum).slice() };
 }
 const C = {
   chord: [

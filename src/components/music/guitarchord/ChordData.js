@@ -1,7 +1,10 @@
 /* eslint-disable prettier/prettier */
 const x = 'x';
 
-export const ChordData = [
+export const getChordsData = (key, chord) => ChordData[key][chord]
+export const getSelectedChordData = (key, chord, num) => ChordData[key][chord][num]
+
+const ChordData = [
   // C
   [
     // M

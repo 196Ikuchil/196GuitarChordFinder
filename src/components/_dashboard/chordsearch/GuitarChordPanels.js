@@ -1,11 +1,11 @@
 import { Grid, Card, Button, Box } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { ChordBox } from '../../vexchords';
-import { ChordData } from '../../music/guitarchord/ChordData';
+import { getChordsData } from '../../music/guitarchord/ChordData';
 
 export function GuitarChordPanels({ info, changePickupChord }) {
   function getChords(key, chord) {
-    return ChordData[info.key][info.chord];
+    return getChordsData(key, chord);
   }
 
   return (
