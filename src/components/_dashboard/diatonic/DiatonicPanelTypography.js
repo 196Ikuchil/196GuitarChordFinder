@@ -6,7 +6,8 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
   popover: {
-    pointerEvents: 'none'
+    pointerEvents: 'none',
+    zIndex: 1000
   },
   paper: {
     padding: theme.spacing(0.5),
