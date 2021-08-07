@@ -57,7 +57,8 @@ const CHORDS = [
   ['aug7', _7(aug())], // aug7
   ['dim', baseDim],
   ['dim7', d7(baseDim)], // dim7
-  ['6', _6(baseMajor)] // 6
+  ['6', _6(baseMajor)], // 6
+  ['m6', _6(baseMinor)] // m6
 ];
 
 export const CHORDS_LENGTH = CHORDS.length
