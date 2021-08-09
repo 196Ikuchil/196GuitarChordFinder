@@ -92,6 +92,18 @@ export default function Policy() {
               <a href="https://marketingplatform.google.com/about/analytics/terms/jp/">here</a>
             </div>
             <br />
+            <h3>Amazonアソシエイト</h3>
+            <div>
+              当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。
+            </div>
+            <br />
+            <h3>Amazon associate</h3>
+            <div>
+              This site is a participant in the Amazon Associates Program, an affiliate program
+              designed to provide a means for sites to earn referral fees by advertising and linking
+              to Amazon.co.jp.
+            </div>
+            <br />
             <h3>リンクについて</h3>
             <div>基本的にリンクフリーです。</div>
             <br />
