@@ -12,6 +12,7 @@ import { MHidden } from '../../components/@material-extend';
 import PolicyLinkBox from '../../components/PolicyLinkBox';
 //
 import sidebarConfig from './SidebarConfig';
+import AmazonBlockAd from '../../components/ads/AmazonBlockAd';
 
 // ----------------------------------------------------------------------
 
@@ -73,6 +74,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           }}
         >
           {renderContent}
+          <AmazonBlockAd />
           <PolicyLinkBox />
         </Drawer>
       </MHidden>
@@ -89,6 +91,7 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           }}
         >
           {renderContent}
+          <AmazonBlockAd />
           <PolicyLinkBox />
         </Drawer>
       </MHidden>
