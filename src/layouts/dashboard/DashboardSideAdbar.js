@@ -21,7 +21,8 @@ export const DashboardSideAdbar = () => (
         PaperProps={{
           sx: {
             width: DRAWER_RIGHT_WIDTH,
-            bgcolor: 'background.default'
+            bgcolor: 'background.default',
+            paddingTop: { xs: 8, lg: 12 }
           }
         }}
       >

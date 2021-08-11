@@ -11,7 +11,7 @@ import LanguagePopover from './LanguagePopover';
 
 // ----------------------------------------------------------------------
 
-const DRAWER_WIDTH = 280;
+const DRAWER_WIDTH = 250; // also hardcoded on DashboardSidebar
 const APPBAR_MOBILE = 64;
 const APPBAR_DESKTOP = 92;
 
