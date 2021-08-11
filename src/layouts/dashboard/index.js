@@ -5,6 +5,7 @@ import { experimentalStyled as styled } from '@material-ui/core/styles';
 //
 import DashboardNavbar from './DashboardNavbar';
 import DashboardSidebar from './DashboardSidebar';
+import { DashboardSideAdbar, DRAWER_RIGHT_WIDTH } from './DashboardSideAdbar';
 
 // ----------------------------------------------------------------------
 
@@ -27,6 +28,9 @@ const MainStyle = styled('div')(({ theme }) => ({
     paddingTop: APP_BAR_DESKTOP + 24,
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2)
+  },
+  [theme.breakpoints.up('md')]: {
+    paddingRight: DRAWER_RIGHT_WIDTH
   }
 }));
 
@@ -39,6 +43,7 @@ export default function DashboardLayout() {
     <RootStyle>
       <DashboardNavbar onOpenSidebar={() => setOpen(true)} />
       <DashboardSidebar isOpenSidebar={open} onCloseSidebar={() => setOpen(false)} />
+      <DashboardSideAdbar />
       <MainStyle>
         <Outlet />
       </MainStyle>
