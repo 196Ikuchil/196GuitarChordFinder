@@ -1,5 +1,5 @@
 import { experimentalStyled as styled } from '@material-ui/core/styles';
-import { Box, Drawer } from '@material-ui/core';
+import { Drawer } from '@material-ui/core';
 import { MHidden } from '../../components/@material-extend';
 
 export const DRAWER_RIGHT_WIDTH = 160;
@@ -26,7 +26,17 @@ export const DashboardSideAdbar = () => (
           }
         }}
       >
-        test ad
+        <iframe
+          title="amazon-asso-rightbar"
+          src="https://rcm-fe.amazon-adsystem.com/e/cm?o=9&p=14&l=ur1&category=music&f=ifr&linkID=fee99c70766f50028fd3be746f1476d5&t=196guitarchord-22&tracking_id=196guitarchord-22"
+          width="160"
+          height="600"
+          scrolling="no"
+          border="0"
+          marginWidth="0"
+          style={{ border: 'none' }}
+          frameBorder="0"
+        />
       </Drawer>
     </MHidden>
   </RootStyle>
