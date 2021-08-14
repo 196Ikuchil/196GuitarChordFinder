@@ -42,6 +42,10 @@ function _6(base) {
   return base.map((x, i) => (i === 9 ? 1 : x))
 }
 
+function b9(base) {
+  return base.map((x, i) => ( i === 13 ? 1 : x))
+}
+
 function _9(base) {
   return base.map((x, i) => ( i === 14 ? 1 : x))
 }
@@ -65,7 +69,8 @@ const CHORDS = [
   ['m6', _6(baseMinor)], // m6
   ['M79',_9(M7(baseMajor))], // M7 9
   ['69', _9(_6(baseMajor))], // 69
-  ['m69',_9(_6(baseMinor))] // m69
+  ['m69',_9(_6(baseMinor))], // m69
+  ['7♭9',b9(_7(baseMajor))] // 7b9
 ];
 
 export const CHORDS_LENGTH = CHORDS.length
