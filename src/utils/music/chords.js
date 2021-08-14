@@ -64,7 +64,8 @@ const CHORDS = [
   ['6', _6(baseMajor)], // 6
   ['m6', _6(baseMinor)], // m6
   ['M79',_9(M7(baseMajor))], // M7 9
-  ['69', _9(_6(baseMajor))] // 69
+  ['69', _9(_6(baseMajor))], // 69
+  ['m69',_9(_6(baseMinor))] // m69
 ];
 
 export const CHORDS_LENGTH = CHORDS.length
