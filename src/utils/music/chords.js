@@ -70,7 +70,8 @@ const CHORDS = [
   ['M79',_9(M7(baseMajor))], // M7 9
   ['69', _9(_6(baseMajor))], // 69
   ['m69',_9(_6(baseMinor))], // m69
-  ['7♭9',b9(_7(baseMajor))] // 7b9
+  ['7♭9',b9(_7(baseMajor))], // 7b9
+  ['79',_9(_7(baseMajor))] // 79
 ];
 
 export const CHORDS_LENGTH = CHORDS.length
