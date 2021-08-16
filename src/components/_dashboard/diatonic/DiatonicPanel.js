@@ -159,6 +159,23 @@ function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChange
           ]
         ]);
       case 1:        // minor
+        return ([
+          [
+            chordInfo(chordnames[5], DROLES[panel.dChord][2], chordnotes[5][0], chordnotes[5][1], diatonicNumName[5]),
+            chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[2][0], chordnotes[2][1], diatonicNumName[2]),
+            chordInfo(chordnames[6], DROLES[panel.dChord][2], chordnotes[6][0], chordnotes[6][1], diatonicNumName[6])
+          ],
+          [
+            chordInfo(chordnames[3], DROLES[panel.dChord][2], chordnotes[3][0], chordnotes[3][1], diatonicNumName[3]),
+            chordInfo(chordnames[0], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1], diatonicNumName[0]),
+            chordInfo(chordnames[4], DROLES[panel.dChord][1], chordnotes[4][0], chordnotes[4][1], diatonicNumName[4])
+          ],
+          [
+            chordInfo('', '', '', '', ''),
+            chordInfo(chordnames[1],  DROLES[panel.dChord][2], chordnotes[1][0], chordnotes[1][1], diatonicNumName[1]),
+            chordInfo('', '', '', '', '')
+          ]
+        ]);
       case 2:        // harm
         return ([
           [
@@ -180,12 +197,12 @@ function DiatonicPanel({ panel, index, onRemoveClick, onChangeDiatonic, onChange
       case 3:        // melo
         return ([
           [
-            chordInfo(chordnames[5], DROLES[panel.dChord][2], chordnotes[5][0], chordnotes[5][1], diatonicNumName[5]),
+            chordInfo(chordnames[5], DROLES[panel.dChord][0], chordnotes[5][0], chordnotes[5][1], diatonicNumName[5]),
             chordInfo(chordnames[2], DROLES[panel.dChord][0], chordnotes[2][0], chordnotes[2][1], diatonicNumName[2]),
             chordInfo(chordnames[6], DROLES[panel.dChord][1], chordnotes[6][0], chordnotes[6][1], diatonicNumName[6])
           ],
           [
-            chordInfo(chordnames[3], DROLES[panel.dChord][1], chordnotes[3][0], chordnotes[3][1], diatonicNumName[3]),
+            chordInfo(chordnames[3], DROLES[panel.dChord][2], chordnotes[3][0], chordnotes[3][1], diatonicNumName[3]),
             chordInfo(chordnames[0], DROLES[panel.dChord][0], chordnotes[0][0], chordnotes[0][1], diatonicNumName[0]),
             chordInfo(chordnames[4], DROLES[panel.dChord][1], chordnotes[4][0], chordnotes[4][1], diatonicNumName[4])
           ],
