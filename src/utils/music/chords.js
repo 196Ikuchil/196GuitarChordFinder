@@ -91,7 +91,8 @@ const CHORDS = [
   ['7#9',s9(_7(baseMajor))], // 7#9
   ['7#11',s11(_7(baseMajor))], // 7#11
   ['7♭13', b13(_7(baseMajor))], // 7b13
-  ['7 13', _13(_7(baseMajor))] // 7 13
+  ['7 13', _13(_7(baseMajor))], // 7 13
+  ['7 ♭9 13', _13(b9(_7(baseMajor)))] // 7 b9 13
 ];
 
 export const CHORDS_LENGTH = CHORDS.length
