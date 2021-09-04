@@ -110,7 +110,8 @@ const CHORDS = [
   ['7 9 13', _13(_9(_7(baseMajor)))], // 7 9 13
   ['m7 9', _9(_7(baseMinor))], // m7 9
   ['m7 9 11', _11(_9(_7(baseMinor)))], // m7 9 11
-  ['sus4',sus4(baseMajor)] // sus4
+  ['sus4',sus4(baseMajor)], // sus4
+  ['7sus4',_7(sus4(baseMajor))] // 7sus4
 ];
 
 export const CHORDS_LENGTH = CHORDS.length
