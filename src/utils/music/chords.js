@@ -106,7 +106,7 @@ const CHORDS = [
   chordInfo('6(9)', _9(_6(baseMajor)), chordsData.g69), // 69
   chordInfo('m69',_9(_6(baseMinor)), chordsData.gm69), // m69
   chordInfo('7♭9',b9(_7(baseMajor)), chordsData.g7b9), // 7b9
-  chordInfo('79',_9(_7(baseMajor)), chordsData.g79), // 79
+  chordInfo('7(9)',_9(_7(baseMajor)), chordsData.g79), // 79
   chordInfo('7#9',s9(_7(baseMajor)), chordsData.g7s9), // 7#9
   chordInfo('7#11',s11(_7(baseMajor)), chordsData.g7s11), // 7#11
   chordInfo('7♭13', b13(_7(baseMajor)), chordsData.g7b13), // 7b13
