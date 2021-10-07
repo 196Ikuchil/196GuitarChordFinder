@@ -93,7 +93,7 @@ const CHORDS = [
   chordInfo('m7', _7(baseMinor), chordsData.gm7), // m7
   chordInfo('(-5)', b5(baseMajor), chordsData.gb5), // (-5)
   chordInfo('m(-5)',b5(baseMinor), chordsData.gmb5), // m(-5)
-  chordInfo('m7(-5)',b5(_7(baseMinor)), chordsData.gm7b5), // mM7
+  chordInfo('m7(-5)',b5(_7(baseMinor)), chordsData.gm7b5), // mM7(-5)
   chordInfo('mM7', M7(baseMinor), chordsData.gmM7),// mM7
   chordInfo('aug', aug(), chordsData.gaug),
   chordInfo('augM7', M7(aug()), chordsData.gaugM7), // augM7
@@ -122,7 +122,8 @@ const CHORDS = [
   chordInfo('sus4(9)',_9(sus4(baseMajor)), chordsData.gsus49), // gsus49
   chordInfo('aug(9)',_9(aug(baseMajor)), chordsData.gaug9), // aug(9)
   chordInfo('7sus4(9)',_9(_7(sus4(baseMajor))),chordsData.g7sus49), // 7sus49
-  chordInfo('7aug(9)',_9(_7(aug())), chordsData.g7aug9) // 7aug9
+  chordInfo('7aug(9)',_9(_7(aug())), chordsData.g7aug9), // 7aug9
+  chordInfo('mM79', _9(M7(baseMinor)), chordsData.gmM79),// mM7
 ];
 
 export const CHORDS_LENGTH = CHORDS.length
