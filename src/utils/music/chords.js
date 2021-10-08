@@ -125,6 +125,9 @@ const CHORDS = [
   chordInfo('7aug(9)',_9(_7(aug())), chordsData.g7aug9), // 7aug9
   chordInfo('mM79', _9(M7(baseMinor)), chordsData.gmM79),// mM79
   chordInfo('m7 9(-5)', _9(_7(b5(baseMinor))), chordsData.gm79b5), // m79(-5)
+  chordInfo('add11', _11(baseMajor), chordsData.gadd11), // add11
+  chordInfo('madd11', _11(baseMinor), chordsData.gmadd11), // madd11
+  chordInfo('m7(11)[m11]',_11(_7(baseMinor)), chordsData.gm711), // m7 11
 ];
 
 export const CHORDS_LENGTH = CHORDS.length
