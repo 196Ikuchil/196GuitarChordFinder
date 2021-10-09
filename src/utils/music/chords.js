@@ -136,6 +136,9 @@ const CHORDS = [
   chordInfo('dim11', _11(d7(baseDim)), chordsData.gdim11), // dim11
   chordInfo('dimM7', M7(baseDim), chordsData.gdimM7), // dimM7
   chordInfo('dim7(♭13)', b13(d7(baseDim)), chordsData.gdim7b13), // dim7b13
+  chordInfo('add9(11)', _11(_9(baseMajor)), chordsData.gadd911), // add9 11
+  chordInfo('add9(#11)', s11(_9(baseMajor)), chordsData.gadd9s11), // add9 #11
+  chordInfo('M7(9,#11)',s11(_9(M7(baseMajor))), chordsData.gM79s11), // M7 9 #11
 ];
 
 export const CHORDS_LENGTH = CHORDS.length
