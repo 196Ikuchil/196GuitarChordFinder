@@ -8,7 +8,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 import { NOTESLENGTH, NOTENAME } from '../../../utils/music/notes';
-import { CHORDNAME } from '../../../utils/music/chords';
+import { CHORDNAME, CHORDS_LENGTH } from '../../../utils/music/chords';
 
 const StyleFormControl = styled(FormControl)(({ theme }) => ({
   margin: theme.spacing(1),
@@ -25,10 +25,10 @@ export function ChordPanelSelector({ panel, index, changeKey, changeChord, isSha
   };
 
   const dComp = [];
-  for (let i = 0; i < Object.keys(CHORDNAME).length; i += 1) {
+  for (let i = 0; i < CHORDS_LENGTH; i += 1) {
     dComp.push(
       <MenuItem key={i} value={i}>
-        {CHORDNAME[i]}
+        {CHORDNAME(i)}
       </MenuItem>
     );
   }

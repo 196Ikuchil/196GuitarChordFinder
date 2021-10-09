@@ -7,6 +7,11 @@
 // const m7 = [0, 3, 7, 10];
 // const b5 = [0, 4, 6];
 // const mb5 = [0, 3, 6, 10];
+import * as chordsData from './ChordData';
+
+function chordInfo(chordname, chordnotes, gchords) {
+  return { chordname, chordnotes, gchords };
+}
 
 const baseMajor = [1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 const baseMinor = [1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -38,41 +43,115 @@ function aug() {
   return baseMajor.map((x, i) => (i === 7 ? 0 : i === 8 ? 1 : x));
 }
 
-// eslint-disable-next-line prettier/prettier
-export const CHORDNAME = ['M', 'm', 'M7', '7', 'm7', '(-5)', 'm(-5)', 'm7(-5)',
-  'mM7', 'aug', 'augM7', 'aug7', 'dim', 'dim7'];
+function _6(base) {
+  return base.map((x, i) => (i === 9 ? 1 : x))
+}
 
-export const CHORDNOTES = (chord) => {
-  switch (chord) {
-    case 0:
-      return baseMajor;
-    case 1:
-      return baseMinor;
-    case 2:
-      return M7(baseMajor);
-    case 3:
-      return _7(baseMajor); // 7
-    case 4:
-      return _7(baseMinor); // m7
-    case 5:
-      return b5(baseMajor); // (-5)
-    case 6:
-      return b5(baseMinor); // m(-5)
-    case 7:
-      return b5(_7(baseMinor)); // m7(-5)
-    case 8:
-      return M7(baseMinor); // mM7
-    case 9:
-      return aug();
-    case 10:
-      return M7(aug()); // augM7
-    case 11:
-      return _7(aug()); // aug7
-    case 12:
-      return baseDim;
-    case 13:
-      return d7(baseDim); // dim7
-    default:
-      return -1;
-  }
-};
+function b9(base) {
+  return base.map((x, i) => ( i === 13 ? 1 : x))
+}
+
+function _9(base) {
+  return base.map((x, i) => ( i === 14 ? 1 : x))
+}
+
+function s9(base) {
+  return base.map((x, i) => ( i === 15 ? 1 : x))
+}
+
+function _11(base) {
+  return base.map((x, i) => ( i === 17 ? 1 : x))
+}
+
+function s11(base) {
+  return base.map((x, i) => ( i === 18 ? 1 : x))
+}
+
+function b13(base) {
+  return base.map((x, i) => ( i === 20 ? 1 : x))
+}
+
+function _13(base) {
+  return base.map((x, i) => ( i === 21 ? 1 : x))
+}
+
+function sus4(base) {
+  return base.map((x, i) => {
+    if ( i === 3 || i === 4)
+      return 0;
+    if ( i === 5)
+      return 1;
+    return x;
+  })
+}
+
+const CHORDS = [
+  chordInfo('M',baseMajor, chordsData.gM),
+  chordInfo('m', baseMinor, chordsData.gm),
+  chordInfo('M7',M7(baseMajor), chordsData.gM7),
+  chordInfo('7', _7(baseMajor), chordsData.g7), // 7
+  chordInfo('m7', _7(baseMinor), chordsData.gm7), // m7
+  chordInfo('(-5)', b5(baseMajor), chordsData.gb5), // (-5)
+  chordInfo('m(-5)',b5(baseMinor), chordsData.gmb5), // m(-5)
+  chordInfo('m7(-5)',b5(_7(baseMinor)), chordsData.gm7b5), // mM7(-5)
+  chordInfo('mM7', M7(baseMinor), chordsData.gmM7),// mM7
+  chordInfo('aug', aug(), chordsData.gaug),
+  chordInfo('augM7', M7(aug()), chordsData.gaugM7), // augM7
+  chordInfo('aug7', _7(aug()), chordsData.gaug7), // aug7
+  chordInfo('dim', baseDim, chordsData.gdim),
+  chordInfo('dim7', d7(baseDim), chordsData.gdim7), // dim7
+  chordInfo('6', _6(baseMajor), chordsData.g6), // 6
+  chordInfo('m6', _6(baseMinor), chordsData.gm6), // m6
+  chordInfo('M7(9)',_9(M7(baseMajor)), chordsData.gM79), // M7 9
+  chordInfo('6(9)', _9(_6(baseMajor)), chordsData.g69), // 69
+  chordInfo('m69',_9(_6(baseMinor)), chordsData.gm69), // m69
+  chordInfo('7♭9',b9(_7(baseMajor)), chordsData.g7b9), // 7b9
+  chordInfo('7(9)',_9(_7(baseMajor)), chordsData.g79), // 79
+  chordInfo('7#9',s9(_7(baseMajor)), chordsData.g7s9), // 7#9
+  chordInfo('7#11',s11(_7(baseMajor)), chordsData.g7s11), // 7#11
+  chordInfo('7♭13', b13(_7(baseMajor)), chordsData.g7b13), // 7b13
+  chordInfo('7 13', _13(_7(baseMajor)), chordsData.g713), // 7 13
+  chordInfo('7 ♭9 13', _13(b9(_7(baseMajor))), chordsData.g7b913), // 7 b9 13
+  chordInfo('7 9 13', _13(_9(_7(baseMajor))), chordsData.g7913), // 7 9 13
+  chordInfo('m7 9', _9(_7(baseMinor)), chordsData.gm79), // m7 9
+  chordInfo('m7 9 11', _11(_9(_7(baseMinor))), chordsData.gm7911), // m7 9 11
+  chordInfo('sus4',sus4(baseMajor), chordsData.gsus4), // sus4
+  chordInfo('7sus4',_7(sus4(baseMajor)), chordsData.g7sus4), // 7sus4
+  chordInfo('add9', _9(baseMajor), chordsData.gadd9), // add9
+  chordInfo('madd9',_9(baseMinor), chordsData.gmadd9), // madd9
+  chordInfo('sus4(9)',_9(sus4(baseMajor)), chordsData.gsus49), // gsus49
+  chordInfo('aug(9)',_9(aug(baseMajor)), chordsData.gaug9), // aug(9)
+  chordInfo('7sus4(9)',_9(_7(sus4(baseMajor))),chordsData.g7sus49), // 7sus49
+  chordInfo('7aug(9)',_9(_7(aug())), chordsData.g7aug9), // 7aug9
+  chordInfo('mM79', _9(M7(baseMinor)), chordsData.gmM79),// mM79
+  chordInfo('m7 9(-5)', _9(_7(b5(baseMinor))), chordsData.gm79b5), // m79(-5)
+  chordInfo('add11', _11(baseMajor), chordsData.gadd11), // add11
+  chordInfo('madd11', _11(baseMinor), chordsData.gmadd11), // madd11
+  chordInfo('m7(11)',_11(_7(baseMinor)), chordsData.gm711), // m7 11
+  chordInfo('m7(-5)11',_11(_7(b5(baseMinor))), chordsData.gm7b511), // m7(-5)11
+  chordInfo('add#11', s11(baseMajor), chordsData.gadds11), // adds11
+  chordInfo('M7(#11)',s11(M7(baseMajor)), chordsData.gM7s11), // M7 #11
+  chordInfo('M7(13)',_13(M7(baseMajor)), chordsData.gM713), // M7 13
+  chordInfo('dim9', _9(d7(baseDim)), chordsData.gdim9), // dim9
+  chordInfo('dim11', _11(d7(baseDim)), chordsData.gdim11), // dim11
+  chordInfo('dimM7', M7(baseDim), chordsData.gdimM7), // dimM7
+  chordInfo('dim7(♭13)', b13(d7(baseDim)), chordsData.gdim7b13), // dim7b13
+  chordInfo('add9(11)', _11(_9(baseMajor)), chordsData.gadd911), // add9 11
+  chordInfo('add9(#11)', s11(_9(baseMajor)), chordsData.gadd9s11), // add9 #11
+  chordInfo('M7(9,#11)',s11(_9(M7(baseMajor))), chordsData.gM79s11), // M7 9 #11
+  chordInfo('6(9,#11)',s11(_9(_6(baseMajor))), chordsData.g69s11), // 6 9 #11
+  chordInfo('M7(9,13)',_13(_9(M7(baseMajor))), chordsData.gM7913), // M7 9 13
+  chordInfo('7 9 #11', s11(_9(_7(baseMajor))), chordsData.g79s11), // 7 9 #11
+  chordInfo('7 ♭9 ♭13', b13(b9(_7(baseMajor))), chordsData.g7b9b13), // 7 b9 b13
+  chordInfo('7 #9 ♭13', b13(s9(_7(baseMajor))), chordsData.g7s9b13), // 7 #9 b13
+  chordInfo('mM7911', _11(_9(M7(baseMinor))), chordsData.gmM7911),// mM7911
+  chordInfo('m6911',_11(_9(_6(baseMinor))), chordsData.gm6911), // m6911
+  chordInfo('m7911(-5)', _11(_9(_7(b5(baseMinor)))), chordsData.gmb57911),// m7911(-5)
+];
+
+export const CHORDS_LENGTH = CHORDS.length
+export const CHORDNAME = (n) => CHORDS[n].chordname
+export const CHORDNOTES = (chord) => CHORDS[chord].chordnotes
+
+export const getChordsData = (key, chord) => CHORDS[chord].gchords[key]
+export const getSelectedChordData = (key, chord, num) => CHORDS[chord].gchords[key][num]
