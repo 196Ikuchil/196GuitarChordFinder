@@ -1623,7 +1623,7 @@ export const gmM79 = [
     [[0,2,1,0,2,x,0]],
   ];
   // gmb57911
-    export const g = [
+    export const gmb57911 = [
     // C
     [],
     // -D
