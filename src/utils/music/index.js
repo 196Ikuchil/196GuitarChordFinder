@@ -23,3 +23,5 @@ export function GetDiatonicNumName(diatonicnum) {
 }
 
 export { GetDiatonicNotes } from './notes';
+
+export { GetDegreeDotData } from './fretboard';
