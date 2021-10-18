@@ -9,6 +9,10 @@ function makeDotArray(string, fret, note) {
   return { string, fret, note };
 }
 
+export function GetRootNoteName(degree, isSharp) {
+  return NOTENAME(degree, isSharp);
+}
+
 const LEN = 12;
 // export const NOTESLENGTH = 12  :degree
 export function GetDegreeDotData(degree, fretlimit = 14, isSharp = false) {
