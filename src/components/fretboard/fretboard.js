@@ -15,11 +15,9 @@ export function Fretboard({ props }) {
 
   const figureRef = useRef(null);
   const fretboard = useFretboard(figureRef, tuning, options);
+
   useEffect(() => {
-    fretboard.setDots(converToDotsData(0, DEFAULT_FRET_LIMIT, false)).style({
-      // sets the value of the fill attribute
-      fill: 'red'
-    });
+    fretboard.setDots(converToDotsData(props.degreeNums, DEFAULT_FRET_LIMIT, false)).style({});
 
     fretboard.render();
   }, [fretboard]);
@@ -28,14 +26,14 @@ export function Fretboard({ props }) {
 }
 
 // c:0, c#:1....
-function converToDotsData(degreeNum, fretlimit, isSharp) {
-  return GetDegreeDotData(degreeNum, fretlimit, isSharp);
+function converToDotsData(degreeNums, fretlimit, isSharp) {
+  return degreeNums.flatMap((degreeNum) => GetDegreeDotData(degreeNum, fretlimit, isSharp));
 }
 
 Fretboard.propTypes = {
   props: PropTypes.shape({
     options: PropTypes.object,
     tuning: PropTypes.array,
-    dots: PropTypes.array
+    degreeNums: PropTypes.arrayOf(PropTypes.number)
   }).isRequired
 };

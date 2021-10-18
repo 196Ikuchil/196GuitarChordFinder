@@ -7,7 +7,7 @@ export default function FretBoardBox({ dots, isSharp }) {
     <Grid container>
       <Grid item xs={12}>
         <Box sx={{ p: 0, pb: 1, pl: 0 }}>
-          <Fretboard props={{ dots: [{ string: 2, fret: 3, note: 'a' }] }} />
+          <Fretboard props={{ degreeNums: [0, 2] }} />
         </Box>
       </Grid>
     </Grid>
