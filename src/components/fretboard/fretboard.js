@@ -17,7 +17,9 @@ export function Fretboard({ props }) {
   const fretboard = useFretboard(figureRef, tuning, options);
 
   useEffect(() => {
-    fretboard.setDots(converToDotsData(props.degreeNums, DEFAULT_FRET_LIMIT, false)).render();
+    fretboard
+      .setDots(converToDotsData(props.degreeNums, DEFAULT_FRET_LIMIT, props.isSharp))
+      .render();
     fretboard.style({
       // this gives us just the root notes
       filter: ({ note }) => note === GetRootNoteName(props.degreeNums[0], props.isSharp), // top is root degree

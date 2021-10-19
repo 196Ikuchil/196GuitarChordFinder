@@ -27,7 +27,10 @@ function FretBoardPanel({ panel, index, changeFretboard, isSharp }) {
         </Grid>
         <Grid item xs={12}>
           <Box sx={{ p: 1, pb: 0, pt: 0 }}>
-            <FretBoardBox degreeNums={getDotsFromKeyChord(panel.key, panel.chord)} isSharp />
+            <FretBoardBox
+              degreeNums={getDotsFromKeyChord(panel.key, panel.chord)}
+              isSharp={isSharp}
+            />
           </Box>
         </Grid>
       </Grid>
@@ -42,6 +45,7 @@ FretBoardPanel.propTypes = {
     chord: PropTypes.number.isRequired
   }).isRequired,
   index: PropTypes.number.isRequired,
+  changeFretboard: PropTypes.func,
   isSharp: PropTypes.bool
 };
 
