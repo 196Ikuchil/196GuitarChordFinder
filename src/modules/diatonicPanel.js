@@ -1,12 +1,18 @@
 export const PanelTypes = {
   diatonic: 0,
   c5th: 1,
-  chord: 2
+  chord: 2,
+  fretboard: 3
 };
 
 export const ChordPanelTypes = {
   guitar: 0,
   score: 1
+};
+
+export const FretboardPanelTypes = {
+  chord: 0,
+  scale: 1
 };
 
 const initState = {
@@ -49,6 +55,14 @@ export const addChordPanelById = (key, chord, index, color) => ({
   color
 });
 
+export const addFretboardPanel = (fpanelType, key, chord) => ({
+  type: 'ADD_FRETBOARD_PANEL',
+  panelType: PanelTypes.fretboard,
+  fpanelType,
+  key,
+  chord
+});
+
 export const changeChordPanelType = (index) => ({
   type: 'CHANGE_CHORD_PANEL_TYPE',
   index
@@ -76,6 +90,13 @@ export const changeDiatonicKey = (index, key) => ({
   type: 'CHANGE_DIATONIC_KEY',
   index,
   key
+});
+// FIXME: add scale
+export const changeFretboard = (index, fPanelType, key, chord) => ({
+  type: 'CHANGE_FRETBOARD',
+  fPanelType,
+  key,
+  chord
 });
 
 export const removePanel = (index) => ({
@@ -130,6 +151,16 @@ export const panels = (state = [initState], action) => {
         },
         ...state.slice(action.index)
       ];
+    case 'ADD_FRETBOARD_PANEL':
+      return [
+        ...state,
+        {
+          panelType: action.panelType,
+          fretboardPanelType: action.fpanelType,
+          key: action.key,
+          chord: action.chord
+        }
+      ];
     case 'CHANGE_CHORD_PANEL_TYPE':
       return [
         ...state.slice(0, action.index),
@@ -163,6 +194,17 @@ export const panels = (state = [initState], action) => {
         { ...state[action.index], key: action.key },
         ...state.slice(action.index + 1)
       ];
+    case 'CHANGE_FRETBOARD':
+      return [
+        ...state.slice(0, action.index),
+        {
+          ...state[action.index],
+          fretboardPanelType: action.fPanelType,
+          key: action.key,
+          chord: action.chord
+        },
+        ...state.slice(action.index + 1)
+      ];
     case 'REMOVE_PANEL':
       return [...state.slice(0, action.index), ...state.slice(action.index + 1)];
     case 'REMOVE_All_PANEL':
@@ -183,6 +225,8 @@ export const mapDispatchToProps = (dispatch) => ({
   changeChordPanelType: (id) => dispatch(changeChordPanelType(id)),
   changeChordPanelKey: (id, key) => dispatch(changeChordPanelKey(id, key)),
   changeChordPanelChord: (id, chord) => dispatch(changeChordPanelChord(id, chord)),
+  changeFretboard: (index, fPanelType, key, chord) =>
+    dispatch(changeFretboard(index, fPanelType, key, chord)),
   removePanel: (id) => dispatch(removePanel(id)),
   removeAllPanel: () => dispatch(removeAllPanel()),
   addChordPanelById: (key, chord, id, color) => dispatch(addChordPanelById(key, chord, id, color))
