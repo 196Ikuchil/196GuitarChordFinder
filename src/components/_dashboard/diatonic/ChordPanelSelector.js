@@ -60,7 +60,7 @@ export function ChordPanelSelector({ panel, index, changeKey, changeChord, isSha
       </Grid>
       <Grid item xs={6} sm={7} md={7}>
         <StyleFormControl variant="outlined" size="small">
-          <InputLabel id="chord">Diatonic</InputLabel>
+          <InputLabel id="chord">chord</InputLabel>
           <Select
             labelId="chord-selector"
             onChange={handleChangeChord}
