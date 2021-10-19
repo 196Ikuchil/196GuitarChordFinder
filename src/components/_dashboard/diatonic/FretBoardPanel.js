@@ -5,8 +5,9 @@ import { FretBoardBox } from '../../music/fretboard';
 import { mapStateToProps as getIsSharp } from '../../../modules/Sharp';
 import { mapDispatchToProps } from '../../../modules/diatonicPanel';
 import { GetChordNotes, NOTESLENGTH } from '../../../utils/music';
+import { FretboardPanelSelector } from './FretboardPanelSelector';
 
-function FretBoardPanel({ panel, changeFretboard, isSharp }) {
+function FretBoardPanel({ panel, index, changeFretboard, isSharp }) {
   function getDotsFromKeyChord(key, chord) {
     return GetChordNotes(key, chord)
       .map((x, i) => (x === 1 ? i % NOTESLENGTH : null))
@@ -16,6 +17,14 @@ function FretBoardPanel({ panel, changeFretboard, isSharp }) {
   return (
     <div className="fretboard">
       <Grid container>
+        <Grid item xs={12}>
+          <FretboardPanelSelector
+            panel={panel}
+            index={index}
+            changeFretboard={changeFretboard}
+            isSharp={isSharp}
+          />
+        </Grid>
         <Grid item xs={12}>
           <Box sx={{ p: 1, pb: 0, pt: 0 }}>
             <FretBoardBox degreeNums={getDotsFromKeyChord(panel.key, panel.chord)} isSharp />
@@ -32,6 +41,7 @@ FretBoardPanel.propTypes = {
     key: PropTypes.number.isRequired,
     chord: PropTypes.number.isRequired
   }).isRequired,
+  index: PropTypes.number.isRequired,
   isSharp: PropTypes.bool
 };
 

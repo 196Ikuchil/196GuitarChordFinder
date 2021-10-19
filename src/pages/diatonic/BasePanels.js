@@ -71,7 +71,7 @@ function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) 
             <IconButton onClick={() => removePanel(index)}>
               <ClearIcon />
             </IconButton>
-            <FretBoardPanel panel={panel} />
+            <FretBoardPanel panel={panel} index={index} />
           </Card>
         </Grid>
       );

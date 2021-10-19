@@ -94,6 +94,7 @@ export const changeDiatonicKey = (index, key) => ({
 // FIXME: add scale
 export const changeFretboard = (index, fPanelType, key, chord) => ({
   type: 'CHANGE_FRETBOARD',
+  index,
   fPanelType,
   key,
   chord
