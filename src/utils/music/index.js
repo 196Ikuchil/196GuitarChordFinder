@@ -22,6 +22,6 @@ export function GetDiatonicNumName(diatonicnum) {
   return DIATONIC_NUMNAME[diatonicnum];
 }
 
-export { GetDiatonicNotes } from './notes';
+export { GetDiatonicNotes, NOTESLENGTH } from './notes';
 
 export { GetDegreeDotData, GetRootNoteName } from './fretboard';

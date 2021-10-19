@@ -4,3 +4,4 @@ export { default as AddBasePanelButton } from './AddBasePanelButton';
 export { default as ChordPanel } from './ChordPanel';
 export { default as RedirectToChordSearchButton } from './RedirectToChordSearchButton';
 export { default as RemoveAllButton } from './RemoveAllButton';
+export { default as FretBoardPanel } from './FretBoardPanel';

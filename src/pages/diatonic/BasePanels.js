@@ -9,7 +9,8 @@ import {
   DiatonicPanel,
   C5thPanel,
   ChordPanel,
-  RedirectToChordSearchButton
+  RedirectToChordSearchButton,
+  FretBoardPanel
 } from '../../components/_dashboard/diatonic';
 
 function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) {
@@ -63,6 +64,18 @@ function BasePanels({ panels, removePanel, changeDiatonic, changeDiatonicKey }) 
         </Grid>
       );
     }
+    if (panel.panelType === PanelTypes.fretboard) {
+      return (
+        <Grid key={index} item xs={12}>
+          <Card>
+            <IconButton onClick={() => removePanel(index)}>
+              <ClearIcon />
+            </IconButton>
+            <FretBoardPanel panel={panel} />
+          </Card>
+        </Grid>
+      );
+    }
     return <div>empty</div>;
   }
 
@@ -80,6 +93,7 @@ BasePanels.propTypes = {
       dChord: PropTypes.number, // need on panel type ==0
       key: PropTypes.number, // need on panel type ==0
       chordPanelType: PropTypes.number, // need on panel type == 2
+      fretboardPanelType: PropTypes.number, // for fretboard panel
       chord: PropTypes.number, // need on panel type == 2
       color: PropTypes.string
     }).isRequired
