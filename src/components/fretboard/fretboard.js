@@ -6,7 +6,12 @@ import { useFretboard } from './react-fretboard';
 import { GetDegreeDotData, GetRootNoteName } from '../../utils/music/fretboard';
 
 const DEFAULT_FRET_LIMIT = 14;
-const DEFAULT_OPTIONS = { dotText: ({ note }) => note, dotTextSize: 16, root: 'C' };
+const DEFAULT_OPTIONS = {
+  dotText: ({ note }) => note,
+  dotSize: 27,
+  dotTextSize: 15,
+  root: 'C'
+};
 const DEFAULT_TUNING = ['E2', 'A2', 'D3', 'G3', 'B3', 'E4'];
 
 export function Fretboard({ props }) {
