@@ -127,3 +127,32 @@ export function GetDiatonicNotes(num, key) {
   }
   return d.map((x) => [(x[0] + key) % NOTESLENGTH, x[1]]);
 }
+
+export function GetScaleKeys() {
+  return Object.keys(SCALENOTES);
+}
+
+function makeScaleInfoArray(notes, label) {
+  return { notes, label };
+}
+
+export const SCALENOTES = {
+  Major: makeScaleInfoArray([1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1], 'natural major scale'), // natural major scale (ionian)
+  Minor: makeScaleInfoArray([1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0], 'natural minor scale'), // natural minor (aeolian)
+  Majorpen: makeScaleInfoArray([1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0], 'major pentatonic scale'), // major pentatonic
+  minorpen: makeScaleInfoArray([1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0], 'minor pentatonic scale'), // minor pentatonic
+  melodicminor: makeScaleInfoArray([1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1], 'melodic minor scale'), // melodic minor
+  harmminor: makeScaleInfoArray([1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1], 'harmonic minor scale'), // harmonic minor scale
+  // eslint-disable-next-line prettier/prettier
+  harmminor5thbelow: makeScaleInfoArray([1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0], 'harmonic minor 5th below scale'),  // harmonic minor 5th below scale
+  dorian: makeScaleInfoArray([1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0], 'dorian scale'), // dorian
+  phrygian: makeScaleInfoArray([1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0], 'phrygian scale'), // phrygian
+  lydian: makeScaleInfoArray([1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1], 'lydian scale'), // lydian
+  mixolydian: makeScaleInfoArray([1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0], 'mixolydian scale'), // mixolydian
+  locrian: makeScaleInfoArray([1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0], 'locrian scale'), // locrian
+  lydianf7th: makeScaleInfoArray([1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0], 'lydian ♭7th scale') // lydian flat 7th
+};
+
+export function GetScaleNotes(key, scale) {
+  return [...Array(key)].map(() => 0).concat(SCALENOTES[scale].notes);
+}
