@@ -23,6 +23,8 @@ const initState = {
 
 // increment chord panel type 0 -> 1->2->0
 const getNextChordPanelType = (type) => (type + 1) % Object.keys(ChordPanelTypes).length;
+
+const getNextFretboardPanelType = (type) => (type + 1) % Object.keys(FretboardPanelTypes).length;
 // ACTION
 // add to tail
 export const addDiatonicPanel = (dChord, key, panels) => ({
@@ -98,6 +100,10 @@ export const changeFretboard = (index, fPanelType, key, chord) => ({
   fPanelType,
   key,
   chord
+});
+export const changeFretboardPanelType = (index) => ({
+  type: 'CHANGE_FRETBOARD_PANEL_TYPE',
+  index
 });
 
 export const removePanel = (index) => ({
@@ -206,6 +212,15 @@ export const panels = (state = [initState], action) => {
         },
         ...state.slice(action.index + 1)
       ];
+    case 'CHANGE_FRETBOARD_PANEL_TYPE':
+      return [
+        ...state.slice(0, action.index),
+        {
+          ...state[action.index],
+          fretboardPanelType: getNextFretboardPanelType(state[action.index].fretboardPanelType)
+        },
+        ...state.slice(action.index + 1)
+      ];
     case 'REMOVE_PANEL':
       return [...state.slice(0, action.index), ...state.slice(action.index + 1)];
     case 'REMOVE_All_PANEL':
@@ -228,6 +243,7 @@ export const mapDispatchToProps = (dispatch) => ({
   changeChordPanelChord: (id, chord) => dispatch(changeChordPanelChord(id, chord)),
   changeFretboard: (index, fPanelType, key, chord) =>
     dispatch(changeFretboard(index, fPanelType, key, chord)),
+  changeFretboardPanelType: (index) => dispatch(changeFretboardPanelType(index)),
   removePanel: (id) => dispatch(removePanel(id)),
   removeAllPanel: () => dispatch(removeAllPanel()),
   addChordPanelById: (key, chord, id, color) => dispatch(addChordPanelById(key, chord, id, color))

@@ -7,7 +7,7 @@ import { mapDispatchToProps } from '../../../modules/diatonicPanel';
 import { GetChordNotes, NOTESLENGTH } from '../../../utils/music';
 import { FretboardPanelSelector } from './FretboardPanelSelector';
 
-function FretBoardPanel({ panel, index, changeFretboard, isSharp }) {
+function FretBoardPanel({ panel, index, changeFretboard, changeFretboardPanelType, isSharp }) {
   function getDotsFromKeyChord(key, chord) {
     return GetChordNotes(key, chord)
       .map((x, i) => (x === 1 ? i % NOTESLENGTH : null))
@@ -22,6 +22,7 @@ function FretBoardPanel({ panel, index, changeFretboard, isSharp }) {
             panel={panel}
             index={index}
             changeFretboard={changeFretboard}
+            changeFretboardPanelType={changeFretboardPanelType}
             isSharp={isSharp}
           />
         </Grid>
@@ -46,6 +47,7 @@ FretBoardPanel.propTypes = {
   }).isRequired,
   index: PropTypes.number.isRequired,
   changeFretboard: PropTypes.func,
+  changeFretboardPanelType: PropTypes.func,
   isSharp: PropTypes.bool
 };
 
