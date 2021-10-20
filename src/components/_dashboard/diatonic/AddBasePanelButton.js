@@ -12,6 +12,7 @@ import {
   addFretboardPanel,
   FretboardPanelTypes
 } from '../../../modules/diatonicPanel';
+import { GetScaleKeys } from '../../../utils/music';
 
 const AddBasePanelButton = ({ panels, dispatch }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -41,7 +42,7 @@ const AddBasePanelButton = ({ panels, dispatch }) => {
   };
 
   const onClickFretboard = () => {
-    dispatch(addFretboardPanel(FretboardPanelTypes.chord, 0, 0, 0));
+    dispatch(addFretboardPanel(FretboardPanelTypes.chord, 0, 0, GetScaleKeys()[0]));
     handleClose();
   };
 

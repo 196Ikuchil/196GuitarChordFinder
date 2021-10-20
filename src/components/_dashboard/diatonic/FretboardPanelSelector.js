@@ -25,10 +25,13 @@ export function FretboardPanelSelector({
   isSharp
 }) {
   const handleChangeFretboardKey = (event) => {
-    changeFretboard(index, panel.fretboardPanelType, event.target.value, panel.chord);
+    changeFretboard(index, panel.fretboardPanelType, event.target.value, panel.chord, panel.scale);
   };
   const handleChangeFretboardChord = (event) => {
-    changeFretboard(index, panel.fretboardPanelType, panel.key, event.target.value);
+    changeFretboard(index, panel.fretboardPanelType, panel.key, event.target.value, panel.scale);
+  };
+  const handleChangeFretboardscale = (event) => {
+    changeFretboard(index, panel.fretboardPanelType, panel.key, panel.chord, event.target.value);
   };
   const handleChangeFretboardType = (event) => {
     changeFretboardPanelType(index);
@@ -120,7 +123,8 @@ FretboardPanelSelector.propTypes = {
   panel: PropTypes.shape({
     fretboardPanelType: PropTypes.number.isRequired,
     chord: PropTypes.number.isRequired,
-    key: PropTypes.number.isRequired
+    key: PropTypes.number.isRequired,
+    scale: PropTypes.string
   }).isRequired,
   index: PropTypes.number,
   changeFretboard: PropTypes.func.isRequired,

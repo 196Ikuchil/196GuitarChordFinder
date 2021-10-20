@@ -95,7 +95,8 @@ BasePanels.propTypes = {
       chordPanelType: PropTypes.number, // need on panel type == 2
       fretboardPanelType: PropTypes.number, // for fretboard panel
       chord: PropTypes.number, // need on panel type == 2
-      color: PropTypes.string
+      color: PropTypes.string,
+      scale: PropTypes.string
     }).isRequired
   ).isRequired,
   removePanel: PropTypes.func.isRequired,

@@ -57,12 +57,13 @@ export const addChordPanelById = (key, chord, index, color) => ({
   color
 });
 
-export const addFretboardPanel = (fpanelType, key, chord) => ({
+export const addFretboardPanel = (fpanelType, key, chord, scale) => ({
   type: 'ADD_FRETBOARD_PANEL',
   panelType: PanelTypes.fretboard,
   fpanelType,
   key,
-  chord
+  chord,
+  scale
 });
 
 export const changeChordPanelType = (index) => ({
@@ -94,12 +95,13 @@ export const changeDiatonicKey = (index, key) => ({
   key
 });
 // FIXME: add scale
-export const changeFretboard = (index, fPanelType, key, chord) => ({
+export const changeFretboard = (index, fPanelType, key, chord, scale) => ({
   type: 'CHANGE_FRETBOARD',
   index,
   fPanelType,
   key,
-  chord
+  chord,
+  scale
 });
 export const changeFretboardPanelType = (index) => ({
   type: 'CHANGE_FRETBOARD_PANEL_TYPE',
@@ -165,7 +167,8 @@ export const panels = (state = [initState], action) => {
           panelType: action.panelType,
           fretboardPanelType: action.fpanelType,
           key: action.key,
-          chord: action.chord
+          chord: action.chord,
+          scale: action.scale
         }
       ];
     case 'CHANGE_CHORD_PANEL_TYPE':
@@ -208,7 +211,8 @@ export const panels = (state = [initState], action) => {
           ...state[action.index],
           fretboardPanelType: action.fPanelType,
           key: action.key,
-          chord: action.chord
+          chord: action.chord,
+          scale: action.scale
         },
         ...state.slice(action.index + 1)
       ];
@@ -241,8 +245,8 @@ export const mapDispatchToProps = (dispatch) => ({
   changeChordPanelType: (id) => dispatch(changeChordPanelType(id)),
   changeChordPanelKey: (id, key) => dispatch(changeChordPanelKey(id, key)),
   changeChordPanelChord: (id, chord) => dispatch(changeChordPanelChord(id, chord)),
-  changeFretboard: (index, fPanelType, key, chord) =>
-    dispatch(changeFretboard(index, fPanelType, key, chord)),
+  changeFretboard: (index, fPanelType, key, chord, scale) =>
+    dispatch(changeFretboard(index, fPanelType, key, chord, scale)),
   changeFretboardPanelType: (index) => dispatch(changeFretboardPanelType(index)),
   removePanel: (id) => dispatch(removePanel(id)),
   removeAllPanel: () => dispatch(removeAllPanel()),
