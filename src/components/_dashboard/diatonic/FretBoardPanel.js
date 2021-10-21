@@ -4,8 +4,13 @@ import PropTypes from 'prop-types';
 import { experimentalStyled as styled } from '@material-ui/core/styles';
 import { FretBoardBox } from '../../music/fretboard';
 import { mapStateToProps as getIsSharp } from '../../../modules/Sharp';
-import { mapDispatchToProps, FretboardPanelTypes } from '../../../modules/diatonicPanel';
-import { GetChordNotes, GetScaleNotes, NOTESLENGTH } from '../../../utils/music';
+import { mapDispatchToProps } from '../../../modules/diatonicPanel';
+import {
+  GetChordNotes,
+  GetScaleNotes,
+  NOTESLENGTH,
+  FretboardPanelTypes
+} from '../../../utils/music';
 import { FretboardPanelSelector } from './FretboardPanelSelector';
 
 const GridStyle = styled(Grid)(({ theme }) => ({
@@ -44,6 +49,7 @@ function FretBoardPanel({ panel, index, changeFretboard, changeFretboardPanelTyp
             <FretBoardBox
               degreeNums={getDots(panel.fretboardPanelType, panel.key, panel.chord, panel.scale)}
               isSharp={isSharp}
+              display={panel.fdisplay}
             />
           </Box>
         </GridStyle>
@@ -57,7 +63,8 @@ FretBoardPanel.propTypes = {
     fretboardPanelType: PropTypes.number.isRequired,
     key: PropTypes.number.isRequired,
     chord: PropTypes.number,
-    scale: PropTypes.string
+    scale: PropTypes.string,
+    fdisplay: PropTypes.number
   }).isRequired,
   index: PropTypes.number.isRequired,
   changeFretboard: PropTypes.func,

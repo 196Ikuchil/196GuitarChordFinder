@@ -1,3 +1,5 @@
+import { FretboardTextDisplayTypes, FretboardPanelTypes } from '../utils/music';
+
 export const PanelTypes = {
   diatonic: 0,
   c5th: 1,
@@ -8,11 +10,6 @@ export const PanelTypes = {
 export const ChordPanelTypes = {
   guitar: 0,
   score: 1
-};
-
-export const FretboardPanelTypes = {
-  chord: 0,
-  scale: 1
 };
 
 const initState = {
@@ -168,7 +165,8 @@ export const panels = (state = [initState], action) => {
           fretboardPanelType: action.fpanelType,
           key: action.key,
           chord: action.chord,
-          scale: action.scale
+          scale: action.scale,
+          fdisplay: FretboardTextDisplayTypes.degree
         }
       ];
     case 'CHANGE_CHORD_PANEL_TYPE':

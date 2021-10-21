@@ -3,16 +3,13 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useFretboard } from './react-fretboard';
-import { GetDegreeDotData, GetRootNoteName } from '../../utils/music/fretboard';
-
-const DEFAULT_FRET_LIMIT = 14;
-const DEFAULT_OPTIONS = {
-  dotText: ({ note }) => note,
-  dotSize: 27,
-  dotTextSize: 15,
-  root: 'C'
-};
-const DEFAULT_TUNING = ['E2', 'A2', 'D3', 'G3', 'B3', 'E4'];
+import {
+  GetDegreeDotData,
+  GetRootNoteName,
+  DEFAULT_OPTIONS,
+  DEFAULT_TUNING,
+  DEFAULT_FRET_LIMIT
+} from '../../utils/music/fretboard';
 
 export function Fretboard({ props }) {
   const options = props.options ?? DEFAULT_OPTIONS;
@@ -48,6 +45,7 @@ Fretboard.propTypes = {
     options: PropTypes.object,
     tuning: PropTypes.array,
     degreeNums: PropTypes.arrayOf(PropTypes.number),
+    display: PropTypes.number.isRequired,
     isSharp: PropTypes.bool.isRequired
   }).isRequired
 };

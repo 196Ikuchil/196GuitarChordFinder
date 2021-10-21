@@ -31,4 +31,9 @@ export {
   SCALENOTES_LENGTH
 } from './notes';
 
-export { GetDegreeDotData, GetRootNoteName } from './fretboard';
+export {
+  GetDegreeDotData,
+  GetRootNoteName,
+  FretboardTextDisplayTypes,
+  FretboardPanelTypes
+} from './fretboard';

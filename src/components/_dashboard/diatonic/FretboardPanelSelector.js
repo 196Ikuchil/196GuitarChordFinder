@@ -7,9 +7,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
-import { FretboardPanelTypes } from '../../../modules';
 
 import { NOTESLENGTH, NOTENAME, SCALENOTES, GetScaleKeys } from '../../../utils/music/notes';
+import { FretboardPanelTypes } from '../../../utils/music';
 import { CHORDNAME, CHORDS_LENGTH } from '../../../utils/music/chords';
 
 const StyleFormControl = styled(FormControl)(({ theme }) => ({

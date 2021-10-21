@@ -9,10 +9,9 @@ import {
   mapStateToProps,
   addC5thPanel,
   addChordPanel,
-  addFretboardPanel,
-  FretboardPanelTypes
+  addFretboardPanel
 } from '../../../modules/diatonicPanel';
-import { GetScaleKeys } from '../../../utils/music';
+import { GetScaleKeys, FretboardPanelTypes } from '../../../utils/music';
 
 const AddBasePanelButton = ({ panels, dispatch }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
