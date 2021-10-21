@@ -1,4 +1,9 @@
-import { FretboardTextDisplayTypes, FretboardPanelTypes } from '../utils/music';
+import {
+  FretboardTextTypes,
+  FretboardPanelTypes,
+  getNextFretboardPanelType,
+  getNextFretboardTextType
+} from '../utils/music';
 
 export const PanelTypes = {
   diatonic: 0,
@@ -21,7 +26,6 @@ const initState = {
 // increment chord panel type 0 -> 1->2->0
 const getNextChordPanelType = (type) => (type + 1) % Object.keys(ChordPanelTypes).length;
 
-const getNextFretboardPanelType = (type) => (type + 1) % Object.keys(FretboardPanelTypes).length;
 // ACTION
 // add to tail
 export const addDiatonicPanel = (dChord, key, panels) => ({
@@ -104,6 +108,10 @@ export const changeFretboardPanelType = (index) => ({
   type: 'CHANGE_FRETBOARD_PANEL_TYPE',
   index
 });
+export const changeFretboardTextType = (index) => ({
+  type: 'CHANGE_FRETBOARD_TEXT_TYPE',
+  index
+});
 
 export const removePanel = (index) => ({
   type: 'REMOVE_PANEL',
@@ -166,7 +174,7 @@ export const panels = (state = [initState], action) => {
           key: action.key,
           chord: action.chord,
           scale: action.scale,
-          fdisplay: FretboardTextDisplayTypes.degree
+          texttype: FretboardTextTypes.tone
         }
       ];
     case 'CHANGE_CHORD_PANEL_TYPE':
@@ -223,6 +231,15 @@ export const panels = (state = [initState], action) => {
         },
         ...state.slice(action.index + 1)
       ];
+    case 'CHANGE_FRETBOARD_TEXT_TYPE':
+      return [
+        ...state.slice(0, action.index),
+        {
+          ...state[action.index],
+          texttype: getNextFretboardTextType(state[action.index].texttype)
+        },
+        ...state.slice(action.index + 1)
+      ];
     case 'REMOVE_PANEL':
       return [...state.slice(0, action.index), ...state.slice(action.index + 1)];
     case 'REMOVE_All_PANEL':
@@ -246,6 +263,7 @@ export const mapDispatchToProps = (dispatch) => ({
   changeFretboard: (index, fPanelType, key, chord, scale) =>
     dispatch(changeFretboard(index, fPanelType, key, chord, scale)),
   changeFretboardPanelType: (index) => dispatch(changeFretboardPanelType(index)),
+  changeFretboardTextType: (index) => dispatch(changeFretboardTextType(index)),
   removePanel: (id) => dispatch(removePanel(id)),
   removeAllPanel: () => dispatch(removeAllPanel()),
   addChordPanelById: (key, chord, id, color) => dispatch(addChordPanelById(key, chord, id, color))

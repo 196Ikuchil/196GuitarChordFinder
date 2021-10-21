@@ -1,15 +1,19 @@
 import { Fretboard } from '@moonwave99/fretboard.js';
-import { NOTENAME } from './notes';
+import { NOTENAME, DEGREENAME, NOTESLENGTH } from './notes';
 
 export const FretboardPanelTypes = {
   chord: 0,
   scale: 1
 };
+export const getNextFretboardPanelType = (type) =>
+  (type + 1) % Object.keys(FretboardPanelTypes).length;
 
-export const FretboardTextDisplayTypes = {
-  degree: 0,
-  roll: 1
+export const FretboardTextTypes = {
+  tone: 0,
+  degree: 1
 };
+export const getNextFretboardTextType = (type) =>
+  (type + 1) % Object.keys(FretboardTextTypes).length;
 
 // first pos in 6th string
 // 6th:8 5th:3 ..2th:1, 1th:8
@@ -30,18 +34,36 @@ function makeDotArray(string, fret, note) {
   return { string, fret, note };
 }
 
-export function GetRootNoteName(degree, isSharp) {
+export function GetToneName(degree, isSharp) {
   return NOTENAME(degree, isSharp);
+}
+
+// return degree from root
+export function GetDegreeNameFromRoot(root, target) {
+  return DEGREENAME[target - root];
 }
 
 const LEN = 12;
 // export const NOTESLENGTH = 12  :degree
-export function GetDegreeDotData(degree, fretlimit = 14, isSharp = false) {
-  let res = degreeDotData.map((x) => (x + degree) % LEN);
-  const note = NOTENAME(degree, isSharp);
+// return makeDotArrays
+export function GetToneDotData(texttype, root, degree, fretlimit = 14, isSharp = false) {
+  let res = degreeDotData.map((x) => (x + (degree % NOTESLENGTH)) % LEN);
+  const note = GetNoteText(root, degree, isSharp, texttype);
   res = res.map((x, i) => makeDotArray(i + 1, x, note));
   const octave = res
     .filter((x) => x.fret <= fretlimit - LEN)
     .map((x) => makeDotArray(x.string, x.fret + LEN, x.note));
   return res.concat(octave);
+}
+
+// switch fretboard text
+export function GetNoteText(root, degree, isSharp, texttype) {
+  switch (texttype) {
+    case FretboardTextTypes.tone:
+      return GetToneName(degree, isSharp);
+    case FretboardTextTypes.degree:
+      return GetDegreeNameFromRoot(root, degree);
+    default:
+      return GetToneName(degree, isSharp);
+  }
 }

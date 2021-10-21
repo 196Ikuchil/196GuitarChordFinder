@@ -32,8 +32,11 @@ export {
 } from './notes';
 
 export {
-  GetDegreeDotData,
-  GetRootNoteName,
-  FretboardTextDisplayTypes,
+  GetToneDotData,
+  GetToneName,
+  GetDegreeNameFromRoot,
+  getNextFretboardPanelType,
+  getNextFretboardTextType,
+  FretboardTextTypes,
   FretboardPanelTypes
 } from './fretboard';

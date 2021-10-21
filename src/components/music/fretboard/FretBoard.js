@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { Fretboard } from '../../fretboard';
 import { DEFAULT_OPTIONS } from '../../../utils/music/fretboard';
 
-export default function FretBoardBox({ degreeNums, isSharp = false, display }) {
+export default function FretBoardBox({ degreeNums, isSharp = false, texttype }) {
   return (
     <Grid container>
       <Grid item xs={12}>
         <Box sx={{ p: 0, pb: 1, pl: 0 }}>
           {/* <Fretboard props={{ degreeNums, isSharp, options: test(display) }} /> */}
-          <Fretboard props={{ degreeNums, isSharp, display }} />
+          <Fretboard props={{ degreeNums, isSharp, texttype }} />
         </Box>
       </Grid>
     </Grid>
@@ -23,5 +23,5 @@ export default function FretBoardBox({ degreeNums, isSharp = false, display }) {
 FretBoardBox.propTypes = {
   degreeNums: PropTypes.array,
   isSharp: PropTypes.bool,
-  display: PropTypes.number
+  texttype: PropTypes.number
 };

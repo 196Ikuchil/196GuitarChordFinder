@@ -32,6 +32,9 @@ export const NOTENAME = (number, sharp = false) => {
   }
 };
 
+// eslint-disable-next-line prettier/prettier
+export const DEGREENAME = ['R','♭9','M2','m3','M3','4','♭5','5','#5','6','m7','M7','R','♭9','9','#9','','11','#11','','♭13','13','',''];
+
 // ex [["C", M7],["D","m7"]...]
 const Diatonic7thMajor = [
   [0, 2],

@@ -4,28 +4,31 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useFretboard } from './react-fretboard';
 import {
-  GetDegreeDotData,
-  GetRootNoteName,
+  GetToneDotData,
   DEFAULT_OPTIONS,
   DEFAULT_TUNING,
-  DEFAULT_FRET_LIMIT
+  DEFAULT_FRET_LIMIT,
+  GetNoteText
 } from '../../utils/music/fretboard';
 
 export function Fretboard({ props }) {
   const options = props.options ?? DEFAULT_OPTIONS;
   const tuning = props.tuning ?? DEFAULT_TUNING;
-  const isSharp = props.isSharp ?? false;
   const figureRef = useRef(null);
   const fretboard = useFretboard(figureRef, tuning, options);
 
   useEffect(() => {
     fretboard
-      .setDots(converToDotsData(props.degreeNums, DEFAULT_FRET_LIMIT, props.isSharp))
+      .setDots(
+        converToDotsData(props.texttype, props.degreeNums, DEFAULT_FRET_LIMIT, props.isSharp)
+      )
       .render();
     fretboard.style({
       // this gives us just the root notes
-      filter: ({ note }) => note === GetRootNoteName(props.degreeNums[0], props.isSharp), // top is root degree
-      // displays the note name
+      filter: ({ note }) =>
+        note ===
+        GetNoteText(props.degreeNums[0], props.degreeNums[0], props.isSharp, props.texttype), // top is root degree
+      // texttypes the note name
       // text: ({ note }) => 'aa',
       // sets the value of the fill attribute
       fill: 'yellow'
@@ -36,8 +39,10 @@ export function Fretboard({ props }) {
 }
 
 // c:0, c#:1....
-function converToDotsData(degreeNums, fretlimit, isSharp) {
-  return degreeNums.flatMap((degreeNum) => GetDegreeDotData(degreeNum, fretlimit, isSharp));
+function converToDotsData(texttype, degreeNums, fretlimit, isSharp) {
+  return degreeNums.flatMap((degreeNum) =>
+    GetToneDotData(texttype, degreeNums[0], degreeNum, fretlimit, isSharp)
+  );
 }
 
 Fretboard.propTypes = {
@@ -45,7 +50,7 @@ Fretboard.propTypes = {
     options: PropTypes.object,
     tuning: PropTypes.array,
     degreeNums: PropTypes.arrayOf(PropTypes.number),
-    display: PropTypes.number.isRequired,
+    texttype: PropTypes.number.isRequired,
     isSharp: PropTypes.bool.isRequired
   }).isRequired
 };

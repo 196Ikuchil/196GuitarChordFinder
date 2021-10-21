@@ -7,13 +7,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
-
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import { NOTESLENGTH, NOTENAME, SCALENOTES, GetScaleKeys } from '../../../utils/music/notes';
 import { FretboardPanelTypes } from '../../../utils/music';
 import { CHORDNAME, CHORDS_LENGTH } from '../../../utils/music/chords';
 
 const StyleFormControl = styled(FormControl)(({ theme }) => ({
-  minWidth: '50%',
+  minWidth: '70%',
   transform: `scale(0.8)`
 }));
 
@@ -22,6 +22,7 @@ export function FretboardPanelSelector({
   index,
   changeFretboard,
   changeFretboardPanelType,
+  changeFretboardTextType,
   isSharp
 }) {
   const handleChangeFretboardKey = (event) => {
@@ -35,6 +36,9 @@ export function FretboardPanelSelector({
   };
   const handleChangeFretboardType = (event) => {
     changeFretboardPanelType(index);
+  };
+  const handleChangeFretboardTextType = (event) => {
+    changeFretboardTextType(index);
   };
 
   function Render() {
@@ -71,7 +75,7 @@ export function FretboardPanelSelector({
     return (
       <div>
         <StyleFormControl variant="outlined">
-          <InputLabel id="scale">scale</InputLabel>
+          <InputLabel id="textswitch">scale</InputLabel>
           <Select
             labelId="scale-selector"
             onChange={handleChangeFretboardScale}
@@ -115,15 +119,27 @@ export function FretboardPanelSelector({
 
   return (
     <Grid container>
-      <Grid item xs={3} sm={1} md={1} pt={1} pl={1}>
+      <Grid item sm={1} md={1} pt={1} pl={1}>
         <StyleFormControl>
-          <Button color="primary" variant="outlined" onClick={handleChangeFretboardType}>
+          <Button
+            color="primary"
+            variant="outlined"
+            label="switch chord&scale"
+            onClick={handleChangeFretboardType}
+          >
             <ChangeCircleIcon />
           </Button>
         </StyleFormControl>
       </Grid>
-      <Grid item xs={2} sm={3} md={3}>
-        <StyleFormControl style={{ minWidth: '90%' }}>
+      <Grid item sm={2} md={1} pt={1} pl={2} pr={0}>
+        <StyleFormControl>
+          <Button color="primary" variant="outlined" onClick={handleChangeFretboardTextType}>
+            <MusicNoteIcon />
+          </Button>
+        </StyleFormControl>
+      </Grid>
+      <Grid item sm={3} md={3}>
+        <StyleFormControl style={{ minWidth: '100%' }}>
           <InputLabel id="key">key</InputLabel>
           <Select
             labelId="key-selector"
@@ -136,7 +152,7 @@ export function FretboardPanelSelector({
           </Select>
         </StyleFormControl>
       </Grid>
-      <Grid item xs={7} sm={8} md={8}>
+      <Grid item sm={6} md={7}>
         {Render()}
       </Grid>
     </Grid>
@@ -148,10 +164,12 @@ FretboardPanelSelector.propTypes = {
     fretboardPanelType: PropTypes.number.isRequired,
     chord: PropTypes.number.isRequired,
     key: PropTypes.number.isRequired,
-    scale: PropTypes.string
+    scale: PropTypes.string,
+    texttype: PropTypes.number
   }).isRequired,
   index: PropTypes.number,
   changeFretboard: PropTypes.func.isRequired,
   changeFretboardPanelType: PropTypes.func.isRequired,
+  changeFretboardTextType: PropTypes.func.isRequired,
   isSharp: PropTypes.bool
 };

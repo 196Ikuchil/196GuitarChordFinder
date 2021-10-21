@@ -97,7 +97,7 @@ BasePanels.propTypes = {
       chord: PropTypes.number, // need on panel type == 2
       color: PropTypes.string,
       scale: PropTypes.string,
-      fdisplay: PropTypes.number
+      texttype: PropTypes.number
     }).isRequired
   ).isRequired,
   removePanel: PropTypes.func.isRequired,
