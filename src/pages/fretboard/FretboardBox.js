@@ -1,20 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Grid, Card, Button } from '@material-ui/core';
+import { Grid, Card, Button, IconButton } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
+import ClearIcon from '@material-ui/icons/Clear';
 import { LightTooltip } from '../../components/LightTooltip';
 import { mapStateToProps, mapDispatchToProps } from '../../modules/fretboard';
+import { FretBoardPanel } from '../../components/_dashboard/fretboard';
 
-function FretboardBox({
-  fretboards,
-  isSharp,
-  addFretboardPanel,
-  changeFretboard,
-  changeFretboardPanelType,
-  changeFretboardTextType,
-  removePanel
-}) {
+function FretboardBox({ fretboards, isSharp, addFretboardPanel, removePanel }) {
   const { t } = useTranslation();
   function handleAddClick(event) {
     addFretboardPanel();
@@ -31,7 +25,14 @@ function FretboardBox({
       </Grid>
       <Grid item xs={12}>
         {fretboards.map((fboard, i) => (
-          <div>i</div>
+          <Grid key={i} item xs={12}>
+            <Card>
+              <IconButton onClick={() => removePanel(i)}>
+                <ClearIcon />
+              </IconButton>
+              <FretBoardPanel fboard={fboard} index={i} />
+            </Card>
+          </Grid>
         ))}
       </Grid>
       <Grid item xs={12}>
@@ -50,18 +51,17 @@ function FretboardBox({
 }
 
 FretboardBox.propTypes = {
-  fretboards: PropTypes.shape({
-    paneltype: PropTypes.number.isRequired,
-    key: PropTypes.number.isRequired,
-    chord: PropTypes.number.isRequired,
-    scale: PropTypes.number.isRequired,
-    texttype: PropTypes.number.isRequired
-  }).isRequired,
+  fretboards: PropTypes.arrayOf(
+    PropTypes.shape({
+      fretboardPanelType: PropTypes.number.isRequired,
+      key: PropTypes.number.isRequired,
+      chord: PropTypes.number.isRequired,
+      scale: PropTypes.string.isRequired,
+      texttype: PropTypes.number.isRequired
+    }).isRequired
+  ).isRequired,
   isSharp: PropTypes.bool.isRequired,
   addFretboardPanel: PropTypes.func.isRequired,
-  changeFretboard: PropTypes.func.isRequired,
-  changeFretboardPanelType: PropTypes.func.isRequired,
-  changeFretboardTextType: PropTypes.func.isRequired,
   removePanel: PropTypes.func.isRequired
 };
 export default connect(

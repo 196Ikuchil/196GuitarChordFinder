@@ -2,14 +2,15 @@ import {
   FretboardTextTypes,
   FretboardPanelTypes,
   getNextFretboardPanelType,
-  getNextFretboardTextType
+  getNextFretboardTextType,
+  GetScaleKeys
 } from '../utils/music';
 
 const fretboardsinitialState = {
-  paneltype: FretboardPanelTypes.chord,
+  fretboardPanelType: FretboardPanelTypes.chord,
   key: 0,
   chord: 0,
-  scale: 0,
+  scale: GetScaleKeys()[0],
   texttype: FretboardTextTypes.tone
 };
 
@@ -17,10 +18,10 @@ export const addFretboardPanel = () => ({
   type: 'ADD_FRETBOARD_PANEL_ONFBOARD'
 });
 
-export const changeFretboard = (index, panelType, key, chord, scale) => ({
+export const changeFretboard = (index, fretboardPanelType, key, chord, scale) => ({
   type: 'CHANGE_FRETBOARD_ONFBOARD',
   index,
-  panelType,
+  fretboardPanelType,
   key,
   chord,
   scale
@@ -46,10 +47,10 @@ export const fretboards = (state = [fretboardsinitialState], action) => {
       return [
         ...state,
         {
-          paneltype: action.fpanelType,
+          fretboardPanelType: FretboardPanelTypes.chord,
           key: 0,
           chord: 0,
-          scale: 0,
+          scale: GetScaleKeys()[0],
           texttype: FretboardTextTypes.tone
         }
       ];
@@ -58,7 +59,7 @@ export const fretboards = (state = [fretboardsinitialState], action) => {
         ...state.slice(0, action.index),
         {
           ...state[action.index],
-          paneltype: action.paneltype,
+          fretboardPanelType: action.fretboardPanelType,
           key: action.key,
           chord: action.chord,
           scale: action.scale
@@ -70,7 +71,7 @@ export const fretboards = (state = [fretboardsinitialState], action) => {
         ...state.slice(0, action.index),
         {
           ...state[action.index],
-          paneltype: getNextFretboardPanelType(state[action.index].paneltype)
+          fretboardPanelType: getNextFretboardPanelType(state[action.index].fretboardPanelType)
         },
         ...state.slice(action.index + 1)
       ];
@@ -96,8 +97,8 @@ export const mapStateToProps = (state) => ({
 
 export const mapDispatchToProps = (dispatch) => ({
   addFretboardPanel: () => dispatch(addFretboardPanel()),
-  changeFretboard: (index, fPanelType, key, chord, scale) =>
-    dispatch(changeFretboard(index, fPanelType, key, chord, scale)),
+  changeFretboard: (index, paneltype, key, chord, scale) =>
+    dispatch(changeFretboard(index, paneltype, key, chord, scale)),
   changeFretboardPanelType: (index) => dispatch(changeFretboardPanelType(index)),
   changeFretboardTextType: (index) => dispatch(changeFretboardTextType(index)),
   removePanel: (id) => dispatch(removePanel(id))
