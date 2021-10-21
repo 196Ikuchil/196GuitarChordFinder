@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 // material
-import { Grid, Card, IconButton } from '@material-ui/core';
+import { Grid, Card, CardContent, IconButton } from '@material-ui/core';
 import ClearIcon from '@material-ui/icons/Clear';
 import { mapStateToProps, mapDispatchToProps, PanelTypes } from '../../modules/diatonicPanel';
 import {

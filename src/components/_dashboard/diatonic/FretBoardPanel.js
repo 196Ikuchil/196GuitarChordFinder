@@ -1,11 +1,16 @@
 import { connect } from 'react-redux';
-import { Grid, Box } from '@material-ui/core';
+import { Grid, Box, CardContent } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import { experimentalStyled as styled } from '@material-ui/core/styles';
 import { FretBoardBox } from '../../music/fretboard';
 import { mapStateToProps as getIsSharp } from '../../../modules/Sharp';
 import { mapDispatchToProps, FretboardPanelTypes } from '../../../modules/diatonicPanel';
 import { GetChordNotes, GetScaleNotes, NOTESLENGTH } from '../../../utils/music';
 import { FretboardPanelSelector } from './FretboardPanelSelector';
+
+const GridStyle = styled(Grid)(({ theme }) => ({
+  minWidth: theme.fretboardminwidth.diatonic
+}));
 
 function FretBoardPanel({ panel, index, changeFretboard, changeFretboardPanelType, isSharp }) {
   function getDots(fpaneltype, key, chord, scale) {
@@ -34,14 +39,14 @@ function FretBoardPanel({ panel, index, changeFretboard, changeFretboardPanelTyp
             isSharp={isSharp}
           />
         </Grid>
-        <Grid item xs={12}>
+        <GridStyle item xs={12} style={{ overflowX: 'scroll' }}>
           <Box sx={{ p: 1, pb: 0, pt: 0 }}>
             <FretBoardBox
               degreeNums={getDots(panel.fretboardPanelType, panel.key, panel.chord, panel.scale)}
               isSharp={isSharp}
             />
           </Box>
-        </Grid>
+        </GridStyle>
       </Grid>
     </div>
   );

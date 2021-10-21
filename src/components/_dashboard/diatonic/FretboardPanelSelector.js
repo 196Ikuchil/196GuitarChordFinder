@@ -9,7 +9,7 @@ import Select from '@material-ui/core/Select';
 import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
 import { FretboardPanelTypes } from '../../../modules';
 
-import { NOTESLENGTH, NOTENAME } from '../../../utils/music/notes';
+import { NOTESLENGTH, NOTENAME, SCALENOTES, GetScaleKeys } from '../../../utils/music/notes';
 import { CHORDNAME, CHORDS_LENGTH } from '../../../utils/music/chords';
 
 const StyleFormControl = styled(FormControl)(({ theme }) => ({
@@ -30,7 +30,7 @@ export function FretboardPanelSelector({
   const handleChangeFretboardChord = (event) => {
     changeFretboard(index, panel.fretboardPanelType, panel.key, event.target.value, panel.scale);
   };
-  const handleChangeFretboardscale = (event) => {
+  const handleChangeFretboardScale = (event) => {
     changeFretboard(index, panel.fretboardPanelType, panel.key, panel.chord, event.target.value);
   };
   const handleChangeFretboardType = (event) => {
@@ -68,7 +68,22 @@ export function FretboardPanelSelector({
   }
 
   function RenderScaleType() {
-    return <div>test2</div>;
+    return (
+      <div>
+        <StyleFormControl variant="outlined">
+          <InputLabel id="scale">scale</InputLabel>
+          <Select
+            labelId="scale-selector"
+            onChange={handleChangeFretboardScale}
+            value={panel.scale}
+            label="scale"
+            size="large"
+          >
+            {sComp}
+          </Select>
+        </StyleFormControl>
+      </div>
+    );
   }
 
   const dComp = [];
@@ -88,6 +103,15 @@ export function FretboardPanelSelector({
       </MenuItem>
     );
   }
+
+  const sComp = [];
+  GetScaleKeys().map((k) =>
+    sComp.push(
+      <MenuItem key={k} value={k}>
+        {SCALENOTES[k].label}
+      </MenuItem>
+    )
+  );
 
   return (
     <Grid container>

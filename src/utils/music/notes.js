@@ -153,6 +153,12 @@ export const SCALENOTES = {
   lydianf7th: makeScaleInfoArray([1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0], 'lydian ♭7th scale') // lydian flat 7th
 };
 
+export const SCALENOTES_LENGTH = () => GetScaleKeys().length;
+
 export function GetScaleNotes(key, scale) {
   return [...Array(key)].map(() => 0).concat(SCALENOTES[scale].notes);
+}
+
+export function GetScaleLabels() {
+  return SCALENOTES.map((x) => x.label);
 }

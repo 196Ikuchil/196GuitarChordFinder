@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import { CssBaseline } from '@material-ui/core';
 import { ThemeProvider, createTheme, StyledEngineProvider } from '@material-ui/core/styles';
 //
-import shape from './shape';
+import { shape, fretboardminwidth } from './shape';
 import palette from './palette';
 import typography from './typography';
 import breakpoints from './breakpoints';
@@ -23,6 +23,7 @@ export default function ThemeConfig({ children }) {
     () => ({
       palette,
       shape,
+      fretboardminwidth,
       typography,
       breakpoints,
       shadows,
