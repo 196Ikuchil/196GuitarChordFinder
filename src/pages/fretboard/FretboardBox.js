@@ -6,9 +6,9 @@ import { useTranslation } from 'react-i18next';
 import ClearIcon from '@material-ui/icons/Clear';
 import { LightTooltip } from '../../components/LightTooltip';
 import { mapStateToProps, mapDispatchToProps } from '../../modules/fretboard';
-import { FretBoardPanel } from '../../components/_dashboard/fretboard';
+import { FretBoardPanel, Scaletable } from '../../components/_dashboard/fretboard';
 
-function FretboardBox({ fretboards, isSharp, addFretboardPanel, removePanel }) {
+function FretboardBox({ fretboards, isSharp, addFretboardPanel, removePanel, scaletable }) {
   const { t } = useTranslation();
   function handleAddClick(event) {
     addFretboardPanel();
@@ -18,8 +18,13 @@ function FretboardBox({ fretboards, isSharp, addFretboardPanel, removePanel }) {
     <Grid container spacing={0.5}>
       <Grid item xs={12}>
         <Card>
-          <Grid item xs={12}>
-            <div>test</div>
+          <Grid item xs={12} p={4}>
+            <Scaletable
+              scaletable={scaletable[0]}
+              index={0}
+              changeScaletable={() => 0}
+              isSharp={isSharp}
+            />
           </Grid>
         </Card>
       </Grid>
@@ -62,12 +67,21 @@ FretboardBox.propTypes = {
   ).isRequired,
   isSharp: PropTypes.bool.isRequired,
   addFretboardPanel: PropTypes.func.isRequired,
-  removePanel: PropTypes.func.isRequired
+  removePanel: PropTypes.func.isRequired,
+  scaletable: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.number.isRequired,
+      chord: PropTypes.number.isRequired,
+      scale: PropTypes.string.isRequired,
+      scaletabletype: PropTypes.number.isRequired
+    }).isRequired
+  ).isRequired
 };
 export default connect(
   (state) => ({
     isSharp: state.isSharp.isSharp,
-    fretboards: state.fretboards
+    fretboards: state.fretboards,
+    scaletable: state.scaletable
   }),
   mapDispatchToProps
 )(FretboardBox);

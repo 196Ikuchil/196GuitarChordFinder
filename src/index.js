@@ -13,7 +13,15 @@ import * as serviceWorker from './serviceWorker';
 import reportWebVitals from './reportWebVitals';
 
 // store
-import { panels, isSharp, searchInfo, chordkeeps, keepchordpickup, fretboards } from './modules';
+import {
+  panels,
+  isSharp,
+  searchInfo,
+  chordkeeps,
+  keepchordpickup,
+  fretboards,
+  scaletable
+} from './modules';
 
 import './i18n';
 
@@ -26,7 +34,8 @@ const rootReducer = combineReducers({
   searchInfo,
   chordkeeps,
   keepchordpickup,
-  fretboards
+  fretboards,
+  scaletable
 });
 
 const store = createStore(
