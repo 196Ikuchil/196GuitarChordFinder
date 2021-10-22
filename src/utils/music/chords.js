@@ -155,3 +155,9 @@ export const CHORDNOTES = (chord) => CHORDS[chord].chordnotes
 
 export const getChordsData = (key, chord) => CHORDS[chord].gchords[key]
 export const getSelectedChordData = (key, chord, num) => CHORDS[chord].gchords[key][num]
+
+// ex [0,0,1,0,0,0,1,0,0,1,0.......]
+export function GetChordNotes(root, chord) {
+  // push some 0 to heaad(for key change)
+  return [...Array(root)].map(() => 0).concat(CHORDNOTES(chord));
+}

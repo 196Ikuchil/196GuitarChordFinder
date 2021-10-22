@@ -6,12 +6,6 @@ export function GetChordName(root, chord, sharp) {
   return NOTENAME(root, sharp) + CHORDNAME(chord);
 }
 
-// ex [0,0,1,0,0,0,1,0,0,1,0.......]
-export function GetChordNotes(root, chord) {
-  // push some 0 to heaad(for key change)
-  return [...Array(root)].map(() => 0).concat(CHORDNOTES(chord));
-}
-
 // ex ["C", "Dm", "Em" ...]
 export function GetDiatonicChordNames(diatonicnum, key, sharp) {
   const d = GetDiatonicNotes(diatonicnum, key);
@@ -21,6 +15,8 @@ export function GetDiatonicChordNames(diatonicnum, key, sharp) {
 export function GetDiatonicNumName(diatonicnum) {
   return DIATONIC_NUMNAME[diatonicnum];
 }
+
+export { GetChordNotes } from './chords';
 
 export {
   GetDiatonicNotes,
@@ -38,5 +34,10 @@ export {
   getNextFretboardPanelType,
   getNextFretboardTextType,
   FretboardTextTypes,
-  FretboardPanelTypes
+  FretboardPanelTypes,
+  getNotesNumKeyChordScale,
+  getNotesNumfrombinaryArray,
+  getBinArrayKeyChordScale
 } from './fretboard';
+
+export { scaletableTypes, maketableData } from './scaletable';

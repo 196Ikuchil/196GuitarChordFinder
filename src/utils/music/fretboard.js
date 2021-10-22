@@ -1,5 +1,6 @@
 import { Fretboard } from '@moonwave99/fretboard.js';
-import { NOTENAME, DEGREENAME, NOTESLENGTH } from './notes';
+import { NOTENAME, DEGREENAME, NOTESLENGTH, GetScaleNotes } from './notes';
+import { GetChordNotes } from './chords';
 
 export const FretboardPanelTypes = {
   chord: 0,
@@ -66,4 +67,25 @@ export function GetNoteText(root, degree, isSharp, texttype) {
     default:
       return GetToneName(degree, isSharp);
   }
+}
+
+// key:0 , chord:...  => [1,0,0,1,....] => [0,3 ...]
+export function getNotesNumKeyChordScale(fpaneltype, key, chord, scale) {
+  return getNotesNumfrombinaryArray(getBinArrayKeyChordScale(fpaneltype, key, chord, scale));
+}
+
+// key:0 , chord:...  => [1,0,0,1,....]
+export function getBinArrayKeyChordScale(fpaneltype, key, chord, scale) {
+  if (FretboardPanelTypes.chord === fpaneltype) {
+    return GetChordNotes(key, chord);
+  }
+  if (FretboardPanelTypes.scale === fpaneltype) {
+    return GetScaleNotes(key, scale);
+  }
+  return [0];
+}
+
+// [1,0,0,1,....] => [0,3 ...]
+export function getNotesNumfrombinaryArray(arr) {
+  return arr.map((x, i) => (x === 1 ? i : null)).filter(Number.isFinite); // remove null
 }
