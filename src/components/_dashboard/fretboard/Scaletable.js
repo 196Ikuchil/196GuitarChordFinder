@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Grid, Box } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useTable } from 'react-table';
@@ -136,7 +134,7 @@ export function Scaletable({
         scaletable.scaletabletype,
         isSharp
       ),
-    []
+    [scaletable]
   );
 
   const columns = React.useMemo(
