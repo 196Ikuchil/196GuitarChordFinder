@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { useTable } from 'react-table';
 import { maketableData } from '../../../utils/music';
 import palette from '../../../theme/palette';
+import { FretboardPanelBaseSelector } from './FretboardPanelBaseSelector';
 
 const Styles = styled.div`
   /* This is required to make the table full-width */
@@ -119,7 +120,13 @@ function Table({ columns, data }) {
   );
 }
 
-export function Scaletable({ scaletable, index, changeScaletable, isSharp }) {
+export function Scaletable({
+  scaletable,
+  index,
+  changeScaletable,
+  changeScaletablePanelType,
+  isSharp
+}) {
   const data = React.useMemo(
     () =>
       maketableData(
@@ -192,9 +199,18 @@ export function Scaletable({ scaletable, index, changeScaletable, isSharp }) {
   );
 
   return (
-    <Styles>
-      <Table columns={columns} data={data} />
-    </Styles>
+    <div>
+      <Styles>
+        <Table columns={columns} data={data} />
+      </Styles>
+      <FretboardPanelBaseSelector
+        panel={{ ...scaletable, fretboardPanelType: scaletable.scaletabletype }}
+        index={index}
+        changeFretboard={changeScaletable}
+        changeFretboardPanelType={changeScaletablePanelType}
+        isSharp={isSharp}
+      />
+    </div>
   );
 }
 
@@ -207,5 +223,6 @@ Scaletable.propTypes = {
   }).isRequired,
   index: PropTypes.number.isRequired,
   changeScaletable: PropTypes.func.isRequired,
+  changeScaletablePanelType: PropTypes.func.isRequired,
   isSharp: PropTypes.bool
 };

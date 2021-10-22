@@ -5,10 +5,22 @@ import { Grid, Card, Button, IconButton } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import ClearIcon from '@material-ui/icons/Clear';
 import { LightTooltip } from '../../components/LightTooltip';
-import { mapStateToProps, mapDispatchToProps } from '../../modules/fretboard';
+import {
+  mapStateToProps,
+  mapDispatchToProps as mapDispatchfretboard
+} from '../../modules/fretboard';
+import { mapDispatchToProps as mapDispatchscale } from '../../modules/scaletable';
 import { FretBoardPanel, Scaletable } from '../../components/_dashboard/fretboard';
 
-function FretboardBox({ fretboards, isSharp, addFretboardPanel, removePanel, scaletable }) {
+function FretboardBox({
+  fretboards,
+  isSharp,
+  addFretboardPanel,
+  removePanel,
+  scaletable,
+  changeScaletable,
+  changeScaletablePanelType
+}) {
   const { t } = useTranslation();
   function handleAddClick(event) {
     addFretboardPanel();
@@ -22,7 +34,8 @@ function FretboardBox({ fretboards, isSharp, addFretboardPanel, removePanel, sca
             <Scaletable
               scaletable={scaletable[0]}
               index={0}
-              changeScaletable={() => 0}
+              changeScaletable={changeScaletable}
+              changeScaletablePanelType={changeScaletablePanelType}
               isSharp={isSharp}
             />
           </Grid>
@@ -75,8 +88,15 @@ FretboardBox.propTypes = {
       scale: PropTypes.string.isRequired,
       scaletabletype: PropTypes.number.isRequired
     }).isRequired
-  ).isRequired
+  ).isRequired,
+  changeScaletable: PropTypes.func.isRequired,
+  changeScaletablePanelType: PropTypes.func.isRequired
 };
+
+function mapDispatchToProps(dispatch) {
+  return { ...mapDispatchfretboard(dispatch), ...mapDispatchscale(dispatch) };
+}
+
 export default connect(
   (state) => ({
     isSharp: state.isSharp.isSharp,
