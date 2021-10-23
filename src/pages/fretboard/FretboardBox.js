@@ -10,7 +10,7 @@ import {
   mapDispatchToProps as mapDispatchfretboard
 } from '../../modules/fretboard';
 import { mapDispatchToProps as mapDispatchscale } from '../../modules/scaletable';
-import { FretBoardPanel, Scaletable } from '../../components/_dashboard/fretboard';
+import { FretBoardPanel, Scaletable, PickupButton } from '../../components/_dashboard/fretboard';
 
 function FretboardBox({
   fretboards,
@@ -19,7 +19,8 @@ function FretboardBox({
   removePanel,
   scaletable,
   changeScaletable,
-  changeScaletablePanelType
+  changeScaletablePanelType,
+  pickupcaletable
 }) {
   const { t } = useTranslation();
   function handleAddClick(event) {
@@ -45,10 +46,25 @@ function FretboardBox({
         {fretboards.map((fboard, i) => (
           <Grid key={i} item xs={12}>
             <Card>
-              <IconButton onClick={() => removePanel(i)}>
-                <ClearIcon />
-              </IconButton>
-              <FretBoardPanel fboard={fboard} index={i} />
+              <Grid container>
+                <Grid item xs={2} m={0}>
+                  <IconButton onClick={() => removePanel(i)}>
+                    <ClearIcon />
+                  </IconButton>
+                </Grid>
+                <Grid item xs={10} m={0}>
+                  <PickupButton
+                    pickupcaletable={pickupcaletable}
+                    _key={fboard.key}
+                    chord={fboard.chord}
+                    scale={fboard.scale}
+                    scaletabletype={fboard.fretboardPanelType}
+                  />
+                </Grid>
+                <Grid item xs={12} m={1}>
+                  <FretBoardPanel fboard={fboard} index={i} />
+                </Grid>
+              </Grid>
             </Card>
           </Grid>
         ))}
@@ -90,7 +106,8 @@ FretboardBox.propTypes = {
     }).isRequired
   ).isRequired,
   changeScaletable: PropTypes.func.isRequired,
-  changeScaletablePanelType: PropTypes.func.isRequired
+  changeScaletablePanelType: PropTypes.func.isRequired,
+  pickupcaletable: PropTypes.func.isRequired
 };
 
 function mapDispatchToProps(dispatch) {

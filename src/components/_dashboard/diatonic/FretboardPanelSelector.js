@@ -21,14 +21,14 @@ export function FretboardPanelSelector({
 
   return (
     <Grid container>
-      <Grid item sm={2} md={1} pt={1} pl={2} pr={0}>
+      <Grid item xs={3} sm={2} md={1} pt={1} pl={2} pr={0}>
         <StyleFormControl>
           <Button color="primary" variant="outlined" onClick={handleChangeFretboardTextType}>
             <MusicNoteIcon />
           </Button>
         </StyleFormControl>
       </Grid>
-      <Grid item sm={10} md={11} pt={1} pl={1}>
+      <Grid item xs={5} sm={9} md={10} pt={1} pl={1}>
         <FretboardPanelBaseSelector
           panel={panel}
           index={index}

@@ -113,7 +113,7 @@ export function FretboardPanelBaseSelector({
 
   return (
     <Grid container>
-      <Grid item sm={1} md={1} pt={0} pl={0}>
+      <Grid item xs={4} sm={2} md={1} pt={0} pl={0}>
         <StyleFormControl>
           <Button
             color="primary"
@@ -125,7 +125,7 @@ export function FretboardPanelBaseSelector({
           </Button>
         </StyleFormControl>
       </Grid>
-      <Grid item sm={5} md={5}>
+      <Grid item xs={4} sm={4} md={5}>
         <StyleFormControl style={{ minWidth: '100%' }}>
           <InputLabel id="key">key</InputLabel>
           <Select
@@ -139,7 +139,7 @@ export function FretboardPanelBaseSelector({
           </Select>
         </StyleFormControl>
       </Grid>
-      <Grid item sm={6} md={6}>
+      <Grid item xs={4} sm={6} md={6}>
         {Render()}
       </Grid>
     </Grid>

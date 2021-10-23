@@ -16,6 +16,15 @@ export const changeScaletable = (index, scaletabletype, key, chord, scale) => ({
   scale
 });
 
+export const pickupcaletable = (index, scaletabletype, key, chord, scale) => ({
+  type: 'PICKUP_SCALETABLE',
+  index,
+  scaletabletype,
+  key,
+  chord,
+  scale
+});
+
 export const changeScaletablePanelType = (index) => ({
   type: 'CHANGE_SCALETABLE_PANEL_TYPE',
   index
@@ -44,6 +53,18 @@ export const scaletable = (state = [initialState], action) => {
         },
         ...state.slice(action.index + 1)
       ];
+    case 'PICKUP_SCALETABLE':
+      return [
+        ...state.slice(0, action.index),
+        {
+          ...state[action.index],
+          scaletabletype: action.scaletabletype,
+          key: action.key,
+          chord: action.chord,
+          scale: action.scale
+        },
+        ...state.slice(action.index + 1)
+      ];
     default:
       return state;
   }
@@ -56,5 +77,7 @@ export const mapStateToProps = (state) => ({
 export const mapDispatchToProps = (dispatch) => ({
   changeScaletable: (index, key, chord, scale, scaletabletype) =>
     dispatch(changeScaletable(index, key, chord, scale, scaletabletype)),
-  changeScaletablePanelType: (index) => dispatch(changeScaletablePanelType(index))
+  changeScaletablePanelType: (index) => dispatch(changeScaletablePanelType(index)),
+  pickupcaletable: (index, scaletabletype, key, chord, scale) =>
+    dispatch(pickupcaletable(index, scaletabletype, key, chord, scale))
 });
