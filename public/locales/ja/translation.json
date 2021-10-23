@@ -8,6 +8,9 @@
     },
     "keep":{
       "title": "キープ"
+    },
+    "fretboard": {
+      "title": "指板図(スケール)"
     }
   },
   "toppage": {
@@ -71,6 +74,15 @@
       "tonicm": "トニックマイナー",
       "dominantm": "ドミナントマイナー",
       "subdominantm": "サブドミナントマイナー"
+    }
+  },
+  "fretboard": {
+    "title": "指板図(スケール)",
+    "button": {
+      "add": "追加"
+    },
+    "tips": {
+      "addbutton": "新しいパネル追加"
     }
   }
 }

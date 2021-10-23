@@ -8,6 +8,9 @@
     },
     "keep":{
       "title": "Keep"
+    },
+    "fretboard": {
+      "title": "Fretboard"
     }
   },
   "toppage": {
@@ -71,6 +74,15 @@
       "tonicm": "Tonic minor",
       "dominantm": "Dominant minor",
       "subdominantm": "Sub-dominant minor"
+    }
+  },
+  "fretboard": {
+    "title": "FRETBOARD",
+    "button": {
+      "add": "Add"
+    },
+    "tips": {
+      "addbutton": "Insert new panel"
     }
   }
 }
