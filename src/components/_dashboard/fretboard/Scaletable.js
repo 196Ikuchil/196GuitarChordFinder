@@ -12,7 +12,7 @@ const Styles = styled.div`
   min-width: 100%;
 
   /* This will make the table scrollable when it gets too small */
-  .tableWrap {
+  .tablewrap {
     display: block;
     max-width: 100%;
     overflow-x: scroll;
@@ -22,7 +22,7 @@ const Styles = styled.div`
 
   table {
     /* Make sure the inner table is always as wide as needed */
-    min-width: 320px;
+    min-width: 400px;
     table-layout: fixed;
     width: 100%;
     border-spacing: 0;
