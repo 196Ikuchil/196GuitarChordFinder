@@ -2,7 +2,7 @@ import { Icon } from '@iconify/react';
 import shoppingBagFill from '@iconify/icons-eva/shopping-bag-fill';
 import musicBoxMultipleOutline from '@iconify-icons/mdi/music-box-multiple-outline';
 import bxSearchAlt from '@iconify-icons/bx/bx-search-alt';
-import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import guitarIcon from '@iconify/icons-emojione-monotone/guitar';
 // ----------------------------------------------------------------------
 
 const getIcon = (name) => <Icon icon={name} width={22} height={22} />;
@@ -21,7 +21,7 @@ const sidebarConfig = [
   {
     title: 'sidebar.fretboard.title',
     path: '/fretboard',
-    icon: getIcon(AccessTimeFilledIcon)
+    icon: getIcon(guitarIcon)
   },
   {
     title: 'sidebar.scrapbook.title',
