@@ -8,8 +8,10 @@ import {
   addDiatonicPanel,
   mapStateToProps,
   addC5thPanel,
-  addChordPanel
+  addChordPanel,
+  addFretboardPanel
 } from '../../../modules/diatonicPanel';
+import { GetScaleKeys, FretboardPanelTypes } from '../../../utils/music';
 
 const AddBasePanelButton = ({ panels, dispatch }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -38,6 +40,11 @@ const AddBasePanelButton = ({ panels, dispatch }) => {
     handleClose();
   };
 
+  const onClickFretboard = () => {
+    dispatch(addFretboardPanel(FretboardPanelTypes.chord, 0, 0, GetScaleKeys()[0]));
+    handleClose();
+  };
+
   return (
     <div>
       <LightTooltip
@@ -59,6 +66,7 @@ const AddBasePanelButton = ({ panels, dispatch }) => {
         <MenuItem onClick={onClickDiatonic}>{t('scrapbook.select.diatonic')}</MenuItem>
         <MenuItem onClick={onClickC5th}>{t('scrapbook.select.c5th')}</MenuItem>
         <MenuItem onClick={onClickChord}>{t('scrapbook.select.chord')}</MenuItem>
+        <MenuItem onClick={onClickFretboard}>{t('scrapbook.select.fretboard')}</MenuItem>
       </Menu>
     </div>
   );

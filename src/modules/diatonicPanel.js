@@ -1,7 +1,15 @@
+import {
+  FretboardTextTypes,
+  FretboardPanelTypes,
+  getNextFretboardPanelType,
+  getNextFretboardTextType
+} from '../utils/music';
+
 export const PanelTypes = {
   diatonic: 0,
   c5th: 1,
-  chord: 2
+  chord: 2,
+  fretboard: 3
 };
 
 export const ChordPanelTypes = {
@@ -17,6 +25,7 @@ const initState = {
 
 // increment chord panel type 0 -> 1->2->0
 const getNextChordPanelType = (type) => (type + 1) % Object.keys(ChordPanelTypes).length;
+
 // ACTION
 // add to tail
 export const addDiatonicPanel = (dChord, key, panels) => ({
@@ -49,6 +58,15 @@ export const addChordPanelById = (key, chord, index, color) => ({
   color
 });
 
+export const addFretboardPanel = (fpanelType, key, chord, scale) => ({
+  type: 'ADD_FRETBOARD_PANEL',
+  panelType: PanelTypes.fretboard,
+  fpanelType,
+  key,
+  chord,
+  scale
+});
+
 export const changeChordPanelType = (index) => ({
   type: 'CHANGE_CHORD_PANEL_TYPE',
   index
@@ -76,6 +94,23 @@ export const changeDiatonicKey = (index, key) => ({
   type: 'CHANGE_DIATONIC_KEY',
   index,
   key
+});
+// FIXME: add scale
+export const changeFretboard = (index, fPanelType, key, chord, scale) => ({
+  type: 'CHANGE_FRETBOARD',
+  index,
+  fPanelType,
+  key,
+  chord,
+  scale
+});
+export const changeFretboardPanelType = (index) => ({
+  type: 'CHANGE_FRETBOARD_PANEL_TYPE',
+  index
+});
+export const changeFretboardTextType = (index) => ({
+  type: 'CHANGE_FRETBOARD_TEXT_TYPE',
+  index
 });
 
 export const removePanel = (index) => ({
@@ -130,6 +165,18 @@ export const panels = (state = [initState], action) => {
         },
         ...state.slice(action.index)
       ];
+    case 'ADD_FRETBOARD_PANEL':
+      return [
+        ...state,
+        {
+          panelType: action.panelType,
+          fretboardPanelType: action.fpanelType,
+          key: action.key,
+          chord: action.chord,
+          scale: action.scale,
+          texttype: FretboardTextTypes.tone
+        }
+      ];
     case 'CHANGE_CHORD_PANEL_TYPE':
       return [
         ...state.slice(0, action.index),
@@ -163,6 +210,36 @@ export const panels = (state = [initState], action) => {
         { ...state[action.index], key: action.key },
         ...state.slice(action.index + 1)
       ];
+    case 'CHANGE_FRETBOARD':
+      return [
+        ...state.slice(0, action.index),
+        {
+          ...state[action.index],
+          fretboardPanelType: action.fPanelType,
+          key: action.key,
+          chord: action.chord,
+          scale: action.scale
+        },
+        ...state.slice(action.index + 1)
+      ];
+    case 'CHANGE_FRETBOARD_PANEL_TYPE':
+      return [
+        ...state.slice(0, action.index),
+        {
+          ...state[action.index],
+          fretboardPanelType: getNextFretboardPanelType(state[action.index].fretboardPanelType)
+        },
+        ...state.slice(action.index + 1)
+      ];
+    case 'CHANGE_FRETBOARD_TEXT_TYPE':
+      return [
+        ...state.slice(0, action.index),
+        {
+          ...state[action.index],
+          texttype: getNextFretboardTextType(state[action.index].texttype)
+        },
+        ...state.slice(action.index + 1)
+      ];
     case 'REMOVE_PANEL':
       return [...state.slice(0, action.index), ...state.slice(action.index + 1)];
     case 'REMOVE_All_PANEL':
@@ -183,6 +260,10 @@ export const mapDispatchToProps = (dispatch) => ({
   changeChordPanelType: (id) => dispatch(changeChordPanelType(id)),
   changeChordPanelKey: (id, key) => dispatch(changeChordPanelKey(id, key)),
   changeChordPanelChord: (id, chord) => dispatch(changeChordPanelChord(id, chord)),
+  changeFretboard: (index, fPanelType, key, chord, scale) =>
+    dispatch(changeFretboard(index, fPanelType, key, chord, scale)),
+  changeFretboardPanelType: (index) => dispatch(changeFretboardPanelType(index)),
+  changeFretboardTextType: (index) => dispatch(changeFretboardTextType(index)),
   removePanel: (id) => dispatch(removePanel(id)),
   removeAllPanel: () => dispatch(removeAllPanel()),
   addChordPanelById: (key, chord, id, color) => dispatch(addChordPanelById(key, chord, id, color))

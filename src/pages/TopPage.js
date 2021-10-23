@@ -43,6 +43,16 @@ function TopPage({ t }) {
         <Box sx={{ p: 3 }}>
           <center>
             <PageCard
+              img={`${process.env.PUBLIC_URL}/static/images/top/fretboard.png`}
+              pagename={t('toppage.fretboard.title')}
+              description={t('toppage.fretboard.description')}
+              path="/fretboard"
+            />
+          </center>
+        </Box>
+        <Box sx={{ p: 3 }}>
+          <center>
+            <PageCard
               img={`${process.env.PUBLIC_URL}/static/images/top/scrapbook.png`}
               pagename={t('toppage.scrapbook.title')}
               description={t('toppage.scrapbook.description')}
