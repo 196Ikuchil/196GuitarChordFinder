@@ -8,6 +8,9 @@
     },
     "keep":{
       "title": "キープ"
+    },
+    "fretboard": {
+      "title": "指板図(スケール)"
     }
   },
   "toppage": {
@@ -20,6 +23,10 @@
     "keep": {
       "title": "キープ",
       "description": "コード検索でキープしたコードを一覧で表示できます。"
+    },
+    "fretboard": {
+      "title": "指板図(スケール)",
+      "description": "コードやスケールの確認を表と指板図で確認できます"
     },
     "scrapbook": {
       "title": "スクラップブック",
@@ -61,7 +68,8 @@
     "select": {
       "diatonic": "ダイアトニックコード表",
       "c5th": "五度圏表",
-      "chord": "簡易コード検索"
+      "chord": "簡易コード検索",
+      "fretboard": "指板図(コード&スケール)"
     },
     "rolls": {
       "tonic": "トニック",
@@ -70,6 +78,15 @@
       "tonicm": "トニックマイナー",
       "dominantm": "ドミナントマイナー",
       "subdominantm": "サブドミナントマイナー"
+    }
+  },
+  "fretboard": {
+    "title": "指板図(スケール)",
+    "button": {
+      "add": "追加"
+    },
+    "tips": {
+      "addbutton": "新しいパネル追加"
     }
   }
 }

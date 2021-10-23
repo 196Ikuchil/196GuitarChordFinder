@@ -8,6 +8,9 @@
     },
     "keep":{
       "title": "Keep"
+    },
+    "fretboard": {
+      "title": "Fretboard"
     }
   },
   "toppage": {
@@ -20,6 +23,10 @@
     "keep": {
       "title": "Keep",
       "description": "List the codes added to the keep in the code search."
+    },
+    "fretboard": {
+      "title": "Fretboard(scale)",
+      "description": "Check chords and scales with tables and fretboard diagrams."
     },
     "scrapbook": {
       "title": "SCRAPBOOK",
@@ -61,7 +68,8 @@
     "select": {
       "diatonic": "diatonic chord chart",
       "c5th": "circle of 5th",
-      "chord": "chord mini finder"
+      "chord": "chord mini finder",
+      "fretboard": "Fretboard(chord&scale)"
     },
     "rolls": {
       "tonic": "Tonic",
@@ -70,6 +78,15 @@
       "tonicm": "Tonic minor",
       "dominantm": "Dominant minor",
       "subdominantm": "Sub-dominant minor"
+    }
+  },
+  "fretboard": {
+    "title": "FRETBOARD",
+    "button": {
+      "add": "Add"
+    },
+    "tips": {
+      "addbutton": "Insert new panel"
     }
   }
 }
