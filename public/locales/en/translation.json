@@ -24,6 +24,10 @@
       "title": "Keep",
       "description": "List the codes added to the keep in the code search."
     },
+    "fretboard": {
+      "title": "Fretboard(scale)",
+      "description": "Check chords and scales with tables and fretboard diagrams."
+    },
     "scrapbook": {
       "title": "SCRAPBOOK",
       "description": "Displays a table of fifths and diatonic chords. Check more basic chords."
